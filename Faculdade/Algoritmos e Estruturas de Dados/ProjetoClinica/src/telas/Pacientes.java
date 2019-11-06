@@ -165,6 +165,7 @@ public class Pacientes extends javax.swing.JFrame {
 
         Doctor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/doctor (1).png"))); // NOI18N
 
+        LocalizarPacientes.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         LocalizarPacientes.setText("Localizar Pacientes");
         LocalizarPacientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
