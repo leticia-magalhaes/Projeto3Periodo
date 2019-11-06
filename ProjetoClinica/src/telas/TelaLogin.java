@@ -19,6 +19,7 @@ public class TelaLogin extends javax.swing.JFrame {
      */
     public TelaLogin() {
         initComponents();
+        
     }
     
     
@@ -27,138 +28,174 @@ public class TelaLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jPasswordField3 = new javax.swing.JPasswordField();
-        jButtonAcessar = new javax.swing.JButton();
-        jCheckBox2 = new javax.swing.JCheckBox();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        txtLogin3 = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        txtSenha3 = new javax.swing.JPasswordField();
+        jButtonEntrar3 = new javax.swing.JButton();
+        txtLembrarUsuario3 = new javax.swing.JCheckBox();
+        AreaFundo = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        getContentPane().setLayout(null);
 
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/HeartClin.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/HeartClin.png"))); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(130, 40, 160, 140);
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/doctor.png"))); // NOI18N
+        jPanel5.setBackground(new java.awt.Color(241, 191, 191));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/nurse.png"))); // NOI18N
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/doctor.png"))); // NOI18N
 
-        jLabel9.setFont(new java.awt.Font("Betty Lavea", 1, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(202, 104, 133));
-        jLabel9.setText("Usuário");
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/nurse.png"))); // NOI18N
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/lock.png"))); // NOI18N
+        jLabel22.setFont(new java.awt.Font("Betty Lavea", 1, 18)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(202, 104, 133));
+        jLabel22.setText("Usuário:");
 
-        jLabel11.setFont(new java.awt.Font("Betty Lavea", 1, 18)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(202, 104, 133));
-        jLabel11.setText("Senha");
-
-        jTextField2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-
-        jPasswordField3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-
-        jButtonAcessar.setBackground(new java.awt.Color(202, 104, 133));
-        jButtonAcessar.setFont(new java.awt.Font("Betty Lavea", 1, 18)); // NOI18N
-        jButtonAcessar.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonAcessar.setText("Entrar");
-        jButtonAcessar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonAcessar.addActionListener(new java.awt.event.ActionListener() {
+        txtLogin3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        txtLogin3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAcessarActionPerformed(evt);
+                txtLogin3txtLoginActionPerformed(evt);
             }
         });
 
-        jCheckBox2.setFont(new java.awt.Font("Betty Lavea", 1, 14)); // NOI18N
-        jCheckBox2.setForeground(new java.awt.Color(202, 104, 133));
-        jCheckBox2.setText("Lembrar Usuário");
-        jCheckBox2.setBorder(null);
-        jCheckBox2.setBorderPaintedFlat(true);
-        jCheckBox2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/lock.png"))); // NOI18N
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(120, 120, 120)
-                .addComponent(jLabel12)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5))
-                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel11))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jCheckBox2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonAcessar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jPasswordField3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
+        jLabel24.setFont(new java.awt.Font("Betty Lavea", 1, 18)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(202, 104, 133));
+        jLabel24.setText("Senha:");
+
+        txtSenha3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        txtSenha3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSenha3txtSenhaActionPerformed(evt);
+            }
+        });
+
+        jButtonEntrar3.setBackground(new java.awt.Color(202, 104, 133));
+        jButtonEntrar3.setFont(new java.awt.Font("Betty Lavea", 1, 14)); // NOI18N
+        jButtonEntrar3.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonEntrar3.setText("Entrar");
+        jButtonEntrar3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonEntrar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEntrar3jButtonEntrarActionPerformed(evt);
+            }
+        });
+
+        txtLembrarUsuario3.setFont(new java.awt.Font("Betty Lavea", 1, 14)); // NOI18N
+        txtLembrarUsuario3.setForeground(new java.awt.Color(202, 104, 133));
+        txtLembrarUsuario3.setText("Lembrar Usuário");
+        txtLembrarUsuario3.setBorder(null);
+        txtLembrarUsuario3.setBorderPaintedFlat(true);
+        txtLembrarUsuario3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        txtLembrarUsuario3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLembrarUsuario3txtLembrarUsuarioActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel5Layout.createSequentialGroup()
+                                        .addComponent(jLabel23)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel5Layout.createSequentialGroup()
+                                        .addComponent(jLabel20)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel21)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(txtLembrarUsuario3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(100, 100, 100)
+                                .addComponent(jButtonEntrar3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 105, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtLogin3)
+                            .addComponent(txtSenha3))))
                 .addContainerGap())
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel12)
-                        .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
-                            .addComponent(jPasswordField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(154, 154, 154)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))))
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(92, 92, 92)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
+                .addComponent(txtLogin3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(jLabel11))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(5, 5, 5)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButtonAcessar)
-                            .addComponent(jCheckBox2)))
-                    .addComponent(jLabel10))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel23)
+                    .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtSenha3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(jButtonEntrar3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtLembrarUsuario3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(415, 330));
+        getContentPane().add(jPanel5);
+        jPanel5.setBounds(40, 90, 340, 370);
+
+        AreaFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/AreaFundo.PNG"))); // NOI18N
+        AreaFundo.setMaximumSize(new java.awt.Dimension(460, 560));
+        AreaFundo.setMinimumSize(new java.awt.Dimension(460, 560));
+        getContentPane().add(AreaFundo);
+        AreaFundo.setBounds(0, 0, 420, 520);
+
+        setSize(new java.awt.Dimension(434, 557));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonAcessarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAcessarActionPerformed
-       
-        HeartClin heartClin = new HeartClin();
-        heartClin.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jButtonAcessarActionPerformed
+    private void txtLogin3txtLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLogin3txtLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLogin3txtLoginActionPerformed
+
+    private void txtSenha3txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenha3txtSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSenha3txtSenhaActionPerformed
+
+    private void jButtonEntrar3jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrar3jButtonEntrarActionPerformed
+    HeartClin heartClin = new HeartClin();
+    heartClin.setVisible(true);
+    dispose();
+    }//GEN-LAST:event_jButtonEntrar3jButtonEntrarActionPerformed
+
+    private void txtLembrarUsuario3txtLembrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLembrarUsuario3txtLembrarUsuarioActionPerformed
+
+    }//GEN-LAST:event_txtLembrarUsuario3txtLembrarUsuarioActionPerformed
 
     private void DoLogin(){
         
-        String query =  "SELECT * FROM USER WHERE nome= " + jTextField2.getText() + " senha= " + jPasswordField3.getPassword();
+        String query =  "SELECT * FROM USER WHERE nome = " + txtLogin3.getText() + " senha= " + txtSenha3.getPassword();
         try{
             DatabaseConnection databaseConnection = new DatabaseConnection();
             Boolean hasUser = false;
@@ -176,7 +213,7 @@ public class TelaLogin extends javax.swing.JFrame {
         }
     }
     
-    private void DoSignIn(){
+   /* private void DoSignIn(){
         String query =  "INSERT INTO USER VALUES nome= " + jTextField2.getText() + " senha= " + jPasswordField3.getPassword();
         try{
             DatabaseConnection databaseConnection = new DatabaseConnection();
@@ -191,7 +228,7 @@ public class TelaLogin extends javax.swing.JFrame {
             System.err.println("Got an exception! ");
             System.err.println(ex.getMessage());
         }
-    }
+    }*/
     
     /**
      * @param args the command line arguments
@@ -219,6 +256,9 @@ public class TelaLogin extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -229,16 +269,19 @@ public class TelaLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAcessar;
-    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JLabel AreaFundo;
+    private javax.swing.JButton jButtonEntrar3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPasswordField jPasswordField3;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JCheckBox txtLembrarUsuario3;
+    private javax.swing.JTextField txtLogin3;
+    private javax.swing.JPasswordField txtSenha3;
     // End of variables declaration//GEN-END:variables
+
 }

@@ -31,9 +31,9 @@ public class Pacientes extends javax.swing.JFrame {
     CardLayout card = (CardLayout)PainelPrincipal.getLayout();
     card.show(PainelPrincipal, nome);
     }
-        private DefaultTableModel modeloTabela = new DefaultTableModel();
+       /* private DefaultTableModel modeloTabela = new DefaultTableModel();
 
-    /*private void listarCadastros() {
+    private void listarCadastros() {
         modeloTabela = new DefaultTableModel();
         modeloTabela = (DefaultTableModel) tabela.getModel();
         modeloTabela.setNumRows(0);
@@ -419,17 +419,18 @@ public class Pacientes extends javax.swing.JFrame {
                     .addComponent(jLabel12)
                     .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(txtComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14)
-                    .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel15)
+                        .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel16)
-                        .addComponent(txtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel15)
-                            .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(txtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel13)
+                        .addComponent(txtComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel14)
+                        .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -723,7 +724,7 @@ public class Pacientes extends javax.swing.JFrame {
 
     private void btnSalvar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvar2ActionPerformed
         
-        if (txtNomePaciente.getText().trim().isEmpty()) {
+       /* if (txtNomePaciente.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Informe o nome", "Campo em branco", JOptionPane.YES_NO_OPTION);
             txtNomePaciente.requestFocus();
             return;
@@ -753,7 +754,7 @@ public class Pacientes extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null, "Tente novamente!", "Erro", JOptionPane.YES_NO_OPTION);
             return;
-        }
+        }*/
     }//GEN-LAST:event_btnSalvar2ActionPerformed
 
     private void txtTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefoneActionPerformed
@@ -807,7 +808,6 @@ public class Pacientes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Doctor;
-    private javax.swing.JButton Excluir;
     private javax.swing.JButton LocalizarPacientes;
     private javax.swing.JButton NovoPaciente;
     private javax.swing.JLabel Nurse;
@@ -816,7 +816,6 @@ public class Pacientes extends javax.swing.JFrame {
     private javax.swing.JPanel PainelNovoPaciente;
     private javax.swing.JPanel PainelPrincipal;
     private javax.swing.JComboBox<String> boxFM;
-    private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnAlterar1;
     private javax.swing.JButton btnAlterar2;
     private javax.swing.JButton btnCancelar;
@@ -824,9 +823,7 @@ public class Pacientes extends javax.swing.JFrame {
     private javax.swing.JButton btnExcluir2;
     private javax.swing.JButton btnSalvar2;
     private javax.swing.JButton btnVisualizar;
-    private javax.swing.JButton btnVoltar;
     private javax.swing.JButton btnVoltar1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -843,23 +840,17 @@ public class Pacientes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanelPacientes1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField11;
-    private javax.swing.JLabel labelClientes;
     private javax.swing.JLabel labelClientes1;
-    private javax.swing.JTable tabela;
     private javax.swing.JTable tabela1;
-    private javax.swing.JLabel titulo;
     private javax.swing.JLabel titulo1;
     private javax.swing.JLabel titulo2;
     private javax.swing.JTextField txtBairro;
-    private javax.swing.JTextField txtBusca;
     private javax.swing.JTextField txtBusca1;
     private javax.swing.JTextField txtCEP;
     private javax.swing.JTextField txtCPF;
@@ -872,7 +863,6 @@ public class Pacientes extends javax.swing.JFrame {
     private javax.swing.JTextField txtEndereco;
     private javax.swing.JTextField txtEstado;
     private javax.swing.JTextField txtNomePaciente;
-    private javax.swing.JLabel txtProcurar;
     private javax.swing.JLabel txtProcurar1;
     private javax.swing.JTextField txtRG;
     private javax.swing.JTextField txtTelefone;
