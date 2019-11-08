@@ -20,7 +20,10 @@ public class Pacientes extends javax.swing.JFrame {
      * Creates new form Pacientes
      */
     public Pacientes() {
-        initComponents();
+        initComponents()
+                
+                
+                ;
         
         /*listarCadastros();*/
        
