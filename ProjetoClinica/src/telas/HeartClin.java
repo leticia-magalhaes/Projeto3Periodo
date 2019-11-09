@@ -16,6 +16,9 @@ public class HeartClin extends javax.swing.JFrame {
      */
     public HeartClin() {
         initComponents();
+        
+        
+        
     }
 
     /**
@@ -34,10 +37,11 @@ public class HeartClin extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(427, 527));
         setResizable(false);
+        getContentPane().setLayout(null);
 
         jButton2.setBackground(new java.awt.Color(202, 104, 133));
         jButton2.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
@@ -48,6 +52,8 @@ public class HeartClin extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(168, 30, 147, 29);
 
         jButton3.setBackground(new java.awt.Color(202, 104, 133));
         jButton3.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
@@ -60,6 +66,8 @@ public class HeartClin extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton3);
+        jButton3.setBounds(168, 70, 147, 29);
 
         jButton4.setBackground(new java.awt.Color(202, 104, 133));
         jButton4.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
@@ -73,11 +81,15 @@ public class HeartClin extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton4);
+        jButton4.setBounds(168, 117, 147, 31);
 
         jButton5.setBackground(new java.awt.Color(202, 104, 133));
         jButton5.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("Marketing");
+        getContentPane().add(jButton5);
+        jButton5.setBounds(321, 30, 147, 29);
 
         jButton6.setBackground(new java.awt.Color(202, 104, 133));
         jButton6.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
@@ -85,56 +97,25 @@ public class HeartClin extends javax.swing.JFrame {
         jButton6.setText("Sobre");
         jButton6.setMaximumSize(new java.awt.Dimension(79, 23));
         jButton6.setMinimumSize(new java.awt.Dimension(79, 23));
+        getContentPane().add(jButton6);
+        jButton6.setBounds(321, 118, 147, 29);
 
         jButton7.setBackground(new java.awt.Color(202, 104, 133));
         jButton7.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
         jButton7.setForeground(new java.awt.Color(255, 255, 255));
         jButton7.setText("Configurações");
+        getContentPane().add(jButton7);
+        jButton7.setBounds(321, 70, 147, 29);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/HeartClin.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/HeartClin.PNG"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(20, 20, 122, 130);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(38, Short.MAX_VALUE))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Fundo.PNG"))); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 480, 480);
 
-        setSize(new java.awt.Dimension(494, 225));
+        setSize(new java.awt.Dimension(494, 222));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -199,5 +180,6 @@ public class HeartClin extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

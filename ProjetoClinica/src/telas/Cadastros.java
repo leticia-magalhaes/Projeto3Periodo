@@ -25,6 +25,11 @@ public class Cadastros extends javax.swing.JFrame {
     CardLayout card = (CardLayout)PainelPrincipal2.getLayout();
     card.show(PainelPrincipal2, nome);
     }
+    private void mostrarImagem(String nome){
+        
+    CardLayout card1 = (CardLayout)PainelPrincipal3.getLayout();
+    card1.show(PainelPrincipal3, nome);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -40,18 +45,84 @@ public class Cadastros extends javax.swing.JFrame {
         btnCadastrosMedicos = new javax.swing.JButton();
         btnCadastrosConsultorios = new javax.swing.JButton();
         btnCadastrosConvenios = new javax.swing.JButton();
+        PainelPrincipal3 = new javax.swing.JPanel();
+        ImagemCadastrosUsuarios = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        ImagemCadastrosMedicos = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        ImagemCadastrosConsultorios = new javax.swing.JPanel();
+        jLabel23 = new javax.swing.JLabel();
+        ImagemCadastrosConvenios = new javax.swing.JPanel();
+        jLabel24 = new javax.swing.JLabel();
         PainelPrincipal2 = new javax.swing.JPanel();
-        PanelCadastrosUsuarios = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        PanelCadastrosMedicos = new javax.swing.JPanel();
+        PainelCadastrosUsuario = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        PanelCadastrosConsultorios = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jTextField5 = new javax.swing.JTextField();
+        jComboBox3 = new javax.swing.JComboBox<>();
+        jButton2 = new javax.swing.JButton();
+        jTextField6 = new javax.swing.JTextField();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jPasswordField2 = new javax.swing.JPasswordField();
+        btnSalvar1 = new javax.swing.JButton();
+        btnCancelar1 = new javax.swing.JButton();
+        btnEditar1 = new javax.swing.JButton();
+        btnExcluir1 = new javax.swing.JButton();
+        PainelCadastrosMedicos = new javax.swing.JPanel();
+        btnSalvar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jLabel9 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jTextField4 = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        PainelCadastrosConsultorios = new javax.swing.JPanel();
+        btnSalvar2 = new javax.swing.JButton();
+        btnCancelar2 = new javax.swing.JButton();
+        btnEditar2 = new javax.swing.JButton();
+        btnExcluir2 = new javax.swing.JButton();
+        jTextField9 = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        PanelCadastrosConvenios = new javax.swing.JPanel();
+        jTextField10 = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
+        PainelCadastrosConvenios = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jTextField7 = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        jTextField11 = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
+        jTextField12 = new javax.swing.JTextField();
+        btnSalvar3 = new javax.swing.JButton();
+        btnCancelar3 = new javax.swing.JButton();
+        btnEditar3 = new javax.swing.JButton();
+        btnExcluir3 = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable4 = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         btnCadastrosUsuarios.setText("Cadastros de Usuários");
         btnCadastrosUsuarios.addActionListener(new java.awt.event.ActionListener() {
@@ -81,30 +152,119 @@ public class Cadastros extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Imagem");
+        PainelPrincipal3.setLayout(new java.awt.CardLayout());
+
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/004-man.png"))); // NOI18N
+
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/003-girl.png"))); // NOI18N
+
+        javax.swing.GroupLayout ImagemCadastrosUsuariosLayout = new javax.swing.GroupLayout(ImagemCadastrosUsuarios);
+        ImagemCadastrosUsuarios.setLayout(ImagemCadastrosUsuariosLayout);
+        ImagemCadastrosUsuariosLayout.setHorizontalGroup(
+            ImagemCadastrosUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ImagemCadastrosUsuariosLayout.createSequentialGroup()
+                .addContainerGap(41, Short.MAX_VALUE)
+                .addComponent(jLabel21)
+                .addGap(30, 30, 30)
+                .addComponent(jLabel22)
+                .addGap(34, 34, 34))
+        );
+        ImagemCadastrosUsuariosLayout.setVerticalGroup(
+            ImagemCadastrosUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ImagemCadastrosUsuariosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(ImagemCadastrosUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ImagemCadastrosUsuariosLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        PainelPrincipal3.add(ImagemCadastrosUsuarios, "ImagemCadastrosUsuarios");
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/002-doctor-1.png"))); // NOI18N
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/001-doctor.png"))); // NOI18N
+
+        javax.swing.GroupLayout ImagemCadastrosMedicosLayout = new javax.swing.GroupLayout(ImagemCadastrosMedicos);
+        ImagemCadastrosMedicos.setLayout(ImagemCadastrosMedicosLayout);
+        ImagemCadastrosMedicosLayout.setHorizontalGroup(
+            ImagemCadastrosMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ImagemCadastrosMedicosLayout.createSequentialGroup()
+                .addContainerGap(48, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel16)
+                .addGap(39, 39, 39))
+        );
+        ImagemCadastrosMedicosLayout.setVerticalGroup(
+            ImagemCadastrosMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+            .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        PainelPrincipal3.add(ImagemCadastrosMedicos, "ImagemCadastrosMedicos");
+
+        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/006-architecture-and-city.png"))); // NOI18N
+
+        javax.swing.GroupLayout ImagemCadastrosConsultoriosLayout = new javax.swing.GroupLayout(ImagemCadastrosConsultorios);
+        ImagemCadastrosConsultorios.setLayout(ImagemCadastrosConsultoriosLayout);
+        ImagemCadastrosConsultoriosLayout.setHorizontalGroup(
+            ImagemCadastrosConsultoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ImagemCadastrosConsultoriosLayout.createSequentialGroup()
+                .addContainerGap(88, Short.MAX_VALUE)
+                .addComponent(jLabel23)
+                .addGap(81, 81, 81))
+        );
+        ImagemCadastrosConsultoriosLayout.setVerticalGroup(
+            ImagemCadastrosConsultoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ImagemCadastrosConsultoriosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        PainelPrincipal3.add(ImagemCadastrosConsultorios, "ImagemCadastrosConsultorios");
+
+        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/005-health.png"))); // NOI18N
+
+        javax.swing.GroupLayout ImagemCadastrosConveniosLayout = new javax.swing.GroupLayout(ImagemCadastrosConvenios);
+        ImagemCadastrosConvenios.setLayout(ImagemCadastrosConveniosLayout);
+        ImagemCadastrosConveniosLayout.setHorizontalGroup(
+            ImagemCadastrosConveniosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ImagemCadastrosConveniosLayout.createSequentialGroup()
+                .addContainerGap(95, Short.MAX_VALUE)
+                .addComponent(jLabel24)
+                .addGap(74, 74, 74))
+        );
+        ImagemCadastrosConveniosLayout.setVerticalGroup(
+            ImagemCadastrosConveniosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ImagemCadastrosConveniosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+
+        PainelPrincipal3.add(ImagemCadastrosConvenios, "ImagemCadastrosConvenios");
 
         javax.swing.GroupLayout PainelPrincipal1Layout = new javax.swing.GroupLayout(PainelPrincipal1);
         PainelPrincipal1.setLayout(PainelPrincipal1Layout);
         PainelPrincipal1Layout.setHorizontalGroup(
             PainelPrincipal1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelPrincipal1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(PainelPrincipal3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(PainelPrincipal1Layout.createSequentialGroup()
-                .addGroup(PainelPrincipal1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btnCadastrosConvenios, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCadastrosConsultorios, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
-                    .addComponent(btnCadastrosMedicos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCadastrosUsuarios, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(btnCadastrosConvenios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnCadastrosConsultorios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnCadastrosMedicos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnCadastrosUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         PainelPrincipal1Layout.setVerticalGroup(
             PainelPrincipal1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelPrincipal1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(PainelPrincipal3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCadastrosUsuarios)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCadastrosMedicos)
@@ -117,93 +277,438 @@ public class Cadastros extends javax.swing.JFrame {
 
         PainelPrincipal2.setLayout(new java.awt.CardLayout());
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setText("1");
+        PainelCadastrosUsuario.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        javax.swing.GroupLayout PanelCadastrosUsuariosLayout = new javax.swing.GroupLayout(PanelCadastrosUsuarios);
-        PanelCadastrosUsuarios.setLayout(PanelCadastrosUsuariosLayout);
-        PanelCadastrosUsuariosLayout.setHorizontalGroup(
-            PanelCadastrosUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelCadastrosUsuariosLayout.createSequentialGroup()
-                .addContainerGap(292, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(249, 249, 249))
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel10.setText("Usuários");
+
+        jLabel3.setText("Usuário:");
+
+        jLabel12.setText("Tipo:");
+
+        jLabel13.setText("Senha:");
+
+        jLabel14.setText("Confirmar Senha:");
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nº Registros", "Usuário", "Tipo"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Secretário(a)", "Médico(a)", "Enfermeiro(a)" }));
+
+        jButton2.setText("Pesquisar");
+
+        btnSalvar1.setText("Salvar");
+
+        btnCancelar1.setText("Cancelar");
+
+        btnEditar1.setText("Editar");
+
+        btnExcluir1.setText("Excluir");
+
+        javax.swing.GroupLayout PainelCadastrosUsuarioLayout = new javax.swing.GroupLayout(PainelCadastrosUsuario);
+        PainelCadastrosUsuario.setLayout(PainelCadastrosUsuarioLayout);
+        PainelCadastrosUsuarioLayout.setHorizontalGroup(
+            PainelCadastrosUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PainelCadastrosUsuarioLayout.createSequentialGroup()
+                .addGroup(PainelCadastrosUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PainelCadastrosUsuarioLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(PainelCadastrosUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PainelCadastrosUsuarioLayout.createSequentialGroup()
+                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(PainelCadastrosUsuarioLayout.createSequentialGroup()
+                                .addGroup(PainelCadastrosUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(PainelCadastrosUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(PainelCadastrosUsuarioLayout.createSequentialGroup()
+                                        .addComponent(jTextField5)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel12)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(PainelCadastrosUsuarioLayout.createSequentialGroup()
+                                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel14)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jPasswordField2))))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelCadastrosUsuarioLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PainelCadastrosUsuarioLayout.createSequentialGroup()
+                        .addGroup(PainelCadastrosUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PainelCadastrosUsuarioLayout.createSequentialGroup()
+                                .addGap(258, 258, 258)
+                                .addComponent(jLabel10))
+                            .addGroup(PainelCadastrosUsuarioLayout.createSequentialGroup()
+                                .addGap(110, 110, 110)
+                                .addComponent(btnSalvar1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnCancelar1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnEditar1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnExcluir1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
-        PanelCadastrosUsuariosLayout.setVerticalGroup(
-            PanelCadastrosUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelCadastrosUsuariosLayout.createSequentialGroup()
-                .addGap(198, 198, 198)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(263, Short.MAX_VALUE))
+        PainelCadastrosUsuarioLayout.setVerticalGroup(
+            PainelCadastrosUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PainelCadastrosUsuarioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(PainelCadastrosUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel12)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(PainelCadastrosUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel14)
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(PainelCadastrosUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2))
+                .addGap(11, 11, 11)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(PainelCadastrosUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvar1)
+                    .addComponent(btnExcluir1)
+                    .addComponent(btnEditar1)
+                    .addComponent(btnCancelar1))
+                .addContainerGap())
         );
 
-        PainelPrincipal2.add(PanelCadastrosUsuarios, "PanelCadastrosUsuarios");
+        PainelPrincipal2.add(PainelCadastrosUsuario, "PainelCadastrosUsuario");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel3.setText("2");
+        PainelCadastrosMedicos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        javax.swing.GroupLayout PanelCadastrosMedicosLayout = new javax.swing.GroupLayout(PanelCadastrosMedicos);
-        PanelCadastrosMedicos.setLayout(PanelCadastrosMedicosLayout);
-        PanelCadastrosMedicosLayout.setHorizontalGroup(
-            PanelCadastrosMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelCadastrosMedicosLayout.createSequentialGroup()
-                .addContainerGap(292, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(249, 249, 249))
+        btnSalvar.setText("Salvar");
+
+        btnCancelar.setText("Cancelar");
+
+        btnEditar.setText("Editar");
+
+        btnExcluir.setText("Excluir");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setText("Nome:");
+
+        jLabel6.setText("Especialidade:");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Clínica Médica", "Pediatria", "Cirurgia Geral", "Ginecologia e Obstetrícia", "Anestesiologia", "Medicina do Trabalho", "Ortopedia e Traumatologia", "Cardiologia", "Oftalmologia", "Radiologia" }));
+
+        jLabel7.setText("CRM:");
+
+        jLabel8.setText("Duração do Tempo da Consulta:");
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "10 Min", "20 Min", "30 Min", "40 Min", "60 Min", "1 Hora", "2 Horas", "3 Horas", "4 Horas", "5 Horas" }));
+
+        jLabel9.setText("Clínicas:");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nº Registros", "Nome", "Especialidade", "CRM", "Clínicas"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jButton1.setText("Pesquisar");
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel11.setText("Médicos");
+
+        javax.swing.GroupLayout PainelCadastrosMedicosLayout = new javax.swing.GroupLayout(PainelCadastrosMedicos);
+        PainelCadastrosMedicos.setLayout(PainelCadastrosMedicosLayout);
+        PainelCadastrosMedicosLayout.setHorizontalGroup(
+            PainelCadastrosMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PainelCadastrosMedicosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PainelCadastrosMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PainelCadastrosMedicosLayout.createSequentialGroup()
+                        .addGroup(PainelCadastrosMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PainelCadastrosMedicosLayout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField3))
+                            .addComponent(jScrollPane1)
+                            .addGroup(PainelCadastrosMedicosLayout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField4))
+                            .addGroup(PainelCadastrosMedicosLayout.createSequentialGroup()
+                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE))
+                            .addGroup(PainelCadastrosMedicosLayout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField1)))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelCadastrosMedicosLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(PainelCadastrosMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelCadastrosMedicosLayout.createSequentialGroup()
+                                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnCancelar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(95, 95, 95))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelCadastrosMedicosLayout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addGap(263, 263, 263))))))
         );
-        PanelCadastrosMedicosLayout.setVerticalGroup(
-            PanelCadastrosMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelCadastrosMedicosLayout.createSequentialGroup()
-                .addGap(198, 198, 198)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(263, Short.MAX_VALUE))
+        PainelCadastrosMedicosLayout.setVerticalGroup(
+            PainelCadastrosMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PainelCadastrosMedicosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addGroup(PainelCadastrosMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(PainelCadastrosMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addGroup(PainelCadastrosMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel7)
+                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(PainelCadastrosMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(PainelCadastrosMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(PainelCadastrosMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvar)
+                    .addComponent(btnExcluir)
+                    .addComponent(btnEditar)
+                    .addComponent(btnCancelar))
+                .addContainerGap())
         );
 
-        PainelPrincipal2.add(PanelCadastrosMedicos, "PanelCadastrosMedicos");
+        PainelPrincipal2.add(PainelCadastrosMedicos, "PainelCadastrosMedicos");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel4.setText("3");
+        btnSalvar2.setText("Salvar");
 
-        javax.swing.GroupLayout PanelCadastrosConsultoriosLayout = new javax.swing.GroupLayout(PanelCadastrosConsultorios);
-        PanelCadastrosConsultorios.setLayout(PanelCadastrosConsultoriosLayout);
-        PanelCadastrosConsultoriosLayout.setHorizontalGroup(
-            PanelCadastrosConsultoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelCadastrosConsultoriosLayout.createSequentialGroup()
-                .addContainerGap(292, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addGap(249, 249, 249))
+        btnCancelar2.setText("Cancelar");
+
+        btnEditar2.setText("Editar");
+
+        btnExcluir2.setText("Excluir");
+
+        jLabel17.setText("Nome:");
+
+        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel18.setText("Consultórios");
+
+        jLabel4.setText("Especialidade:");
+
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nome", "Especialidade"
+            }
+        ));
+        jScrollPane3.setViewportView(jTable3);
+
+        javax.swing.GroupLayout PainelCadastrosConsultoriosLayout = new javax.swing.GroupLayout(PainelCadastrosConsultorios);
+        PainelCadastrosConsultorios.setLayout(PainelCadastrosConsultoriosLayout);
+        PainelCadastrosConsultoriosLayout.setHorizontalGroup(
+            PainelCadastrosConsultoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PainelCadastrosConsultoriosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PainelCadastrosConsultoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelCadastrosConsultoriosLayout.createSequentialGroup()
+                        .addComponent(jLabel17)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField9, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE))
+                    .addGroup(PainelCadastrosConsultoriosLayout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField10, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(PainelCadastrosConsultoriosLayout.createSequentialGroup()
+                .addGap(233, 233, 233)
+                .addComponent(jLabel18)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(PainelCadastrosConsultoriosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelCadastrosConsultoriosLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSalvar2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnCancelar2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnEditar2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnExcluir2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(106, 106, 106))
         );
-        PanelCadastrosConsultoriosLayout.setVerticalGroup(
-            PanelCadastrosConsultoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelCadastrosConsultoriosLayout.createSequentialGroup()
-                .addGap(198, 198, 198)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(263, Short.MAX_VALUE))
+        PainelCadastrosConsultoriosLayout.setVerticalGroup(
+            PainelCadastrosConsultoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelCadastrosConsultoriosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(PainelCadastrosConsultoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(PainelCadastrosConsultoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(PainelCadastrosConsultoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvar2)
+                    .addComponent(btnExcluir2)
+                    .addComponent(btnEditar2)
+                    .addComponent(btnCancelar2))
+                .addContainerGap())
         );
 
-        PainelPrincipal2.add(PanelCadastrosConsultorios, "PanelCadastrosConsultorios");
+        PainelPrincipal2.add(PainelCadastrosConsultorios, "PainelCadastrosConsultorios");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel5.setText("4");
+        PainelCadastrosConvenios.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        javax.swing.GroupLayout PanelCadastrosConveniosLayout = new javax.swing.GroupLayout(PanelCadastrosConvenios);
-        PanelCadastrosConvenios.setLayout(PanelCadastrosConveniosLayout);
-        PanelCadastrosConveniosLayout.setHorizontalGroup(
-            PanelCadastrosConveniosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelCadastrosConveniosLayout.createSequentialGroup()
-                .addContainerGap(292, Short.MAX_VALUE)
-                .addComponent(jLabel5)
-                .addGap(249, 249, 249))
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel15.setText("Convênios");
+
+        jLabel5.setText("Nome:");
+
+        jLabel19.setText("Clínica:");
+
+        jLabel20.setText("Registro na ANS:");
+
+        btnSalvar3.setText("Salvar");
+
+        btnCancelar3.setText("Cancelar");
+
+        btnEditar3.setText("Editar");
+
+        btnExcluir3.setText("Excluir");
+
+        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nome", "Clínica", "Registro da ANS"
+            }
+        ));
+        jScrollPane4.setViewportView(jTable4);
+
+        javax.swing.GroupLayout PainelCadastrosConveniosLayout = new javax.swing.GroupLayout(PainelCadastrosConvenios);
+        PainelCadastrosConvenios.setLayout(PainelCadastrosConveniosLayout);
+        PainelCadastrosConveniosLayout.setHorizontalGroup(
+            PainelCadastrosConveniosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelCadastrosConveniosLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel15)
+                .addGap(250, 250, 250))
+            .addGroup(PainelCadastrosConveniosLayout.createSequentialGroup()
+                .addGroup(PainelCadastrosConveniosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PainelCadastrosConveniosLayout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(PainelCadastrosConveniosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PainelCadastrosConveniosLayout.createSequentialGroup()
+                                .addComponent(jLabel19)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel20)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField12))
+                            .addGroup(PainelCadastrosConveniosLayout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField7))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelCadastrosConveniosLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(PainelCadastrosConveniosLayout.createSequentialGroup()
+                .addGap(109, 109, 109)
+                .addComponent(btnSalvar3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnCancelar3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnEditar3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnExcluir3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        PanelCadastrosConveniosLayout.setVerticalGroup(
-            PanelCadastrosConveniosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelCadastrosConveniosLayout.createSequentialGroup()
-                .addGap(198, 198, 198)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(263, Short.MAX_VALUE))
+        PainelCadastrosConveniosLayout.setVerticalGroup(
+            PainelCadastrosConveniosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PainelCadastrosConveniosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(PainelCadastrosConveniosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(PainelCadastrosConveniosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel20)
+                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addGroup(PainelCadastrosConveniosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvar3)
+                    .addComponent(btnExcluir3)
+                    .addComponent(btnEditar3)
+                    .addComponent(btnCancelar3))
+                .addContainerGap())
         );
 
-        PainelPrincipal2.add(PanelCadastrosConvenios, "PanelCadastrosConvenios");
+        PainelPrincipal2.add(PainelCadastrosConvenios, "PainelCadastrosConvenios");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -211,7 +716,7 @@ public class Cadastros extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(PainelPrincipal1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(PainelPrincipal1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(PainelPrincipal2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -232,19 +737,23 @@ public class Cadastros extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastrosUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrosUsuariosActionPerformed
-        mostrarTelas("PanelCadastrosUsuarios");
+        mostrarTelas("PainelCadastrosUsuario");
+        mostrarImagem("ImagemCadastrosUsuarios");
     }//GEN-LAST:event_btnCadastrosUsuariosActionPerformed
 
     private void btnCadastrosMedicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrosMedicosActionPerformed
-        mostrarTelas("PanelCadastrosMedicos");
+        mostrarTelas("PainelCadastrosMedicos");
+        mostrarImagem("ImagemCadastrosMedicos");
     }//GEN-LAST:event_btnCadastrosMedicosActionPerformed
 
     private void btnCadastrosConsultoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrosConsultoriosActionPerformed
-        mostrarTelas("PanelCadastrosConsultorios");
+        mostrarTelas("PainelCadastrosConsultorios");
+        mostrarImagem("ImagemCadastrosConsultorios");
     }//GEN-LAST:event_btnCadastrosConsultoriosActionPerformed
 
     private void btnCadastrosConveniosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrosConveniosActionPerformed
-        mostrarTelas("PanelCadastrosConvenios");
+        mostrarTelas("PainelCadastrosConvenios");
+        mostrarImagem("ImagemCadastrosConvenios");
     }//GEN-LAST:event_btnCadastrosConveniosActionPerformed
 
     /**
@@ -283,20 +792,86 @@ public class Cadastros extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel ImagemCadastrosConsultorios;
+    private javax.swing.JPanel ImagemCadastrosConvenios;
+    private javax.swing.JPanel ImagemCadastrosMedicos;
+    private javax.swing.JPanel ImagemCadastrosUsuarios;
+    private javax.swing.JPanel PainelCadastrosConsultorios;
+    private javax.swing.JPanel PainelCadastrosConvenios;
+    private javax.swing.JPanel PainelCadastrosMedicos;
+    private javax.swing.JPanel PainelCadastrosUsuario;
     private javax.swing.JPanel PainelPrincipal1;
     private javax.swing.JPanel PainelPrincipal2;
-    private javax.swing.JPanel PanelCadastrosConsultorios;
-    private javax.swing.JPanel PanelCadastrosConvenios;
-    private javax.swing.JPanel PanelCadastrosMedicos;
-    private javax.swing.JPanel PanelCadastrosUsuarios;
+    private javax.swing.JPanel PainelPrincipal3;
     private javax.swing.JButton btnCadastrosConsultorios;
     private javax.swing.JButton btnCadastrosConvenios;
     private javax.swing.JButton btnCadastrosMedicos;
     private javax.swing.JButton btnCadastrosUsuarios;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnCancelar1;
+    private javax.swing.JButton btnCancelar2;
+    private javax.swing.JButton btnCancelar3;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnEditar1;
+    private javax.swing.JButton btnEditar2;
+    private javax.swing.JButton btnEditar3;
+    private javax.swing.JButton btnExcluir;
+    private javax.swing.JButton btnExcluir1;
+    private javax.swing.JButton btnExcluir2;
+    private javax.swing.JButton btnExcluir3;
+    private javax.swing.JButton btnSalvar;
+    private javax.swing.JButton btnSalvar1;
+    private javax.swing.JButton btnSalvar2;
+    private javax.swing.JButton btnSalvar3;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JPasswordField jPasswordField2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable3;
+    private javax.swing.JTable jTable4;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField10;
+    private javax.swing.JTextField jTextField11;
+    private javax.swing.JTextField jTextField12;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }

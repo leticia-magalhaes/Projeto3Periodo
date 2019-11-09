@@ -20,10 +20,7 @@ public class Pacientes extends javax.swing.JFrame {
      * Creates new form Pacientes
      */
     public Pacientes() {
-        initComponents()
-                
-                
-                ;
+        initComponents();
         
         /*listarCadastros();*/
        
@@ -443,7 +440,7 @@ public class Pacientes extends javax.swing.JFrame {
 
         jLabel3.setText("Sexo:");
 
-        boxFM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        boxFM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Feminino", "Masculino", "Outro" }));
 
         jLabel4.setText("Nascimento:");
 
