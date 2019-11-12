@@ -33,6 +33,26 @@ public class ConsultaCep {
             br.lines().forEach(l -> jsonSb.append(l.trim()));
 
             json = jsonSb.toString();
+            
+            Map<String,String> mapa = new HashMap<>();
+
+            Matcher matcher = Pattern.compile("\"\\D.*?\": \".*?\"").matcher(json);
+            while (matcher.find()) {
+                String[] group = matcher.group().split(":");
+                mapa.put(group[0].replaceAll("\"", "").trim(), group[1].replaceAll("\"", "").trim());
+            }
+            
+            String semRetorno = "Sem retorno.";
+            
+            Cep = mapa.getOrDefault("cep",semRetorno);
+            Logradouro = mapa.getOrDefault("logradouro",semRetorno);
+            Complemento = mapa.getOrDefault("complemento",semRetorno);
+            Bairro = mapa.getOrDefault("bairro",semRetorno);
+            Localidade = mapa.getOrDefault("localidade",semRetorno);
+            Uf = mapa.getOrDefault("uf",semRetorno);
+            Unidade = mapa.getOrDefault("unidade",semRetorno);
+            Ibge = mapa.getOrDefault("ibge",semRetorno);
+            Gia = mapa.getOrDefault("gia",semRetorno);
 
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -41,31 +61,14 @@ public class ConsultaCep {
         return json;
     }
      
-//     FORMATO DE RETORNO, PARA QUE CONSIGA LER OS DADOS QUE DESEJA, VER COMO SEPARAR AS INFORMAÇÔES VIA JSON FILE
-//    {
-//      "cep": "01001-000",
-//      "logradouro": "Praça da Sé",
-//      "complemento": "lado ímpar",
-//      "bairro": "Sé",
-//      "localidade": "São Paulo",
-//      "uf": "SP",
-//      "unidade": "",
-//      "ibge": "3550308",
-//      "gia": "1004"
-//    }
+   public String Cep;
+   public String Logradouro;
+   public String Complemento;
+   public String Bairro;
+   public String Localidade;
+   public String Uf;
+   public String Unidade;
+   public String Ibge;
+   public String Gia;
 
-    public void teste() {
-        String json = buscarCep("38414494");
-        System.out.println(json);
-
-        Map<String,String> mapa = new HashMap<>();
-
-        Matcher matcher = Pattern.compile("\"\\D.*?\": \".*?\"").matcher(json);
-        while (matcher.find()) {
-            String[] group = matcher.group().split(":");
-            mapa.put(group[0].replaceAll("\"", "").trim(), group[1].replaceAll("\"", "").trim());
-        }
-
-        System.out.println(mapa);
-    }
 }

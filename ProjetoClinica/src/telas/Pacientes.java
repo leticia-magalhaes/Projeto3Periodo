@@ -5,10 +5,12 @@
  */
 package telas;
 
+import Utils.ConsultaCep;
 import java.awt.CardLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import sun.security.util.Debug;
 
 /**
  *
@@ -334,13 +336,28 @@ public class Pacientes extends javax.swing.JFrame {
 
         jLabel10.setText("CEP:");
 
+        txtCEP.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                txtCEPInputMethodTextChanged(evt);
+            }
+        });
         txtCEP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCEPActionPerformed(evt);
             }
         });
+        txtCEP.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCEPKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCEPKeyReleased(evt);
+            }
+        });
 
-        jLabel11.setText("Endereço:");
+        jLabel11.setText("Logradouro:");
 
         jLabel12.setText("Número:");
 
@@ -770,6 +787,30 @@ public class Pacientes extends javax.swing.JFrame {
         heartClin.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnVoltar1ActionPerformed
+
+    private void txtCEPInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtCEPInputMethodTextChanged
+        
+    }//GEN-LAST:event_txtCEPInputMethodTextChanged
+
+    private void txtCEPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCEPKeyPressed
+        
+    }//GEN-LAST:event_txtCEPKeyPressed
+
+    private void txtCEPKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCEPKeyReleased
+        if(txtCEP.getText().length() == 8){
+            ConsultaCep consulta = new ConsultaCep();
+            consulta.buscarCep(txtCEP.getText());
+            txtEndereco.setText(consulta.Logradouro);
+            txtCidade.setText(consulta.Localidade);
+            txtBairro.setText(consulta.Bairro);
+            txtEstado.setText(consulta.Uf);
+        } else {
+            txtEndereco.setText("");
+            txtCidade.setText("");
+            txtBairro.setText("");
+            txtEstado.setText("");
+        }
+    }//GEN-LAST:event_txtCEPKeyReleased
 
     /**
      * @param args the command line arguments
