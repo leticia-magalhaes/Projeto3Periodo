@@ -115,7 +115,7 @@ public class HeartClin extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(0, 0, 480, 480);
 
-        setSize(new java.awt.Dimension(494, 222));
+        setSize(new java.awt.Dimension(492, 220));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

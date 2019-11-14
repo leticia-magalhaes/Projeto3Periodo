@@ -12,15 +12,23 @@ import java.sql.*;
  * @author Letícia Magalhães
  */
 public class DatabaseConnection {
-    public Connection processRequest() {
+    
+    public Connection Conexao() {
+        
+        Connection con = null;
+        
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
-
-            Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe [system em SYSTEM]","system","masterkey");
-            return con;
-        } catch(Exception ex) {
-            System.out.println(ex.getMessage());
-            return null;
+                    
+            con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/XE", "system" , "masterkey");
+            System.out.println("Conectou");
+        } catch(ClassNotFoundException ex) {
+            ex.printStackTrace();
+        } catch(SQLException e ) {
+            e.printStackTrace();
         }
+            
+            return con;
+        }
+    
     }
-}

@@ -213,13 +213,13 @@ public class TelaLogin extends javax.swing.JFrame {
             DatabaseConnection databaseConnection = new DatabaseConnection();
             Boolean hasUser = false;
 
-            Statement stmt = databaseConnection.processRequest().createStatement();
+            Statement stmt = databaseConnection.Conexao().createStatement();
             ResultSet rs;
             rs = stmt.executeQuery(query);
             while (rs.next()){
                 hasUser = true;
             }
-            databaseConnection.processRequest().close();
+            databaseConnection.Conexao().close();
         } catch (Exception ex){
             System.err.println("Got an exception! ");
             System.err.println(ex.getMessage());

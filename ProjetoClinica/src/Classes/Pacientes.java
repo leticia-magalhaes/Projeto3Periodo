@@ -5,6 +5,12 @@
  */
 package Classes;
 
+import Database.DatabaseConnection;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
 /**
  *
  * @author Letícia Magalhães
@@ -92,6 +98,5 @@ public class Pacientes {
     public void setConvenio(String Convenio) {
         this.Convenio = Convenio;
     }
-    
-    
 }
+     
