@@ -58,6 +58,7 @@ public class Pacientes extends javax.swing.JFrame {
         btnAlterar1 = new javax.swing.JButton();
         btnExcluir1 = new javax.swing.JButton();
         btnVisualizar = new javax.swing.JButton();
+        btnBusca = new javax.swing.JButton();
         PainelNovoPaciente = new javax.swing.JPanel();
         titulo2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -94,11 +95,9 @@ public class Pacientes extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         txtConvenio = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
-        txtID = new javax.swing.JTextField();
+        txtIDPaciente = new javax.swing.JTextField();
         txtSexo = new javax.swing.JTextField();
         btnCancelar = new javax.swing.JButton();
-        btnAlterar2 = new javax.swing.JButton();
-        btnExcluir2 = new javax.swing.JButton();
         btnSalvar2 = new javax.swing.JButton();
         btnVoltar1 = new javax.swing.JButton();
 
@@ -185,17 +184,9 @@ public class Pacientes extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nº de Registro", "Nome", "Email", "Celular"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
-        });
+        ));
         jScrollPane2.setViewportView(tabela1);
 
         labelClientes1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -220,6 +211,13 @@ public class Pacientes extends javax.swing.JFrame {
         btnVisualizar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnVisualizar.setText("Visualizar");
 
+        btnBusca.setText("Buscar");
+        btnBusca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelPacientes1Layout = new javax.swing.GroupLayout(jPanelPacientes1);
         jPanelPacientes1.setLayout(jPanelPacientes1Layout);
         jPanelPacientes1Layout.setHorizontalGroup(
@@ -228,13 +226,6 @@ public class Pacientes extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelPacientes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
-                    .addGroup(jPanelPacientes1Layout.createSequentialGroup()
-                        .addComponent(titulo1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanelPacientes1Layout.createSequentialGroup()
-                        .addComponent(txtProcurar1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtBusca1))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPacientes1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanelPacientes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,7 +235,16 @@ public class Pacientes extends javax.swing.JFrame {
                                 .addComponent(btnAlterar1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnExcluir1))
-                            .addComponent(labelClientes1, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addComponent(labelClientes1, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(jPanelPacientes1Layout.createSequentialGroup()
+                        .addComponent(titulo1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanelPacientes1Layout.createSequentialGroup()
+                        .addComponent(txtProcurar1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtBusca1, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnBusca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanelPacientes1Layout.setVerticalGroup(
@@ -252,14 +252,15 @@ public class Pacientes extends javax.swing.JFrame {
             .addGroup(jPanelPacientes1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(titulo1)
-                .addGap(23, 23, 23)
+                .addGap(22, 22, 22)
                 .addGroup(jPanelPacientes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtProcurar1)
-                    .addComponent(txtBusca1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBusca1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBusca))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(labelClientes1, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
+                .addComponent(labelClientes1, javax.swing.GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE)
                 .addGap(1, 1, 1)
                 .addGroup(jPanelPacientes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnExcluir1)
@@ -479,7 +480,7 @@ public class Pacientes extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtIDPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -501,7 +502,7 @@ public class Pacientes extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(txtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel17)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIDPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -528,10 +529,11 @@ public class Pacientes extends javax.swing.JFrame {
         );
 
         btnCancelar.setText("Cancelar");
-
-        btnAlterar2.setText("Alterar");
-
-        btnExcluir2.setText("Excluir");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         btnSalvar2.setText("Salvar");
         btnSalvar2.addActionListener(new java.awt.event.ActionListener() {
@@ -555,10 +557,6 @@ public class Pacientes extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnCancelar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnAlterar2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnExcluir2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSalvar2)))
                 .addContainerGap())
         );
@@ -572,8 +570,6 @@ public class Pacientes extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
                 .addGroup(PainelNovoPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
-                    .addComponent(btnAlterar2)
-                    .addComponent(btnExcluir2)
                     .addComponent(btnSalvar2))
                 .addContainerGap())
         );
@@ -636,6 +632,7 @@ public class Pacientes extends javax.swing.JFrame {
 
     private void txtBusca1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusca1KeyReleased
 
+         
     }//GEN-LAST:event_txtBusca1KeyReleased
 
     private void btnAlterar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterar1ActionPerformed
@@ -664,10 +661,88 @@ public class Pacientes extends javax.swing.JFrame {
 
     private void btnSalvar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvar2ActionPerformed
     
+        if (txtDataCadastro.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe a Data do Cadastro!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtNomePaciente.requestFocus();
+            return;
+        }
+        
+        if (txtDataNascimento.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe a Data de Nascimento!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtTelefone.requestFocus();
+            return;
+        }
+        
+        if (txtNomePaciente.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o Nome do Paciente!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtEmail.requestFocus();
+            return;
+        }
+        
+        if (txtCPF.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o CPF!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtEmail.requestFocus();
+            return;
+        }
+        
+        if (txtRG.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o RG!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtEmail.requestFocus();
+            return;
+        }
+        
+        if (txtTelefone.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o Telefone!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtEmail.requestFocus();
+            return;
+        }
+        
+        if (txtConvenio.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o Convenio!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtEmail.requestFocus();
+            return;
+        }
+        
+        if (txtCEP.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o CEP!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtEmail.requestFocus();
+            return;
+        }
+        
+        if (txtLogradouro.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o Logradouro!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtEmail.requestFocus();
+            return;
+        }
+        
+        if (txtNumero.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o Numero!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtEmail.requestFocus();
+            return;
+        }
+        
+        if (txtBairro.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o Bairro!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtEmail.requestFocus();
+            return;
+        }
+        
+        if (txtCidade.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe a Cidade!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtEmail.requestFocus();
+            return;
+        }
+        
+        if (txtEstado.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o Estado!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtEmail.requestFocus();
+            return;
+        }
+
         try{
             DatabaseConnection databaseConnection = new DatabaseConnection();
 
-            String query = "INSERT INTO PACIENTES (ID_PACIENTE, DATA_CADASTRO, NASCIMENTO, NOME_PACIENTE, CPF, RG, TELEFONE, SEXO, EMAIL, CEP, LOGRADOURO, NUMERO, COMPLEMENTO, BAIRRO, CIDADE, ESTADO ) VALUES(CODIGO.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO PACIENTES (ID_PACIENTE, DATA_CADASTRO, NASCIMENTO, NOME_PACIENTE, CPF, RG, TELEFONE, SEXO, EMAIL, CEP, LOGRADOURO, NUMERO, COMPLEMENTO, BAIRRO, CIDADE, ESTADO ) VALUES(ID.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             Connection con = databaseConnection.Conexao();
             PreparedStatement pst = con.prepareStatement(query);
@@ -692,6 +767,7 @@ public class Pacientes extends javax.swing.JFrame {
             pst.execute();
             
             pst.close();
+            JOptionPane.showMessageDialog(null, "Cadastro Salvo!"); 
             
             txtDataCadastro.setText(null);
             txtDataNascimento.setText(null);
@@ -710,10 +786,13 @@ public class Pacientes extends javax.swing.JFrame {
             txtEstado.setText(null);
             
         } catch(SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro no cadastro!");
             System.out.println(ex.getMessage());
         } catch(Exception ex) {
             System.out.println(ex.getMessage());
         }
+        
+        
        
    
     }//GEN-LAST:event_btnSalvar2ActionPerformed
@@ -755,6 +834,33 @@ public class Pacientes extends javax.swing.JFrame {
             txtEstado.setText("");
         }
     }//GEN-LAST:event_txtCEPKeyReleased
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        
+            txtDataCadastro.setText(null);
+            txtDataNascimento.setText(null);
+            txtNomePaciente.setText(null);
+            txtCPF.setText(null);
+            txtRG.setText(null);
+            txtTelefone.setText(null);
+            txtSexo.setText(null);
+            txtEmail.setText(null);
+            txtConvenio.setText(null);
+            txtCEP.setText(null);
+            txtLogradouro.setText(null);
+            txtNumero.setText(null);
+            txtComplemento.setText(null);
+            txtBairro.setText(null);
+            txtCidade.setText(null);       
+            txtEstado.setText(null);
+            
+            JOptionPane.showMessageDialog(null, "Cadastro Cancelado!");
+        
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -801,10 +907,9 @@ public class Pacientes extends javax.swing.JFrame {
     private javax.swing.JPanel PainelNovoPaciente;
     private javax.swing.JPanel PainelPrincipal;
     private javax.swing.JButton btnAlterar1;
-    private javax.swing.JButton btnAlterar2;
+    private javax.swing.JButton btnBusca;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnExcluir1;
-    private javax.swing.JButton btnExcluir2;
     private javax.swing.JButton btnSalvar2;
     private javax.swing.JButton btnVisualizar;
     private javax.swing.JButton btnVoltar1;
@@ -845,7 +950,7 @@ public class Pacientes extends javax.swing.JFrame {
     private javax.swing.JTextField txtDataNascimento;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEstado;
-    private javax.swing.JTextField txtID;
+    private javax.swing.JTextField txtIDPaciente;
     private javax.swing.JTextField txtLogradouro;
     private javax.swing.JTextField txtNomePaciente;
     private javax.swing.JTextField txtNumero;
