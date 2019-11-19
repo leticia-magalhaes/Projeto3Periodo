@@ -13,7 +13,8 @@ import java.sql.*;
  * @author leticia.magalhaes
  */
 public class TelaLogin extends javax.swing.JFrame {
-
+    
+    DatabaseConnection conecta = new DatabaseConnection();
     /**
      * Creates new form TelaLogin
      */

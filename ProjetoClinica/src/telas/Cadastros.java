@@ -6,11 +6,29 @@
 package telas;
 
 import Database.DatabaseConnection;
+import codigoFonte.ModeloTabela;
 import java.awt.CardLayout;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.naming.spi.DirStateFactory;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.text.TabableView;
+import static oracle.net.aso.b.c;
+import java.sql.*;
+import javax.swing.JOptionPane;
+import javax.swing.*;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -18,22 +36,27 @@ import javax.swing.JOptionPane;
  */
 public class Cadastros extends javax.swing.JFrame {
 
+    DatabaseConnection databaseConnection = new DatabaseConnection();
+
     /**
      * Creates new form Cadastros
      */
-    public Cadastros() {
+    public Cadastros(){
         initComponents();
-    }
-    
-    private void mostrarTelas(String nome){
-    
-    CardLayout card = (CardLayout)PainelPrincipal2.getLayout();
-    card.show(PainelPrincipal2, nome);
-    }
-    private void mostrarImagem(String nome){
         
-    CardLayout card1 = (CardLayout)PainelPrincipal3.getLayout();
-    card1.show(PainelPrincipal3, nome);
+
+    }
+
+    private void mostrarTelas(String nome) {
+
+        CardLayout card = (CardLayout) PainelPrincipal2.getLayout();
+        card.show(PainelPrincipal2, nome);
+    }
+
+    private void mostrarImagem(String nome) {
+
+        CardLayout card1 = (CardLayout) PainelPrincipal3.getLayout();
+        card1.show(PainelPrincipal3, nome);
     }
 
     /**
@@ -92,9 +115,7 @@ public class Cadastros extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        txtCínicas = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        txtClinicas = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         txtCRM = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
@@ -102,6 +123,9 @@ public class Cadastros extends javax.swing.JFrame {
         txtIDMedico = new javax.swing.JTextField();
         txtEspecialidade = new javax.swing.JTextField();
         txtDuracaoConsulta = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TabelaMedicosScroll = new javax.swing.JScrollPane();
+        TabelaMedicos = new javax.swing.JTable();
         PainelCadastrosConsultorios = new javax.swing.JPanel();
         btnSalvar2 = new javax.swing.JButton();
         btnCancelar2 = new javax.swing.JButton();
@@ -397,7 +421,7 @@ public class Cadastros extends javax.swing.JFrame {
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2))
                 .addGap(11, 11, 11)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(PainelCadastrosUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar1)
@@ -426,6 +450,11 @@ public class Cadastros extends javax.swing.JFrame {
         });
 
         btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         btnExcluir.setText("Excluir");
 
@@ -439,22 +468,27 @@ public class Cadastros extends javax.swing.JFrame {
 
         jLabel9.setText("Clínicas:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Nº Registros", "Nome", "Especialidade", "CRM", "Clínicas"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
         jButton1.setText("Pesquisar");
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel11.setText("Médicos");
 
         jLabel25.setText("ID:");
+
+        TabelaMedicos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        TabelaMedicosScroll.setViewportView(TabelaMedicos);
+
+        jScrollPane1.setViewportView(TabelaMedicosScroll);
 
         javax.swing.GroupLayout PainelCadastrosMedicosLayout = new javax.swing.GroupLayout(PainelCadastrosMedicos);
         PainelCadastrosMedicos.setLayout(PainelCadastrosMedicosLayout);
@@ -463,6 +497,21 @@ public class Cadastros extends javax.swing.JFrame {
             .addGroup(PainelCadastrosMedicosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PainelCadastrosMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelCadastrosMedicosLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(PainelCadastrosMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelCadastrosMedicosLayout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addGap(263, 263, 263))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelCadastrosMedicosLayout.createSequentialGroup()
+                                .addComponent(btnCancelar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(90, 90, 90))))
                     .addGroup(PainelCadastrosMedicosLayout.createSequentialGroup()
                         .addGroup(PainelCadastrosMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PainelCadastrosMedicosLayout.createSequentialGroup()
@@ -472,8 +521,7 @@ public class Cadastros extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtCínicas))
-                            .addComponent(jScrollPane1)
+                                .addComponent(txtClinicas))
                             .addGroup(PainelCadastrosMedicosLayout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -495,28 +543,14 @@ public class Cadastros extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtNomeMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelCadastrosMedicosLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(PainelCadastrosMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelCadastrosMedicosLayout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addGap(263, 263, 263))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelCadastrosMedicosLayout.createSequentialGroup()
-                                .addComponent(btnCancelar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(90, 90, 90))))))
+                    .addComponent(jScrollPane1)))
         );
         PainelCadastrosMedicosLayout.setVerticalGroup(
             PainelCadastrosMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelCadastrosMedicosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(PainelCadastrosMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtNomeMedico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -534,15 +568,15 @@ public class Cadastros extends javax.swing.JFrame {
                 .addGroup(PainelCadastrosMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(jLabel9)
-                    .addComponent(txtCínicas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtClinicas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtDuracaoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PainelCadastrosMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
                 .addGroup(PainelCadastrosMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
                     .addComponent(btnExcluir)
@@ -626,7 +660,7 @@ public class Cadastros extends javax.swing.JFrame {
                 .addGroup(PainelCadastrosConsultoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(PainelCadastrosConsultoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -725,7 +759,7 @@ public class Cadastros extends javax.swing.JFrame {
                     .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
                 .addGroup(PainelCadastrosConveniosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar3)
                     .addComponent(btnExcluir3)
@@ -759,7 +793,7 @@ public class Cadastros extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pack();
+        setBounds(0, 0, 849, 670);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastrosUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrosUsuariosActionPerformed
@@ -770,6 +804,9 @@ public class Cadastros extends javax.swing.JFrame {
     private void btnCadastrosMedicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrosMedicosActionPerformed
         mostrarTelas("PainelCadastrosMedicos");
         mostrarImagem("ImagemCadastrosMedicos");
+        preencherTabela("Select * from MEDICOS ORDER BY NOME_MEDICO");
+        
+        
     }//GEN-LAST:event_btnCadastrosMedicosActionPerformed
 
     private void btnCadastrosConsultoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrosConsultoriosActionPerformed
@@ -783,12 +820,12 @@ public class Cadastros extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCadastrosConveniosActionPerformed
 
     private void btnSalvar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvar1ActionPerformed
-      
-        
+
+
     }//GEN-LAST:event_btnSalvar1ActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-       if (txtNomeMedico.getText().trim().isEmpty()) {
+        if (txtNomeMedico.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Informe o Nome!", "Campo em branco", JOptionPane.YES_NO_OPTION);
             txtNomeMedico.requestFocus();
             return;
@@ -808,41 +845,42 @@ public class Cadastros extends javax.swing.JFrame {
             txtDuracaoConsulta.requestFocus();
             return;
         }
-        
-        try{
+
+        try {
             DatabaseConnection databaseConnection = new DatabaseConnection();
 
             String query = "INSERT INTO MEDICOS (ID_MEDICO, NOME_MEDICO, ESPECIALIDADE, CRM, DURACAO_CONSULTA) VALUES(ID.NEXTVAL, ?, ?, ?, ?)";
 
             Connection con = databaseConnection.Conexao();
             PreparedStatement pst = con.prepareStatement(query);
-            
+
             int count = 0;
             pst.setString(++count, txtNomeMedico.getText());
             pst.setString(++count, txtEspecialidade.getText());
             pst.setString(++count, txtCRM.getText());
             pst.setString(++count, txtDuracaoConsulta.getText());
-            
+
             pst.execute();
-            
+
             pst.close();
-            JOptionPane.showMessageDialog(null, "Cadastro Salvo!"); 
-            
+            JOptionPane.showMessageDialog(null, "Cadastro Salvo!");
+
             txtNomeMedico.setText(null);
             txtEspecialidade.setText(null);
             txtCRM.setText(null);
             txtDuracaoConsulta.setText(null);
-            
-        } catch(SQLException ex) {
+
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro no cadastro!");
             System.out.println(ex.getMessage());
-        } catch(Exception ex) {
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
+        preencherTabela("Select * from MEDICOS ORDER BY NOME_MEDICO");
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        
+
         txtNomeMedico.setText(null);
         txtEspecialidade.setText(null);
         txtCRM.setText(null);
@@ -851,10 +889,90 @@ public class Cadastros extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Cadastro Cancelado!");
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        if (txtNomeMedico.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o Nome!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtNomeMedico.requestFocus();
+            return;
+        }
+        if (txtEspecialidade.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe a Especialidade!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtEspecialidade.requestFocus();
+            return;
+        }
+        if (txtCRM.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o CRM!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtCRM.requestFocus();
+            return;
+        }
+        if (txtDuracaoConsulta.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o Tempo de Duração da Consulta!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtDuracaoConsulta.requestFocus();
+            return;
+        }
+
+        try {
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+
+            String query = "";
+            Connection con = databaseConnection.Conexao();
+            PreparedStatement pst = con.prepareStatement(query);
+            pst.execute();
+
+            pst.close();
+            JOptionPane.showMessageDialog(null, "Cadastro Alterado!");
+
+            txtNomeMedico.setText(null);
+            txtEspecialidade.setText(null);
+            txtCRM.setText(null);
+            txtDuracaoConsulta.setText(null);
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro na Alteração!");
+            System.out.println(ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private DefaultTableModel modeloTabela = new DefaultTableModel();
+
+    public JTextField getTxtNomeMedico() {
+        return txtNomeMedico;
+    }
+
+    public void setTxtNomeMedico(JTextField txtNomeMedico) {
+        this.txtNomeMedico = txtNomeMedico;
+    }
+    Connection connection = null;
+
+    public void preencherTabela(String Sql){
+        connection = databaseConnection.Conexao();    
+        ArrayList dados = new ArrayList();
+        String[] colunas = new String[]{"ID Medico", "Nome", "Especialidade", "CRM", "Duração da consulta", "Clínicas"};
+        
+        
+        try {
+            DatabaseConnection databaseConnection = new DatabaseConnection();       
+            Connection con = databaseConnection.Conexao();
+            PreparedStatement pst = connection.prepareStatement(Sql);
+            ResultSet rs = pst.executeQuery();
+            TabelaMedicos.setModel(DbUtils.resultSetToTableModel(rs));  
+//           while(databaseConnection.rs.next()){
+//            dados.add(new Object[]{databaseConnection.rs.getInt("ID_MEDICO"), databaseConnection.rs.getString("NOME_MEDICO"),databaseConnection.rs.getString("ESPECIALIDADE"), databaseConnection.rs.getString("CRM"), databaseConnection.rs.getString("DURACAO_CONSULTA")});
+//           }
+//           pst.close();
+           databaseConnection.conexao.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage() + ex.getCause() + " + Erro ao Buscar Médicos!");
+        }
+            
+    }
+    
+
+    public  void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -898,6 +1016,8 @@ public class Cadastros extends javax.swing.JFrame {
     private javax.swing.JPanel PainelPrincipal1;
     private javax.swing.JPanel PainelPrincipal2;
     private javax.swing.JPanel PainelPrincipal3;
+    private javax.swing.JTable TabelaMedicos;
+    private javax.swing.JScrollPane TabelaMedicosScroll;
     private javax.swing.JButton btnCadastrosConsultorios;
     private javax.swing.JButton btnCadastrosConvenios;
     private javax.swing.JButton btnCadastrosMedicos;
@@ -952,7 +1072,6 @@ public class Cadastros extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
@@ -965,7 +1084,7 @@ public class Cadastros extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JTextField txtCRM;
-    private javax.swing.JTextField txtCínicas;
+    private javax.swing.JTextField txtClinicas;
     private javax.swing.JTextField txtDuracaoConsulta;
     private javax.swing.JTextField txtEspecialidade;
     private javax.swing.JTextField txtIDMedico;

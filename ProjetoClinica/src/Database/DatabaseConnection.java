@@ -6,6 +6,8 @@
 package Database;
 
 import java.sql.*;
+import javax.swing.JOptionPane;
+import javax.swing.*;
 
 /**
  *
@@ -13,22 +15,25 @@ import java.sql.*;
  */
 public class DatabaseConnection {
     
-    public Connection Conexao() {
+    public Statement stm;
+    public ResultSet rs;
+    public Connection conexao;
+    Connection con = null;
+    
+    public static Connection Conexao() {
         
-        Connection con = null;
+        
         
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
                     
-            con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/XE", "system" , "masterkey");
+            Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/XE", "system" , "masterkey");
             System.out.println("Conectou");
-        } catch(ClassNotFoundException ex) {
-            ex.printStackTrace();
-        } catch(SQLException e ) {
-            e.printStackTrace();
-        }
-            
             return con;
-        }
-    
+        } catch(Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        } 
+        return null;
+
+    }
     }
