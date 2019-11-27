@@ -73,7 +73,6 @@ public class Pacientes extends javax.swing.JFrame {
         btnBusca = new javax.swing.JButton();
         btnEditarPacientes = new javax.swing.JButton();
         btnExcluirPacientes = new javax.swing.JButton();
-        btnAtualizarMedico = new javax.swing.JButton();
         PainelNovoPaciente = new javax.swing.JPanel();
         titulo2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -114,6 +113,7 @@ public class Pacientes extends javax.swing.JFrame {
         txtDataNascimento = new com.toedter.calendar.JDateChooser();
         btnSalvarPacientes = new javax.swing.JButton();
         btnCancelarPacientes = new javax.swing.JButton();
+        btnAtualizarMedico = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -240,13 +240,6 @@ public class Pacientes extends javax.swing.JFrame {
             }
         });
 
-        btnAtualizarMedico.setText("Atualizar");
-        btnAtualizarMedico.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAtualizarMedicoActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanelPacientes1Layout = new javax.swing.GroupLayout(jPanelPacientes1);
         jPanelPacientes1.setLayout(jPanelPacientes1Layout);
         jPanelPacientes1Layout.setHorizontalGroup(
@@ -271,9 +264,7 @@ public class Pacientes extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPacientes1Layout.createSequentialGroup()
                                 .addComponent(btnEditarPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnExcluirPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnAtualizarMedico)))))
+                                .addComponent(btnExcluirPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         jPanelPacientes1Layout.setVerticalGroup(
@@ -293,8 +284,7 @@ public class Pacientes extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelPacientes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnExcluirPacientes)
-                    .addComponent(btnEditarPacientes)
-                    .addComponent(btnAtualizarMedico))
+                    .addComponent(btnEditarPacientes))
                 .addGap(8, 8, 8))
         );
 
@@ -569,6 +559,13 @@ public class Pacientes extends javax.swing.JFrame {
 
         btnCancelarPacientes.setText("Cancelar");
 
+        btnAtualizarMedico.setText("Atualizar");
+        btnAtualizarMedico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtualizarMedicoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PainelNovoPacienteLayout = new javax.swing.GroupLayout(PainelNovoPaciente);
         PainelNovoPaciente.setLayout(PainelNovoPacienteLayout);
         PainelNovoPacienteLayout.setHorizontalGroup(
@@ -582,6 +579,8 @@ public class Pacientes extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelNovoPacienteLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnAtualizarMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnCancelarPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSalvarPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -597,7 +596,8 @@ public class Pacientes extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(PainelNovoPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvarPacientes)
-                    .addComponent(btnCancelarPacientes))
+                    .addComponent(btnCancelarPacientes)
+                    .addComponent(btnAtualizarMedico))
                 .addContainerGap())
         );
 
@@ -758,55 +758,6 @@ public class Pacientes extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnExcluirPacientesActionPerformed
 
-    private void btnAtualizarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarMedicoActionPerformed
-        if (txtNomeMedico.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Informe o Nome!", "Campo em branco", JOptionPane.YES_NO_OPTION);
-            txtNomeMedico.requestFocus();
-            return;
-        }
-        if (txtEspecialidade.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Informe a Especialidade!", "Campo em branco", JOptionPane.YES_NO_OPTION);
-            txtEspecialidade.requestFocus();
-            return;
-        }
-        if (txtCRM.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Informe o CRM!", "Campo em branco", JOptionPane.YES_NO_OPTION);
-            txtCRM.requestFocus();
-            return;
-        }
-
-        if (txtDuracaoConsulta.getSelectedItem().toString().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Informe o Tempo de Duração da Consulta!", "Campo em branco", JOptionPane.YES_NO_OPTION);
-            txtDuracaoConsulta.requestFocus();
-            return;
-        }
-        try {
-            DatabaseConnection databaseConnection = new DatabaseConnection();
-
-            String query = "UPDATE MEDICOS SET NOME_MEDICO= '"+txtNomeMedico.getText()+"' ,ESPECIALIDADE= '"+txtEspecialidade.getText()+"', CRM= "+txtCRM.getText()+", DURACAO_CONSULTA= '"+txtDuracaoConsulta.getSelectedItem().toString()+"' WHERE ID_MEDICO= "+txtIDMedico.getText()+"";
-            Connection con = databaseConnection.Conexao();
-            PreparedStatement pst = con.prepareStatement(query);
-            pst.execute();
-
-            pst.close();
-            JOptionPane.showMessageDialog(null, "Cadastro Alterado!");
-
-            txtIDMedico.setText(null);
-            txtNomeMedico.setText(null);
-            txtEspecialidade.setText(null);
-            txtCRM.setText(null);
-            txtDuracaoConsulta.setSelectedIndex(0);
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro na Alteração!");
-            System.out.println(ex.getMessage());
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-
-        preencherTabela("Select * from MEDICOS ORDER BY ID_MEDICO");
-    }//GEN-LAST:event_btnAtualizarMedicoActionPerformed
-
     private void btnHeartClinPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHeartClinPacientesActionPerformed
         HeartClin heartClin = new HeartClin();
         heartClin.setVisible(true);
@@ -948,6 +899,10 @@ public class Pacientes extends javax.swing.JFrame {
         
         preencherTabela("SELECT * FROM PACIENTES ORDER BY ID_PACIENTE");
     }//GEN-LAST:event_btnSalvarPacientesActionPerformed
+
+    private void btnAtualizarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarMedicoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAtualizarMedicoActionPerformed
     
     Connection connection = null;
     public void preencherTabela(String Sql) {

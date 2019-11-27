@@ -45,6 +45,8 @@ public class Cadastros extends javax.swing.JFrame {
     public Cadastros() {
         initComponents();
 
+        
+        
         String[] vetor = {" ","30 Minutos","35 Minutos", "40 Minutos","45 Minutos", "1 Hora", "2 Horas" };
 
         txtDuracaoConsulta.setModel(new javax.swing.DefaultComboBoxModel<>(vetor));
@@ -407,6 +409,12 @@ public class Cadastros extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(TabelaMedicosScroll);
 
+        txtDuracaoConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDuracaoConsultaActionPerformed(evt);
+            }
+        });
+
         btnAtualizarMedico.setText("Atualizar");
         btnAtualizarMedico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -587,23 +595,19 @@ public class Cadastros extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(PainelCadastrosConsultoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PainelCadastrosConsultoriosLayout.createSequentialGroup()
-                        .addGroup(PainelCadastrosConsultoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(PainelCadastrosConsultoriosLayout.createSequentialGroup()
-                                .addComponent(jLabel27)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtIDConsultorio, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(70, 70, 70)
-                                .addComponent(jLabel17)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtNomeConsultorio))
-                            .addGroup(PainelCadastrosConsultoriosLayout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtEspecialidadeConsultorio, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)))
-                        .addContainerGap())
+                        .addComponent(jLabel27)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtIDConsultorio, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(70, 70, 70)
+                        .addComponent(jLabel17)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtNomeConsultorio))
                     .addGroup(PainelCadastrosConsultoriosLayout.createSequentialGroup()
-                        .addComponent(jScrollPane3)
-                        .addContainerGap())))
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtEspecialidadeConsultorio, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3))
+                .addContainerGap())
             .addGroup(PainelCadastrosConsultoriosLayout.createSequentialGroup()
                 .addGap(233, 233, 233)
                 .addComponent(jLabel18)
@@ -776,14 +780,8 @@ public class Cadastros extends javax.swing.JFrame {
 
         PainelCadastrosUsuarios.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-<<<<<<< HEAD
-        setSize(new java.awt.Dimension(849, 548));
-        setLocationRelativeTo(null);
-    }// </editor-fold>//GEN-END:initComponents
-=======
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel10.setText("Usuários");
->>>>>>> c586b949674068cafe6e4960e4b0120bbe45082d
 
         jLabel3.setText("Usuário:");
 
@@ -849,6 +847,12 @@ public class Cadastros extends javax.swing.JFrame {
         });
 
         jLabel26.setText("ID:");
+
+        txtIDUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIDUsuarioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PainelCadastrosUsuariosLayout = new javax.swing.GroupLayout(PainelCadastrosUsuarios);
         PainelCadastrosUsuarios.setLayout(PainelCadastrosUsuariosLayout);
@@ -966,12 +970,14 @@ public class Cadastros extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
 
-        setBounds(0, 0, 849, 548);
+        setSize(new java.awt.Dimension(849, 548));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastrosUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrosUsuariosActionPerformed
         mostrarTelas("PainelCadastrosUsuario");
         mostrarImagem("ImagemCadastrosUsuarios");
+        preencherTabelaUsuarios("Select * from MEDICOS ORDER BY ID_MEDICO");
     }//GEN-LAST:event_btnCadastrosUsuariosActionPerformed
 
     private void btnCadastrosMedicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrosMedicosActionPerformed
@@ -985,20 +991,17 @@ public class Cadastros extends javax.swing.JFrame {
     private void btnCadastrosConsultoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrosConsultoriosActionPerformed
         mostrarTelas("PainelCadastrosConsultorios");
         mostrarImagem("ImagemCadastrosConsultorios");
+        preencherTabelaConsultorios("Select * from CONSULTORIOS ORDER BY ID_CONSULTORIO");
     }//GEN-LAST:event_btnCadastrosConsultoriosActionPerformed
 
     private void btnCadastrosConveniosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrosConveniosActionPerformed
         mostrarTelas("PainelCadastrosConvenios");
         mostrarImagem("ImagemCadastrosConvenios");
+        preencherTabelaConvenios("Select * from CONVENIOS ORDER BY ID_CONVENIO");
     }//GEN-LAST:event_btnCadastrosConveniosActionPerformed
 
     private void btnSalvarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarUsuariosActionPerformed
- if (txtIDUsuario.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Informe o ID!", "Campo em branco", JOptionPane.YES_NO_OPTION);
-            txtIDUsuario.requestFocus();
-            return;
- }
-        
+                 
         if (txtNomeUsuario.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Informe o Nome!", "Campo em branco", JOptionPane.YES_NO_OPTION);
             txtNomeUsuario.requestFocus();
@@ -1153,7 +1156,7 @@ public class Cadastros extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarMedicoActionPerformed
 
     private void btnAtualizarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarUsuariosActionPerformed
- if (txtNomeUsuario.getText().trim().isEmpty()) {
+        if (txtNomeUsuario.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Informe o Nome!", "Campo em branco", JOptionPane.YES_NO_OPTION);
             txtNomeUsuario.requestFocus();
             return;
@@ -1177,7 +1180,7 @@ public class Cadastros extends javax.swing.JFrame {
          try {
             DatabaseConnection databaseConnection = new DatabaseConnection();
 
-            String query = "UPDATE USUARIOS SET NOME_USUARIO= '"+txtNomeUsuario.getText()+"' ,SENHA_USUARIO= '"+txtSenhaUsuario.getText()+"', CONFIRMAR_SENHA_USUARIO= "+txtConfirmarSenhaUsuario.getText()+", TIPO-USUARIO= '"+txtTipoUsuario.getSelectedItem().toString()+"' WHERE ID_USUARIO= "+txtIDUsuario.getText()+"";
+            String query = "UPDATE USUARIOS SET NOME_USUARIO= '"+txtNomeUsuario.getText()+"' ,SENHA_USUARIO= '"+txtSenhaUsuario.getText()+"', CONFIRMAR_SENHA_USUARIO= '"+txtConfirmarSenhaUsuario.getText()+"', TIPO_USUARIO= '"+txtTipoUsuario.getSelectedItem().toString()+"' WHERE ID_USUARIO= "+txtIDUsuario.getText()+"";
             Connection con = databaseConnection.Conexao();
             PreparedStatement pst = con.prepareStatement(query);
             pst.execute();
@@ -1302,23 +1305,19 @@ public class Cadastros extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnExcluirMedicoActionPerformed
 
-<<<<<<< HEAD
+
     private void btnHeartClinCadastrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHeartClinCadastrosActionPerformed
         HeartClin heartClin = new HeartClin();
         heartClin.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnHeartClinCadastrosActionPerformed
-=======
+
     private void txtNomeUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeUsuarioActionPerformed
 
     private void btnCancelarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarUsuariosActionPerformed
-
-        // TODO add your handling code here:
-        
-        
-         txtIDUsuario.setText(null);
+        txtIDUsuario.setText(null);
         txtNomeUsuario.setText(null);
         txtSenhaUsuario.setText(null);
         txtConfirmarSenhaUsuario.setText(null);
@@ -1349,7 +1348,7 @@ try {
             System.out.println(ex.getMessage());
         }
          
-        preencherTabela("Select * from USUARIOS ORDER BY ID_USUARIO");
+        preencherTabelaUsuarios("Select * from USUARIOS ORDER BY ID_USUARIO");
                
     }//GEN-LAST:event_btnExcluirUsuariosActionPerformed
 
@@ -1398,11 +1397,11 @@ try {
             System.out.println(ex.getMessage());
         }
          
-        preencherTabela("Select * from CONSULTORIOS ORDER BY ID_CONSULTORIO");
+        preencherTabelaConsultorios("Select * from CONSULTORIOS ORDER BY ID_CONSULTORIO");
     }//GEN-LAST:event_btnExcluirConsultoriosActionPerformed
 
     private void btnSalvarConsultoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarConsultoriosActionPerformed
- if (txtNomeConsultorio.getText().trim().isEmpty()) {
+        if (txtNomeConsultorio.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Informe o Nome!", "Campo em branco", JOptionPane.YES_NO_OPTION);
             txtNomeConsultorio.requestFocus();
             return;
@@ -1417,7 +1416,7 @@ try {
         try {
             DatabaseConnection databaseConnection = new DatabaseConnection();
 
-            String query = "INSERT CONSULTORIOS (ID_CONSULTORIO, NOME_CONSULTORIO, ESPECIALIDADE_CONSULTORIO) VALUES(ID.NEXTVAL, ?, ?)";
+            String query = "INSERT INTO CONSULTORIOS (ID_CONSULTORIO, NOME_CONSULTORIO, ESPECIALIDADE_CONSULTORIO) VALUES(ID.NEXTVAL, ?, ?)";
 
             Connection con = databaseConnection.Conexao();
             PreparedStatement pst = con.prepareStatement(query);
@@ -1442,7 +1441,7 @@ try {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-        preencherTabela("Select * from CONSULTORIOS ORDER BY ID_CONSULTORIO");
+        preencherTabelaConsultorios("Select * from CONSULTORIOS ORDER BY ID_CONSULTORIO");
     }//GEN-LAST:event_btnSalvarConsultoriosActionPerformed
 
     private void btnAtualizarConsultoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarConsultoriosActionPerformed
@@ -1460,7 +1459,7 @@ try {
          try {
             DatabaseConnection databaseConnection = new DatabaseConnection();
 
-            String query = "UPDATE CONSULTORIOS SET NOME_CONSULTORIO= '"+txtNomeConsultorio.getText()+"' ,ESPECIALIDADE= '"+txtEspecialidadeConsultorio.getText()+"', WHERE ID_CONSULTORIO= "+txtIDConsultorio.getText()+"";
+            String query = "UPDATE CONSULTORIOS SET NOME_CONSULTORIO= '"+txtNomeConsultorio.getText()+"' ,ESPECIALIDADE_CONSULTORIO= '"+txtEspecialidadeConsultorio.getText()+"' WHERE ID_CONSULTORIO= "+txtIDConsultorio.getText()+"";
             Connection con = databaseConnection.Conexao();
             PreparedStatement pst = con.prepareStatement(query);
             pst.execute();
@@ -1479,7 +1478,7 @@ try {
             System.out.println(ex.getMessage());
         }
          
-        preencherTabela("Select * from CONSULTORIOS ORDER BY ID_CONSULTORIO");
+        preencherTabelaConsultorios("Select * from CONSULTORIOS ORDER BY ID_CONSULTORIO");
     }//GEN-LAST:event_btnAtualizarConsultoriosActionPerformed
 
     private void btnCancelarConveniosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarConveniosActionPerformed
@@ -1530,7 +1529,7 @@ try {
             System.out.println(ex.getMessage());
         }
          
-        preencherTabela("Select * from CONVENIOS ORDER BY ID_CONVENIO");
+        preencherTabelaConvenios("Select * from CONVENIOS ORDER BY ID_CONVENIO");
     }//GEN-LAST:event_btnExcluirConveniosActionPerformed
 
     private void btnSalvarConveniosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarConveniosActionPerformed
@@ -1579,11 +1578,11 @@ try {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-        preencherTabela("Select * from CONVENIOS ORDER BY ID_CONVENIO");
+        preencherTabelaConvenios("Select * from CONVENIOS ORDER BY ID_CONVENIO");
     }//GEN-LAST:event_btnSalvarConveniosActionPerformed
 
     private void btnAtualizarConveniosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarConveniosActionPerformed
-    if (txtNomeConvenio.getText().trim().isEmpty()) {
+        if (txtNomeConvenio.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Informe o Nome!", "Campo em branco", JOptionPane.YES_NO_OPTION);
             txtNomeConvenio.requestFocus();
             return;
@@ -1603,7 +1602,7 @@ try {
          try {
             DatabaseConnection databaseConnection = new DatabaseConnection();
 
-            String query = "UPDATE CONVENIOS SET NOME_CONVENIO= '"+txtNomeConvenio.getText()+"' ,CLINICA_CONVENIO= '"+txtClinicaConvenio.getText()+"', REGISTRO_ANS= "+txtRegistroANS.getText()+"' WHERE ID_CONVENIO= "+txtIDConvenio.getText()+"";
+            String query = "UPDATE CONVENIOS SET NOME_CONVENIO= '"+txtNomeConvenio.getText()+"' ,CLINICA_CONVENIO= '"+txtClinicaConvenio.getText()+"', REGISTRO_ANS= "+txtRegistroANS.getText()+" WHERE ID_CONVENIO= "+txtIDConvenio.getText()+"";
             Connection con = databaseConnection.Conexao();
             PreparedStatement pst = con.prepareStatement(query);
             pst.execute();
@@ -1624,9 +1623,17 @@ try {
             System.out.println(ex.getMessage());
         }
          
-        preencherTabela("Select * from CONVENIOS ORDER BY ID_CONVENIO");
+        preencherTabelaConvenios("Select * from CONVENIOS ORDER BY ID_CONVENIO");
     }//GEN-LAST:event_btnAtualizarConveniosActionPerformed
->>>>>>> c586b949674068cafe6e4960e4b0120bbe45082d
+
+    private void txtDuracaoConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDuracaoConsultaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDuracaoConsultaActionPerformed
+
+    private void txtIDUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIDUsuarioActionPerformed
+
 
     private DefaultTableModel modeloTabela = new DefaultTableModel();
 
@@ -1652,8 +1659,54 @@ try {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(rootPane, ex.getMessage() + ex.getCause() + " + Erro ao Buscar Médicos!");
         }
+    }
+    
+    public void preencherTabelaUsuarios(String Sql) {
+        connection = databaseConnection.Conexao();
+        try {
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+            Connection con = databaseConnection.Conexao();
+            PreparedStatement pst = connection.prepareStatement(Sql);
+            ResultSet rs = pst.executeQuery();
+
+            TabelaUsuarios.setModel(DbUtils.resultSetToTableModel(rs));
+            databaseConnection.conexao.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage() + ex.getCause() + " + Erro ao Buscar Médicos!");
+        }
 
     }
+    public void preencherTabelaConvenios(String Sql) {
+        connection = databaseConnection.Conexao();
+        try {
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+            Connection con = databaseConnection.Conexao();
+            PreparedStatement pst = connection.prepareStatement(Sql);
+            ResultSet rs = pst.executeQuery();
+
+            TabelaConvenios.setModel(DbUtils.resultSetToTableModel(rs));
+            databaseConnection.conexao.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage() + ex.getCause() + " + Erro ao Buscar Médicos!");
+        }
+
+    }
+    public void preencherTabelaConsultorios(String Sql) {
+        connection = databaseConnection.Conexao();
+        try {
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+            Connection con = databaseConnection.Conexao();
+            PreparedStatement pst = connection.prepareStatement(Sql);
+            ResultSet rs = pst.executeQuery();
+
+            TabelaConsultorios.setModel(DbUtils.resultSetToTableModel(rs));
+            databaseConnection.conexao.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage() + ex.getCause() + " + Erro ao Buscar Médicos!");
+        }
+
+    }
+    
 
     public void preencherComboClinica(String Sql) {
         connection = databaseConnection.Conexao();
