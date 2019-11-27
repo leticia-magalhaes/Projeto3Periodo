@@ -48,6 +48,10 @@ public class Cadastros extends javax.swing.JFrame {
         String[] vetor = {" ","30 Minutos","35 Minutos", "40 Minutos","45 Minutos", "1 Hora", "2 Horas" };
 
         txtDuracaoConsulta.setModel(new javax.swing.DefaultComboBoxModel<>(vetor));
+        
+        String[] vetorTipo = {" ","Medico","Enfermeira", "Recepcionista"};
+
+        txtTipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(vetorTipo));
 
         /*String[] opcoes = new String[3];
         
@@ -97,25 +101,6 @@ public class Cadastros extends javax.swing.JFrame {
         ImagemCadastrosConvenios = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         PainelPrincipal2 = new javax.swing.JPanel();
-        PainelCadastrosUsuario = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jTextField5 = new javax.swing.JTextField();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jButton2 = new javax.swing.JButton();
-        jTextField6 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jPasswordField2 = new javax.swing.JPasswordField();
-        btnSalvarUsuarios = new javax.swing.JButton();
-        btnCancelarUsuarios = new javax.swing.JButton();
-        btnEditarUsuarios = new javax.swing.JButton();
-        btnExcluirUsuarios = new javax.swing.JButton();
-        btnAtualizarUsuarios = new javax.swing.JButton();
         PainelCadastrosMedicos = new javax.swing.JPanel();
         btnSalvarMedico = new javax.swing.JButton();
         btnCancelarMedico = new javax.swing.JButton();
@@ -145,29 +130,54 @@ public class Cadastros extends javax.swing.JFrame {
         btnCancelarConsultorios = new javax.swing.JButton();
         btnEditarConsultorios = new javax.swing.JButton();
         btnExcluirConsultorios = new javax.swing.JButton();
-        jTextField9 = new javax.swing.JTextField();
+        txtNomeConsultorio = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
+        txtEspecialidadeConsultorio = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        TabelaConsultorios = new javax.swing.JTable();
         btnAtualizarConsultorios = new javax.swing.JButton();
+        jLabel27 = new javax.swing.JLabel();
+        txtIDConsultorio = new javax.swing.JTextField();
         PainelCadastrosConvenios = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        txtNomeConvenio = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
+        txtClinicaConvenio = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
-        jTextField12 = new javax.swing.JTextField();
+        txtRegistroANS = new javax.swing.JTextField();
         btnSalvarConvenios = new javax.swing.JButton();
         btnCancelarConvenios = new javax.swing.JButton();
         btnEditarConvenios = new javax.swing.JButton();
         btnExcluirConvenios = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        TabelaConvenios = new javax.swing.JTable();
         btnAtualizarConvenios = new javax.swing.JButton();
+        jLabel28 = new javax.swing.JLabel();
+        txtIDConvenio = new javax.swing.JTextField();
+        PainelCadastrosUsuarios = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TabelaUsuarios = new javax.swing.JTable();
+        txtNomeUsuario = new javax.swing.JTextField();
+        txtTipoUsuario = new javax.swing.JComboBox<>();
+        jButton2 = new javax.swing.JButton();
+        jTextField6 = new javax.swing.JTextField();
+        txtSenhaUsuario = new javax.swing.JPasswordField();
+        txtConfirmarSenhaUsuario = new javax.swing.JPasswordField();
+        btnSalvarUsuarios = new javax.swing.JButton();
+        btnCancelarUsuarios = new javax.swing.JButton();
+        btnEditarUsuarios = new javax.swing.JButton();
+        btnExcluirUsuarios = new javax.swing.JButton();
+        btnAtualizarUsuarios = new javax.swing.JButton();
+        jLabel26 = new javax.swing.JLabel();
+        txtIDUsuario = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -324,146 +334,6 @@ public class Cadastros extends javax.swing.JFrame {
 
         PainelPrincipal2.setLayout(new java.awt.CardLayout());
 
-        PainelCadastrosUsuario.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel10.setText("Usuários");
-
-        jLabel3.setText("Usuário:");
-
-        jLabel12.setText("Tipo:");
-
-        jLabel13.setText("Senha:");
-
-        jLabel14.setText("Confirmar Senha:");
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Nº Registros", "Usuário", "Tipo"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable2);
-
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Secretário(a)", "Médico(a)", "Enfermeiro(a)" }));
-
-        jButton2.setText("Pesquisar");
-
-        btnSalvarUsuarios.setText("Salvar");
-        btnSalvarUsuarios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalvarUsuariosActionPerformed(evt);
-            }
-        });
-
-        btnCancelarUsuarios.setText("Cancelar");
-
-        btnEditarUsuarios.setText("Editar");
-        btnEditarUsuarios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarUsuariosActionPerformed(evt);
-            }
-        });
-
-        btnExcluirUsuarios.setText("Excluir");
-
-        btnAtualizarUsuarios.setText("Atualizar");
-        btnAtualizarUsuarios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAtualizarUsuariosActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout PainelCadastrosUsuarioLayout = new javax.swing.GroupLayout(PainelCadastrosUsuario);
-        PainelCadastrosUsuario.setLayout(PainelCadastrosUsuarioLayout);
-        PainelCadastrosUsuarioLayout.setHorizontalGroup(
-            PainelCadastrosUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PainelCadastrosUsuarioLayout.createSequentialGroup()
-                .addGroup(PainelCadastrosUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PainelCadastrosUsuarioLayout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(PainelCadastrosUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(PainelCadastrosUsuarioLayout.createSequentialGroup()
-                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(PainelCadastrosUsuarioLayout.createSequentialGroup()
-                                .addGroup(PainelCadastrosUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(PainelCadastrosUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(PainelCadastrosUsuarioLayout.createSequentialGroup()
-                                        .addComponent(jTextField5)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel12)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(PainelCadastrosUsuarioLayout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel14)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jPasswordField2))))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelCadastrosUsuarioLayout.createSequentialGroup()
-                        .addContainerGap(15, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PainelCadastrosUsuarioLayout.createSequentialGroup()
-                        .addGap(258, 258, 258)
-                        .addComponent(jLabel10)
-                        .addGap(0, 229, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelCadastrosUsuarioLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnCancelarUsuarios)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnExcluirUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnEditarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSalvarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnAtualizarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58))
-        );
-        PainelCadastrosUsuarioLayout.setVerticalGroup(
-            PainelCadastrosUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PainelCadastrosUsuarioLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PainelCadastrosUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel12)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(PainelCadastrosUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel14)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(PainelCadastrosUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(PainelCadastrosUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalvarUsuarios)
-                    .addComponent(btnExcluirUsuarios)
-                    .addComponent(btnEditarUsuarios)
-                    .addComponent(btnCancelarUsuarios)
-                    .addComponent(btnAtualizarUsuarios))
-                .addContainerGap(195, Short.MAX_VALUE))
-        );
-
-        PainelPrincipal2.add(PainelCadastrosUsuario, "PainelCadastrosUsuario");
-
         PainelCadastrosMedicos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         btnSalvarMedico.setText("Salvar");
@@ -541,7 +411,7 @@ public class Cadastros extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(PainelCadastrosMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelCadastrosMedicosLayout.createSequentialGroup()
-                        .addGap(0, 228, Short.MAX_VALUE)
+                        .addGap(0, 232, Short.MAX_VALUE)
                         .addComponent(jLabel11)
                         .addGap(263, 263, 263))
                     .addGroup(PainelCadastrosMedicosLayout.createSequentialGroup()
@@ -633,12 +503,32 @@ public class Cadastros extends javax.swing.JFrame {
         PainelPrincipal2.add(PainelCadastrosMedicos, "PainelCadastrosMedicos");
 
         btnSalvarConsultorios.setText("Salvar");
+        btnSalvarConsultorios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarConsultoriosActionPerformed(evt);
+            }
+        });
 
         btnCancelarConsultorios.setText("Cancelar");
+        btnCancelarConsultorios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarConsultoriosActionPerformed(evt);
+            }
+        });
 
         btnEditarConsultorios.setText("Editar");
+        btnEditarConsultorios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarConsultoriosActionPerformed(evt);
+            }
+        });
 
         btnExcluirConsultorios.setText("Excluir");
+        btnExcluirConsultorios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirConsultoriosActionPerformed(evt);
+            }
+        });
 
         jLabel17.setText("Nome:");
 
@@ -647,78 +537,92 @@ public class Cadastros extends javax.swing.JFrame {
 
         jLabel4.setText("Especialidade:");
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        TabelaConsultorios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Nome", "Especialidade"
+
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        jScrollPane3.setViewportView(TabelaConsultorios);
 
         btnAtualizarConsultorios.setText("Atualizar");
+        btnAtualizarConsultorios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtualizarConsultoriosActionPerformed(evt);
+            }
+        });
+
+        jLabel27.setText("ID:");
 
         javax.swing.GroupLayout PainelCadastrosConsultoriosLayout = new javax.swing.GroupLayout(PainelCadastrosConsultorios);
         PainelCadastrosConsultorios.setLayout(PainelCadastrosConsultoriosLayout);
         PainelCadastrosConsultoriosLayout.setHorizontalGroup(
             PainelCadastrosConsultoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PainelCadastrosConsultoriosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PainelCadastrosConsultoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelCadastrosConsultoriosLayout.createSequentialGroup()
-                        .addComponent(jLabel17)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField9, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE))
-                    .addGroup(PainelCadastrosConsultoriosLayout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField10, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(PainelCadastrosConsultoriosLayout.createSequentialGroup()
-                .addGap(233, 233, 233)
-                .addComponent(jLabel18)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(PainelCadastrosConsultoriosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3)
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelCadastrosConsultoriosLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSalvarConsultorios, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCancelarConsultorios)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnEditarConsultorios, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnExcluirConsultorios, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnSalvarConsultorios, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
                 .addComponent(btnAtualizarConsultorios)
                 .addGap(68, 68, 68))
+            .addGroup(PainelCadastrosConsultoriosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PainelCadastrosConsultoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PainelCadastrosConsultoriosLayout.createSequentialGroup()
+                        .addGroup(PainelCadastrosConsultoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PainelCadastrosConsultoriosLayout.createSequentialGroup()
+                                .addComponent(jLabel27)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtIDConsultorio, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(70, 70, 70)
+                                .addComponent(jLabel17)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtNomeConsultorio))
+                            .addGroup(PainelCadastrosConsultoriosLayout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtEspecialidadeConsultorio, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(PainelCadastrosConsultoriosLayout.createSequentialGroup()
+                        .addComponent(jScrollPane3)
+                        .addContainerGap())))
+            .addGroup(PainelCadastrosConsultoriosLayout.createSequentialGroup()
+                .addGap(233, 233, 233)
+                .addComponent(jLabel18)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PainelCadastrosConsultoriosLayout.setVerticalGroup(
             PainelCadastrosConsultoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelCadastrosConsultoriosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel18)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PainelCadastrosConsultoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNomeConsultorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel17)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel27)
+                    .addComponent(txtIDConsultorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(PainelCadastrosConsultoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEspecialidadeConsultorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(PainelCadastrosConsultoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalvarConsultorios)
-                    .addComponent(btnExcluirConsultorios)
                     .addComponent(btnEditarConsultorios)
+                    .addComponent(btnAtualizarConsultorios)
                     .addComponent(btnCancelarConsultorios)
-                    .addComponent(btnAtualizarConsultorios))
-                .addContainerGap(183, Short.MAX_VALUE))
+                    .addComponent(btnExcluirConsultorios)
+                    .addComponent(btnSalvarConsultorios))
+                .addContainerGap(195, Short.MAX_VALUE))
         );
 
         PainelPrincipal2.add(PainelCadastrosConsultorios, "PainelCadastrosConsultorios");
@@ -735,24 +639,51 @@ public class Cadastros extends javax.swing.JFrame {
         jLabel20.setText("Registro na ANS:");
 
         btnSalvarConvenios.setText("Salvar");
+        btnSalvarConvenios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarConveniosActionPerformed(evt);
+            }
+        });
 
         btnCancelarConvenios.setText("Cancelar");
+        btnCancelarConvenios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarConveniosActionPerformed(evt);
+            }
+        });
 
         btnEditarConvenios.setText("Editar");
+        btnEditarConvenios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarConveniosActionPerformed(evt);
+            }
+        });
 
         btnExcluirConvenios.setText("Excluir");
+        btnExcluirConvenios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirConveniosActionPerformed(evt);
+            }
+        });
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        TabelaConvenios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Nome", "Clínica", "Registro da ANS"
+
             }
         ));
-        jScrollPane4.setViewportView(jTable4);
+        jScrollPane4.setViewportView(TabelaConvenios);
 
         btnAtualizarConvenios.setText("Atualizar");
+        btnAtualizarConvenios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtualizarConveniosActionPerformed(evt);
+            }
+        });
+
+        jLabel28.setText("ID:");
 
         javax.swing.GroupLayout PainelCadastrosConveniosLayout = new javax.swing.GroupLayout(PainelCadastrosConvenios);
         PainelCadastrosConvenios.setLayout(PainelCadastrosConveniosLayout);
@@ -766,34 +697,38 @@ public class Cadastros extends javax.swing.JFrame {
                             .addGroup(PainelCadastrosConveniosLayout.createSequentialGroup()
                                 .addComponent(jLabel19)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtClinicaConvenio, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel20)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField12))
+                                .addComponent(txtRegistroANS))
                             .addGroup(PainelCadastrosConveniosLayout.createSequentialGroup()
+                                .addComponent(jLabel28)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtIDConvenio, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(39, 39, 39)
                                 .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField7))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtNomeConvenio))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelCadastrosConveniosLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 536, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelCadastrosConveniosLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(59, Short.MAX_VALUE)
                 .addGroup(PainelCadastrosConveniosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelCadastrosConveniosLayout.createSequentialGroup()
                         .addComponent(jLabel15)
                         .addGap(250, 250, 250))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelCadastrosConveniosLayout.createSequentialGroup()
-                        .addComponent(btnSalvarConvenios, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnCancelarConvenios)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnEditarConvenios, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnExcluirConvenios, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(11, 11, 11)
+                        .addComponent(btnSalvarConvenios, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(btnAtualizarConvenios)
                         .addGap(62, 62, 62))))
         );
@@ -802,29 +737,195 @@ public class Cadastros extends javax.swing.JFrame {
             .addGroup(PainelCadastrosConveniosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel15)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PainelCadastrosConveniosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel28)
+                    .addComponent(txtIDConvenio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNomeConvenio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(PainelCadastrosConveniosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
-                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtClinicaConvenio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20)
-                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtRegistroANS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(PainelCadastrosConveniosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalvarConvenios)
                     .addComponent(btnExcluirConvenios)
                     .addComponent(btnEditarConvenios)
+                    .addComponent(btnAtualizarConvenios)
                     .addComponent(btnCancelarConvenios)
-                    .addComponent(btnAtualizarConvenios))
-                .addContainerGap(180, Short.MAX_VALUE))
+                    .addComponent(btnSalvarConvenios))
+                .addContainerGap(192, Short.MAX_VALUE))
         );
 
         PainelPrincipal2.add(PainelCadastrosConvenios, "PainelCadastrosConvenios");
+
+        PainelCadastrosUsuarios.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel10.setText("Usuários");
+
+        jLabel3.setText("Usuário:");
+
+        jLabel12.setText("Tipo:");
+
+        jLabel13.setText("Senha:");
+
+        jLabel14.setText("Confirmar Senha:");
+
+        TabelaUsuarios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(TabelaUsuarios);
+
+        txtNomeUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeUsuarioActionPerformed(evt);
+            }
+        });
+
+        txtTipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Secretário(a)", "Médico(a)", "Enfermeiro(a)" }));
+
+        jButton2.setText("Pesquisar");
+
+        btnSalvarUsuarios.setText("Salvar");
+        btnSalvarUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarUsuariosActionPerformed(evt);
+            }
+        });
+
+        btnCancelarUsuarios.setText("Cancelar");
+        btnCancelarUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarUsuariosActionPerformed(evt);
+            }
+        });
+
+        btnEditarUsuarios.setText("Editar");
+        btnEditarUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarUsuariosActionPerformed(evt);
+            }
+        });
+
+        btnExcluirUsuarios.setText("Excluir");
+        btnExcluirUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirUsuariosActionPerformed(evt);
+            }
+        });
+
+        btnAtualizarUsuarios.setText("Atualizar");
+        btnAtualizarUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtualizarUsuariosActionPerformed(evt);
+            }
+        });
+
+        jLabel26.setText("ID:");
+
+        javax.swing.GroupLayout PainelCadastrosUsuariosLayout = new javax.swing.GroupLayout(PainelCadastrosUsuarios);
+        PainelCadastrosUsuarios.setLayout(PainelCadastrosUsuariosLayout);
+        PainelCadastrosUsuariosLayout.setHorizontalGroup(
+            PainelCadastrosUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PainelCadastrosUsuariosLayout.createSequentialGroup()
+                .addGroup(PainelCadastrosUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PainelCadastrosUsuariosLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(PainelCadastrosUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PainelCadastrosUsuariosLayout.createSequentialGroup()
+                                .addComponent(jTextField6)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtTipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(PainelCadastrosUsuariosLayout.createSequentialGroup()
+                                .addGroup(PainelCadastrosUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel26))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(PainelCadastrosUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(PainelCadastrosUsuariosLayout.createSequentialGroup()
+                                        .addGap(165, 165, 165)
+                                        .addComponent(jLabel10)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(PainelCadastrosUsuariosLayout.createSequentialGroup()
+                                        .addComponent(txtSenhaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(47, 47, 47)
+                                        .addComponent(jLabel14)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtConfirmarSenhaUsuario))
+                                    .addGroup(PainelCadastrosUsuariosLayout.createSequentialGroup()
+                                        .addComponent(txtIDUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(27, 27, 27)
+                                        .addComponent(jLabel3)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtNomeUsuario))))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelCadastrosUsuariosLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelCadastrosUsuariosLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnCancelarUsuarios)
+                .addGap(12, 12, 12)
+                .addComponent(btnEditarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnExcluirUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnSalvarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnAtualizarUsuarios)
+                .addGap(50, 50, 50))
+        );
+        PainelCadastrosUsuariosLayout.setVerticalGroup(
+            PainelCadastrosUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PainelCadastrosUsuariosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(PainelCadastrosUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel26)
+                    .addComponent(txtIDUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(PainelCadastrosUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel14)
+                    .addComponent(txtSenhaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtConfirmarSenhaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(PainelCadastrosUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelCadastrosUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton2)
+                        .addComponent(txtTipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel12)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(PainelCadastrosUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvarUsuarios)
+                    .addComponent(btnExcluirUsuarios)
+                    .addComponent(btnCancelarUsuarios)
+                    .addComponent(btnAtualizarUsuarios)
+                    .addComponent(btnEditarUsuarios))
+                .addContainerGap(208, Short.MAX_VALUE))
+        );
+
+        PainelPrincipal2.add(PainelCadastrosUsuarios, "PainelCadastrosUsuario");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -875,7 +976,64 @@ public class Cadastros extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCadastrosConveniosActionPerformed
 
     private void btnSalvarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarUsuariosActionPerformed
+ if (txtIDUsuario.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o ID!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtIDUsuario.requestFocus();
+            return;
+ }
+        
+        if (txtNomeUsuario.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o Nome!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtNomeUsuario.requestFocus();
+            return;
+        }
+        if (txtSenhaUsuario.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe a Senha!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtEspecialidade.requestFocus();
+            return;
+        }
+        if (txtConfirmarSenhaUsuario.getText(). trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Confirme a senha!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtCRM.requestFocus();
+            return;
+        }
+        if (txtTipoUsuario.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null, "Informe o Tipo de Usuario!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtDuracaoConsulta.requestFocus();
+            return;
+        }
 
+        try {
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+
+            String query = "INSERT INTO USUARIO (ID_USUARIO, NOME_USUARIO, SENHA_USUARIO, CONFIRMAR_SENHA_USUARIO, TIPO_USUARIO) VALUES(ID.NEXTVAL, ?, ?, ?, ?)";
+
+            Connection con = databaseConnection.Conexao();
+            PreparedStatement pst = con.prepareStatement(query);
+
+            int count = 0;
+            pst.setString(++count, txtNomeUsuario.getText());
+            pst.setString(++count, txtSenhaUsuario.getText());
+            pst.setString(++count, txtConfirmarSenhaUsuario.getText());
+            pst.setString(++count, txtTipoUsuario.getSelectedItem().toString());
+
+            pst.execute();
+
+            pst.close();
+            JOptionPane.showMessageDialog(null, "Cadastro Salvo!");
+
+            txtNomeUsuario.setText(null);
+            txtSenhaUsuario.setText(null);
+            txtConfirmarSenhaUsuario.setText(null);
+            txtTipoUsuario.setSelectedIndex(0);
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro no cadastro!");
+            System.out.println(ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        preencherTabela("Select * from MEDICOS ORDER BY ID_MEDICO");
 
     }//GEN-LAST:event_btnSalvarUsuariosActionPerformed
 
@@ -978,11 +1136,78 @@ public class Cadastros extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarMedicoActionPerformed
 
     private void btnAtualizarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarUsuariosActionPerformed
+ if (txtNomeUsuario.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o Nome!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtNomeUsuario.requestFocus();
+            return;
+        }
+        if (txtSenhaUsuario.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe a Senha!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtSenhaUsuario.requestFocus();
+            return;
+        }
+        if (txtConfirmarSenhaUsuario.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Confirme a senha!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtConfirmarSenhaUsuario.requestFocus();
+            return;
+        }
 
+        if (txtTipoUsuario.getSelectedItem().toString().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o Tipo de Usuario!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtTipoUsuario.requestFocus();
+            return;
+        }
+         try {
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+
+            String query = "UPDATE USUARIOS SET NOME_USUARIO= '"+txtNomeUsuario.getText()+"' ,SENHA_USUARIO= '"+txtSenhaUsuario.getText()+"', CONFIRMAR_SENHA_USUARIO= "+txtConfirmarSenhaUsuario.getText()+", TIPO-USUARIO= '"+txtTipoUsuario.getSelectedItem().toString()+"' WHERE ID_USUARIO= "+txtIDUsuario.getText()+"";
+            Connection con = databaseConnection.Conexao();
+            PreparedStatement pst = con.prepareStatement(query);
+            pst.execute();
+
+            pst.close();
+            JOptionPane.showMessageDialog(null, "Usuario Alterado!");
+            
+            txtIDUsuario.setText(null);
+            txtNomeUsuario.setText(null);
+            txtSenhaUsuario.setText(null);
+            txtConfirmarSenhaUsuario.setText(null);
+            txtTipoUsuario.setSelectedIndex(0);
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro na Alteração!");
+            System.out.println(ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+         
+        preencherTabela("Select * from USUARIOS ORDER BY ID_USUARIO");
     }//GEN-LAST:event_btnAtualizarUsuariosActionPerformed
 
     private void btnEditarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarUsuariosActionPerformed
-        // TODO add your handling code here:
+         BigDecimal numero = (BigDecimal) TabelaUsuarios.getModel().getValueAt(TabelaUsuarios.getSelectedRow(), 0);
+        txtIDUsuario.setText(numero.toString());
+
+        String usuario = (String) TabelaUsuarios.getModel().getValueAt(TabelaUsuarios.getSelectedRow(), 1);
+        txtNomeUsuario.setText(usuario);
+        
+        String senhaUsuario = (String) TabelaUsuarios.getModel().getValueAt(TabelaUsuarios.getSelectedRow(), 2);
+        txtSenhaUsuario.setText(senhaUsuario);
+        
+        String confirmarSenhaUsuario = (String) TabelaUsuarios.getModel().getValueAt(TabelaUsuarios.getSelectedRow(), 3);
+        txtConfirmarSenhaUsuario.setText(confirmarSenhaUsuario);
+        
+        String tipoUsuario = (String) TabelaUsuarios.getModel().getValueAt(TabelaUsuarios.getSelectedRow(), 4);
+        if (tipoUsuario.equals("Medico"))
+            txtTipoUsuario.setSelectedIndex(1);
+        else if (tipoUsuario.equals("Enfermeira"))
+            txtTipoUsuario.setSelectedIndex(2);
+        else if (tipoUsuario.equals("Recepcionista"))
+            txtTipoUsuario.setSelectedIndex(3);
+        else
+          txtTipoUsuario.setSelectedIndex(6);
+        
+      
     }//GEN-LAST:event_btnEditarUsuariosActionPerformed
 
     private void btnAtualizarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarMedicoActionPerformed
@@ -1059,6 +1284,324 @@ public class Cadastros extends javax.swing.JFrame {
         preencherTabela("Select * from MEDICOS ORDER BY ID_MEDICO");
         
     }//GEN-LAST:event_btnExcluirMedicoActionPerformed
+
+    private void txtNomeUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeUsuarioActionPerformed
+
+    private void btnCancelarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarUsuariosActionPerformed
+
+        // TODO add your handling code here:
+        
+        
+         txtIDUsuario.setText(null);
+        txtNomeUsuario.setText(null);
+        txtSenhaUsuario.setText(null);
+        txtConfirmarSenhaUsuario.setText(null);
+        txtTipoUsuario.setSelectedIndex(0);
+
+        JOptionPane.showMessageDialog(null, "Cadastro Cancelado!");
+    }//GEN-LAST:event_btnCancelarUsuariosActionPerformed
+
+    private void btnExcluirUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirUsuariosActionPerformed
+try {
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+
+            if(JOptionPane.showConfirmDialog(null, "Informe o Tipo de Usuario!", "Campo em branco", JOptionPane.YES_NO_OPTION) <= 0 ){
+                BigDecimal numero = (BigDecimal) TabelaMedicos.getModel().getValueAt(TabelaMedicos.getSelectedRow(), 0);
+                String query = "DELETE FROM USUARIOS WHERE ID_USUARIO= '" + numero.toString() + "'";
+                Connection con = databaseConnection.Conexao();
+                PreparedStatement pst = con.prepareStatement(query);
+                pst.execute();
+
+                pst.close();
+                JOptionPane.showMessageDialog(null, "Usuario Excluído!");
+            } 
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro na Exclusão!");
+            System.out.println(ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+         
+        preencherTabela("Select * from USUARIOS ORDER BY ID_USUARIO");
+               
+    }//GEN-LAST:event_btnExcluirUsuariosActionPerformed
+
+    private void btnCancelarConsultoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarConsultoriosActionPerformed
+         
+        txtIDConsultorio.setText(null);
+        txtNomeConsultorio.setText(null);
+        txtEspecialidadeConsultorio.setText(null);
+        
+
+        JOptionPane.showMessageDialog(null, "Cadastro Cancelado!");
+    }//GEN-LAST:event_btnCancelarConsultoriosActionPerformed
+
+    private void btnEditarConsultoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarConsultoriosActionPerformed
+     
+        BigDecimal numero = (BigDecimal) TabelaConsultorios.getModel().getValueAt(TabelaConsultorios.getSelectedRow(), 0);
+        txtIDConsultorio.setText(numero.toString());
+
+        String consultorio = (String) TabelaConsultorios.getModel().getValueAt(TabelaConsultorios.getSelectedRow(), 1);
+        txtNomeConsultorio.setText(consultorio);
+        
+        String especialidadeConsultorio = (String) TabelaConsultorios.getModel().getValueAt(TabelaConsultorios.getSelectedRow(), 2);
+        txtEspecialidadeConsultorio.setText(especialidadeConsultorio);
+       
+    }//GEN-LAST:event_btnEditarConsultoriosActionPerformed
+
+    private void btnExcluirConsultoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirConsultoriosActionPerformed
+     try {
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+
+            if(JOptionPane.showConfirmDialog(null, "Deseja realmente excluir esse cadastro?", "", JOptionPane.YES_NO_OPTION) <= 0 ){
+                BigDecimal numero = (BigDecimal) TabelaConsultorios.getModel().getValueAt(TabelaConsultorios.getSelectedRow(), 0);
+                String query = "DELETE FROM CONSULTORIOS WHERE ID_CONSULTORIO= '" + numero.toString() + "'";
+                Connection con = databaseConnection.Conexao();
+                PreparedStatement pst = con.prepareStatement(query);
+                pst.execute();
+
+                pst.close();
+                JOptionPane.showMessageDialog(null, "Cadastro Excluído!");
+            } 
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro na Exclusão!");
+            System.out.println(ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+         
+        preencherTabela("Select * from CONSULTORIOS ORDER BY ID_CONSULTORIO");
+    }//GEN-LAST:event_btnExcluirConsultoriosActionPerformed
+
+    private void btnSalvarConsultoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarConsultoriosActionPerformed
+ if (txtNomeConsultorio.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o Nome!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtNomeConsultorio.requestFocus();
+            return;
+        }
+        if (txtEspecialidadeConsultorio.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe a Especialidade!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtEspecialidadeConsultorio.requestFocus();
+            return;
+        }
+        
+
+        try {
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+
+            String query = "INSERT CONSULTORIOS (ID_CONSULTORIO, NOME_CONSULTORIO, ESPECIALIDADE_CONSULTORIO) VALUES(ID.NEXTVAL, ?, ?)";
+
+            Connection con = databaseConnection.Conexao();
+            PreparedStatement pst = con.prepareStatement(query);
+
+            int count = 0;
+            pst.setString(++count, txtNomeConsultorio.getText());
+            pst.setString(++count, txtEspecialidadeConsultorio.getText());
+           
+
+            pst.execute();
+
+            pst.close();
+            JOptionPane.showMessageDialog(null, "Cadastro Salvo!");
+
+            txtNomeConsultorio.setText(null);
+            txtEspecialidadeConsultorio.setText(null);
+            
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro no cadastro!");
+            System.out.println(ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        preencherTabela("Select * from CONSULTORIOS ORDER BY ID_CONSULTORIO");
+    }//GEN-LAST:event_btnSalvarConsultoriosActionPerformed
+
+    private void btnAtualizarConsultoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarConsultoriosActionPerformed
+    if (txtNomeConsultorio.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o Nome!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtNomeConsultorio.requestFocus();
+            return;
+        }
+        if (txtEspecialidadeConsultorio.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe a Especialidade!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtEspecialidadeConsultorio.requestFocus();
+            return;
+        }
+        
+         try {
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+
+            String query = "UPDATE CONSULTORIOS SET NOME_CONSULTORIO= '"+txtNomeConsultorio.getText()+"' ,ESPECIALIDADE= '"+txtEspecialidadeConsultorio.getText()+"', WHERE ID_CONSULTORIO= "+txtIDConsultorio.getText()+"";
+            Connection con = databaseConnection.Conexao();
+            PreparedStatement pst = con.prepareStatement(query);
+            pst.execute();
+
+            pst.close();
+            JOptionPane.showMessageDialog(null, "Cadastro Alterado!");
+            
+            txtIDConsultorio.setText(null);
+            txtNomeConsultorio.setText(null);
+            txtEspecialidadeConsultorio.setText(null);
+           
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro na Alteração!");
+            System.out.println(ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+         
+        preencherTabela("Select * from CONSULTORIOS ORDER BY ID_CONSULTORIO");
+    }//GEN-LAST:event_btnAtualizarConsultoriosActionPerformed
+
+    private void btnCancelarConveniosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarConveniosActionPerformed
+      txtIDConvenio.setText(null);
+        txtNomeConvenio.setText(null);
+        txtClinicaConvenio.setText(null);
+        txtRegistroANS.setText(null);
+        
+
+        JOptionPane.showMessageDialog(null, "Cadastro Cancelado!");
+    }//GEN-LAST:event_btnCancelarConveniosActionPerformed
+
+    private void btnEditarConveniosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarConveniosActionPerformed
+       BigDecimal numero = (BigDecimal) TabelaConvenios.getModel().getValueAt(TabelaConvenios.getSelectedRow(), 0);
+        txtIDConvenio.setText(numero.toString());
+
+        String convenio = (String) TabelaConvenios.getModel().getValueAt(TabelaConvenios.getSelectedRow(), 1);
+        txtNomeConvenio.setText(convenio);
+        
+        String clinicaConvenio = (String) TabelaConvenios.getModel().getValueAt(TabelaConvenios.getSelectedRow(), 2);
+        txtClinicaConvenio.setText(clinicaConvenio);
+        
+        String registro = (String) TabelaConvenios.getModel().getValueAt(TabelaConvenios.getSelectedRow(), 3);
+        txtRegistroANS.setText(registro);
+        
+    
+    }//GEN-LAST:event_btnEditarConveniosActionPerformed
+
+    private void btnExcluirConveniosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirConveniosActionPerformed
+       try {
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+
+            if(JOptionPane.showConfirmDialog(null, "Deseja realmente excluir este registro?", "", JOptionPane.YES_NO_OPTION) <= 0 ){
+                BigDecimal numero = (BigDecimal) TabelaConvenios.getModel().getValueAt(TabelaConvenios.getSelectedRow(), 0);
+                String query = "DELETE FROM CONVENIOS WHERE ID_CONVENIO= '" + numero.toString() + "'";
+                Connection con = databaseConnection.Conexao();
+                PreparedStatement pst = con.prepareStatement(query);
+                pst.execute();
+
+                pst.close();
+                JOptionPane.showMessageDialog(null, "Cadastro Excluído!");
+            } 
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro na Exclusão!");
+            System.out.println(ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+         
+        preencherTabela("Select * from CONVENIOS ORDER BY ID_CONVENIO");
+    }//GEN-LAST:event_btnExcluirConveniosActionPerformed
+
+    private void btnSalvarConveniosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarConveniosActionPerformed
+        if (txtNomeConvenio.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o Nome!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtNomeConvenio.requestFocus();
+            return;
+        }
+        if (txtClinicaConvenio.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe a Clinica!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtClinicaConvenio.requestFocus();
+            return;
+        }
+        if (txtRegistroANS.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o Registro!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtRegistroANS.requestFocus();
+            return;
+        }
+      
+        try {
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+
+            String query = "INSERT INTO CONVENIOS (ID_CONVENIO, NOME_CONVENIO, CLINICA_CONVENIO, REGISTRO_ANS) VALUES(ID.NEXTVAL, ?, ?, ?)";
+
+            Connection con = databaseConnection.Conexao();
+            PreparedStatement pst = con.prepareStatement(query);
+
+            int count = 0;
+            pst.setString(++count, txtNomeConvenio.getText());
+            pst.setString(++count, txtClinicaConvenio.getText());
+            pst.setString(++count, txtRegistroANS.getText());
+           
+            pst.execute();
+
+            pst.close();
+            JOptionPane.showMessageDialog(null, "Cadastro Salvo!");
+
+            txtNomeConvenio.setText(null);
+            txtClinicaConvenio.setText(null);
+            txtRegistroANS.setText(null);
+            
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro no cadastro!");
+            System.out.println(ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        preencherTabela("Select * from CONVENIOS ORDER BY ID_CONVENIO");
+    }//GEN-LAST:event_btnSalvarConveniosActionPerformed
+
+    private void btnAtualizarConveniosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarConveniosActionPerformed
+    if (txtNomeConvenio.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o Nome!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtNomeConvenio.requestFocus();
+            return;
+        }
+        if (txtClinicaConvenio.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe a Clinica!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtClinicaConvenio.requestFocus();
+            return;
+        }
+        if (txtRegistroANS.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o Registro!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtRegistroANS.requestFocus();
+            return;
+        }
+
+        
+         try {
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+
+            String query = "UPDATE CONVENIOS SET NOME_CONVENIO= '"+txtNomeConvenio.getText()+"' ,CLINICA_CONVENIO= '"+txtClinicaConvenio.getText()+"', REGISTRO_ANS= "+txtRegistroANS.getText()+"' WHERE ID_CONVENIO= "+txtIDConvenio.getText()+"";
+            Connection con = databaseConnection.Conexao();
+            PreparedStatement pst = con.prepareStatement(query);
+            pst.execute();
+
+            pst.close();
+            JOptionPane.showMessageDialog(null, "Cadastro Alterado!");
+            
+            txtIDConvenio.setText(null);
+            txtNomeConvenio.setText(null);
+            txtClinicaConvenio.setText(null);
+            txtRegistroANS.setText(null);
+            
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro na Alteração!");
+            System.out.println(ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+         
+        preencherTabela("Select * from CONVENIOS ORDER BY ID_CONVENIO");
+    }//GEN-LAST:event_btnAtualizarConveniosActionPerformed
 
     private DefaultTableModel modeloTabela = new DefaultTableModel();
 
@@ -1159,12 +1702,15 @@ public class Cadastros extends javax.swing.JFrame {
     private javax.swing.JPanel PainelCadastrosConsultorios;
     private javax.swing.JPanel PainelCadastrosConvenios;
     private javax.swing.JPanel PainelCadastrosMedicos;
-    private javax.swing.JPanel PainelCadastrosUsuario;
+    private javax.swing.JPanel PainelCadastrosUsuarios;
     private javax.swing.JPanel PainelPrincipal1;
     private javax.swing.JPanel PainelPrincipal2;
     private javax.swing.JPanel PainelPrincipal3;
+    private javax.swing.JTable TabelaConsultorios;
+    private javax.swing.JTable TabelaConvenios;
     private javax.swing.JTable TabelaMedicos;
     private javax.swing.JScrollPane TabelaMedicosScroll;
+    private javax.swing.JTable TabelaUsuarios;
     private javax.swing.JButton btnAtualizarConsultorios;
     private javax.swing.JButton btnAtualizarConvenios;
     private javax.swing.JButton btnAtualizarMedico;
@@ -1191,7 +1737,6 @@ public class Cadastros extends javax.swing.JFrame {
     private javax.swing.JButton btnSalvarUsuarios;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1210,6 +1755,9 @@ public class Cadastros extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1217,28 +1765,29 @@ public class Cadastros extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JTextField txtCRM;
+    private javax.swing.JTextField txtClinicaConvenio;
     private javax.swing.JTextField txtClinicas;
+    private javax.swing.JPasswordField txtConfirmarSenhaUsuario;
     private javax.swing.JComboBox<String> txtDuracaoConsulta;
     private javax.swing.JTextField txtEspecialidade;
+    private javax.swing.JTextField txtEspecialidadeConsultorio;
+    private javax.swing.JTextField txtIDConsultorio;
+    private javax.swing.JTextField txtIDConvenio;
     private javax.swing.JTextField txtIDMedico;
+    private javax.swing.JTextField txtIDUsuario;
+    private javax.swing.JTextField txtNomeConsultorio;
+    private javax.swing.JTextField txtNomeConvenio;
     private javax.swing.JTextField txtNomeMedico;
+    private javax.swing.JTextField txtNomeUsuario;
+    private javax.swing.JTextField txtRegistroANS;
+    private javax.swing.JPasswordField txtSenhaUsuario;
+    private javax.swing.JComboBox<String> txtTipoUsuario;
     // End of variables declaration//GEN-END:variables
 }
