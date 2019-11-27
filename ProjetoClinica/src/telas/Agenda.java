@@ -35,11 +35,16 @@ public class Agenda extends javax.swing.JFrame {
         jComboBox2 = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         btnNovoAgendamento.setText("Novo Agendamento");
+        btnNovoAgendamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoAgendamentoActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Tipo de Agendamento:");
 
@@ -119,12 +124,20 @@ public class Agenda extends javax.swing.JFrame {
                 .addContainerGap(49, Short.MAX_VALUE))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(831, 574));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void btnNovoAgendamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoAgendamentoActionPerformed
+        
+        NovoAgendamento novoAgendamento = new NovoAgendamento();
+        novoAgendamento.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnNovoAgendamentoActionPerformed
 
     /**
      * @param args the command line arguments

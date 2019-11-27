@@ -85,10 +85,8 @@ public class Cadastros extends javax.swing.JFrame {
         btnCadastrosMedicos = new javax.swing.JButton();
         btnCadastrosConsultorios = new javax.swing.JButton();
         btnCadastrosConvenios = new javax.swing.JButton();
+        btnHeartClinCadastros = new javax.swing.JButton();
         PainelPrincipal3 = new javax.swing.JPanel();
-        ImagemCadastrosUsuarios = new javax.swing.JPanel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
         ImagemCadastrosMedicos = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -96,6 +94,9 @@ public class Cadastros extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         ImagemCadastrosConvenios = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
+        ImagemCadastrosUsuarios = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
         PainelPrincipal2 = new javax.swing.JPanel();
         PainelCadastrosUsuario = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
@@ -199,36 +200,14 @@ public class Cadastros extends javax.swing.JFrame {
             }
         });
 
+        btnHeartClinCadastros.setText("HeartClin");
+        btnHeartClinCadastros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHeartClinCadastrosActionPerformed(evt);
+            }
+        });
+
         PainelPrincipal3.setLayout(new java.awt.CardLayout());
-
-        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/004-man.png"))); // NOI18N
-
-        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/003-girl.png"))); // NOI18N
-
-        javax.swing.GroupLayout ImagemCadastrosUsuariosLayout = new javax.swing.GroupLayout(ImagemCadastrosUsuarios);
-        ImagemCadastrosUsuarios.setLayout(ImagemCadastrosUsuariosLayout);
-        ImagemCadastrosUsuariosLayout.setHorizontalGroup(
-            ImagemCadastrosUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ImagemCadastrosUsuariosLayout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
-                .addComponent(jLabel21)
-                .addGap(30, 30, 30)
-                .addComponent(jLabel22)
-                .addGap(34, 34, 34))
-        );
-        ImagemCadastrosUsuariosLayout.setVerticalGroup(
-            ImagemCadastrosUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ImagemCadastrosUsuariosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(ImagemCadastrosUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ImagemCadastrosUsuariosLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-
-        PainelPrincipal3.add(ImagemCadastrosUsuarios, "ImagemCadastrosUsuarios");
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/002-doctor-1.png"))); // NOI18N
 
@@ -295,6 +274,35 @@ public class Cadastros extends javax.swing.JFrame {
 
         PainelPrincipal3.add(ImagemCadastrosConvenios, "ImagemCadastrosConvenios");
 
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/004-man.png"))); // NOI18N
+
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/003-girl.png"))); // NOI18N
+
+        javax.swing.GroupLayout ImagemCadastrosUsuariosLayout = new javax.swing.GroupLayout(ImagemCadastrosUsuarios);
+        ImagemCadastrosUsuarios.setLayout(ImagemCadastrosUsuariosLayout);
+        ImagemCadastrosUsuariosLayout.setHorizontalGroup(
+            ImagemCadastrosUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ImagemCadastrosUsuariosLayout.createSequentialGroup()
+                .addContainerGap(41, Short.MAX_VALUE)
+                .addComponent(jLabel21)
+                .addGap(30, 30, 30)
+                .addComponent(jLabel22)
+                .addGap(34, 34, 34))
+        );
+        ImagemCadastrosUsuariosLayout.setVerticalGroup(
+            ImagemCadastrosUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ImagemCadastrosUsuariosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(ImagemCadastrosUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ImagemCadastrosUsuariosLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        PainelPrincipal3.add(ImagemCadastrosUsuarios, "ImagemCadastrosUsuarios");
+
         javax.swing.GroupLayout PainelPrincipal1Layout = new javax.swing.GroupLayout(PainelPrincipal1);
         PainelPrincipal1.setLayout(PainelPrincipal1Layout);
         PainelPrincipal1Layout.setHorizontalGroup(
@@ -306,6 +314,7 @@ public class Cadastros extends javax.swing.JFrame {
             .addComponent(btnCadastrosConsultorios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnCadastrosMedicos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnCadastrosUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnHeartClinCadastros, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         PainelPrincipal1Layout.setVerticalGroup(
             PainelPrincipal1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -319,7 +328,9 @@ public class Cadastros extends javax.swing.JFrame {
                 .addComponent(btnCadastrosConsultorios)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCadastrosConvenios)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnHeartClinCadastros)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         PainelPrincipal2.setLayout(new java.awt.CardLayout());
@@ -848,7 +859,8 @@ public class Cadastros extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
 
-        setBounds(0, 0, 849, 548);
+        setSize(new java.awt.Dimension(849, 548));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastrosUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrosUsuariosActionPerformed
@@ -1060,6 +1072,12 @@ public class Cadastros extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnExcluirMedicoActionPerformed
 
+    private void btnHeartClinCadastrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHeartClinCadastrosActionPerformed
+        HeartClin heartClin = new HeartClin();
+        heartClin.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnHeartClinCadastrosActionPerformed
+
     private DefaultTableModel modeloTabela = new DefaultTableModel();
 
     public JTextField getTxtNomeMedico() {
@@ -1073,9 +1091,6 @@ public class Cadastros extends javax.swing.JFrame {
 
     public void preencherTabela(String Sql) {
         connection = databaseConnection.Conexao();
-        //ArrayList dados = new ArrayList();
-        //String[] colunas = new String[]{"ID Medico", "Nome", "Especialidade", "CRM", "Duração da consulta", "Clínicas"};
-
         try {
             DatabaseConnection databaseConnection = new DatabaseConnection();
             Connection con = databaseConnection.Conexao();
@@ -1092,9 +1107,7 @@ public class Cadastros extends javax.swing.JFrame {
 
     public void preencherComboClinica(String Sql) {
         connection = databaseConnection.Conexao();
-        //ArrayList dados = new ArrayList();
-        //String[] colunas = new String[]{"ID Medico", "Nome", "Especialidade", "CRM", "Duração da consulta", "Clínicas"};
-
+        
         try {
             DatabaseConnection databaseConnection = new DatabaseConnection();
             Connection con = databaseConnection.Conexao();
@@ -1185,6 +1198,7 @@ public class Cadastros extends javax.swing.JFrame {
     private javax.swing.JButton btnExcluirConvenios;
     private javax.swing.JButton btnExcluirMedico;
     private javax.swing.JButton btnExcluirUsuarios;
+    private javax.swing.JButton btnHeartClinCadastros;
     private javax.swing.JButton btnSalvarConsultorios;
     private javax.swing.JButton btnSalvarConvenios;
     private javax.swing.JButton btnSalvarMedico;

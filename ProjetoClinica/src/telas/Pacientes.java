@@ -8,26 +8,40 @@ package telas;
 import Database.DatabaseConnection;
 import Utils.ConsultaCep;
 import java.awt.CardLayout;
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.ImageIcon;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.naming.spi.DirStateFactory;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
 import javax.swing.table.DefaultTableModel;
-import sun.security.util.Debug;
+import javax.swing.text.TabableView;
+import static oracle.net.aso.b.c;
+import java.sql.*;
+import javax.swing.JOptionPane;
+import javax.swing.*;
+import net.proteanit.sql.DbUtils;
 
 
     
 
 public class Pacientes extends javax.swing.JFrame {
-    
+    DatabaseConnection databaseConnection = new DatabaseConnection();
     /**
      * Creates new form Pacientes
      */
     public Pacientes() {
         initComponents();
         
-        /*listarCadastros();*/
+        
        
     }
     
@@ -46,6 +60,7 @@ public class Pacientes extends javax.swing.JFrame {
         Doctor = new javax.swing.JLabel();
         LocalizarPacientes = new javax.swing.JButton();
         NovoPaciente = new javax.swing.JButton();
+        btnHeartClinPacientes = new javax.swing.JButton();
         PainelPrincipal = new javax.swing.JPanel();
         PainelLocalizarPacientes = new javax.swing.JPanel();
         jPanelPacientes1 = new javax.swing.JPanel();
@@ -53,12 +68,12 @@ public class Pacientes extends javax.swing.JFrame {
         txtProcurar1 = new javax.swing.JLabel();
         txtBusca1 = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tabela1 = new javax.swing.JTable();
+        TabelaPacientes = new javax.swing.JTable();
         labelClientes1 = new javax.swing.JLabel();
-        btnAlterar1 = new javax.swing.JButton();
-        btnExcluir1 = new javax.swing.JButton();
-        btnVisualizar = new javax.swing.JButton();
         btnBusca = new javax.swing.JButton();
+        btnEditarPacientes = new javax.swing.JButton();
+        btnExcluirPacientes = new javax.swing.JButton();
+        btnAtualizarMedico = new javax.swing.JButton();
         PainelNovoPaciente = new javax.swing.JPanel();
         titulo2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -79,11 +94,9 @@ public class Pacientes extends javax.swing.JFrame {
         txtCidade = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtDataCadastro = new javax.swing.JTextField();
         txtNomePaciente = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtDataNascimento = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtTelefone = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -97,9 +110,10 @@ public class Pacientes extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         txtIDPaciente = new javax.swing.JTextField();
         txtSexo = new javax.swing.JTextField();
-        btnCancelar = new javax.swing.JButton();
-        btnSalvar2 = new javax.swing.JButton();
-        btnVoltar1 = new javax.swing.JButton();
+        txtDataCadastro = new com.toedter.calendar.JDateChooser();
+        txtDataNascimento = new com.toedter.calendar.JDateChooser();
+        btnSalvarPacientes = new javax.swing.JButton();
+        btnCancelarPacientes = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -112,7 +126,7 @@ public class Pacientes extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         Nurse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/nurse (1).png"))); // NOI18N
 
@@ -132,21 +146,32 @@ public class Pacientes extends javax.swing.JFrame {
             }
         });
 
+        btnHeartClinPacientes.setText("HeartClin");
+        btnHeartClinPacientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHeartClinPacientesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PainelBotoesLayout = new javax.swing.GroupLayout(PainelBotoes);
         PainelBotoes.setLayout(PainelBotoesLayout);
         PainelBotoesLayout.setHorizontalGroup(
             PainelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelBotoesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(PainelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(PainelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PainelBotoesLayout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(Nurse, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Doctor, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(LocalizarPacientes, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
-                    .addComponent(NovoPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(PainelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(PainelBotoesLayout.createSequentialGroup()
+                                .addGap(41, 41, 41)
+                                .addComponent(Nurse, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Doctor, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(LocalizarPacientes, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                            .addComponent(NovoPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(btnHeartClinPacientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         PainelBotoesLayout.setVerticalGroup(
             PainelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,7 +184,9 @@ public class Pacientes extends javax.swing.JFrame {
                 .addComponent(LocalizarPacientes)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(NovoPaciente)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnHeartClinPacientes)
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         PainelPrincipal.setLayout(new java.awt.CardLayout());
@@ -179,7 +206,7 @@ public class Pacientes extends javax.swing.JFrame {
             }
         });
 
-        tabela1.setModel(new javax.swing.table.DefaultTableModel(
+        TabelaPacientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -187,34 +214,36 @@ public class Pacientes extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane2.setViewportView(tabela1);
+        jScrollPane2.setViewportView(TabelaPacientes);
 
         labelClientes1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labelClientes1.setText("Total de clientes: 0");
-
-        btnAlterar1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnAlterar1.setText("Alterar");
-        btnAlterar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAlterar1ActionPerformed(evt);
-            }
-        });
-
-        btnExcluir1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnExcluir1.setText("Excluir");
-        btnExcluir1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExcluir1ActionPerformed(evt);
-            }
-        });
-
-        btnVisualizar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnVisualizar.setText("Visualizar");
 
         btnBusca.setText("Buscar");
         btnBusca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscaActionPerformed(evt);
+            }
+        });
+
+        btnEditarPacientes.setText("Editar");
+        btnEditarPacientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarPacientesActionPerformed(evt);
+            }
+        });
+
+        btnExcluirPacientes.setText("Excluir");
+        btnExcluirPacientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirPacientesActionPerformed(evt);
+            }
+        });
+
+        btnAtualizarMedico.setText("Atualizar");
+        btnAtualizarMedico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtualizarMedicoActionPerformed(evt);
             }
         });
 
@@ -226,16 +255,6 @@ public class Pacientes extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelPacientes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPacientes1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanelPacientes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPacientes1Layout.createSequentialGroup()
-                                .addComponent(btnVisualizar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnAlterar1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnExcluir1))
-                            .addComponent(labelClientes1, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(jPanelPacientes1Layout.createSequentialGroup()
                         .addComponent(titulo1)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -244,7 +263,17 @@ public class Pacientes extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtBusca1, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnBusca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(btnBusca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPacientes1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanelPacientes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelClientes1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPacientes1Layout.createSequentialGroup()
+                                .addComponent(btnEditarPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnExcluirPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnAtualizarMedico)))))
                 .addContainerGap())
         );
         jPanelPacientes1Layout.setVerticalGroup(
@@ -258,15 +287,15 @@ public class Pacientes extends javax.swing.JFrame {
                     .addComponent(txtBusca1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBusca))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelClientes1, javax.swing.GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE)
-                .addGap(1, 1, 1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelPacientes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnExcluir1)
-                    .addComponent(btnAlterar1)
-                    .addComponent(btnVisualizar))
-                .addContainerGap())
+                    .addComponent(btnExcluirPacientes)
+                    .addComponent(btnEditarPacientes)
+                    .addComponent(btnAtualizarMedico))
+                .addGap(8, 8, 8))
         );
 
         javax.swing.GroupLayout PainelLocalizarPacientesLayout = new javax.swing.GroupLayout(PainelLocalizarPacientes);
@@ -286,6 +315,7 @@ public class Pacientes extends javax.swing.JFrame {
         titulo2.setText("Pacientes");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel10.setText("CEP:");
 
@@ -436,6 +466,8 @@ public class Pacientes extends javax.swing.JFrame {
 
         jLabel17.setText("ID:");
 
+        txtDataCadastro.setOpaque(false);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -480,29 +512,29 @@ public class Pacientes extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtIDPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtIDPaciente)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDataCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtDataCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtDataCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel17)
-                    .addComponent(txtIDPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(jLabel17)
+                        .addComponent(txtIDPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDataCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtDataNascimento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -525,22 +557,17 @@ public class Pacientes extends javax.swing.JFrame {
                     .addComponent(txtConvenio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(144, Short.MAX_VALUE))
         );
 
-        btnCancelar.setText("Cancelar");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+        btnSalvarPacientes.setText("Salvar");
+        btnSalvarPacientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
+                btnSalvarPacientesActionPerformed(evt);
             }
         });
 
-        btnSalvar2.setText("Salvar");
-        btnSalvar2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalvar2ActionPerformed(evt);
-            }
-        });
+        btnCancelarPacientes.setText("Cancelar");
 
         javax.swing.GroupLayout PainelNovoPacienteLayout = new javax.swing.GroupLayout(PainelNovoPaciente);
         PainelNovoPaciente.setLayout(PainelNovoPacienteLayout);
@@ -555,9 +582,9 @@ public class Pacientes extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelNovoPacienteLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnCancelar)
+                        .addComponent(btnCancelarPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnSalvar2)))
+                        .addComponent(btnSalvarPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         PainelNovoPacienteLayout.setVerticalGroup(
@@ -566,26 +593,15 @@ public class Pacientes extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(titulo2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(PainelNovoPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelar)
-                    .addComponent(btnSalvar2))
+                    .addComponent(btnSalvarPacientes)
+                    .addComponent(btnCancelarPacientes))
                 .addContainerGap())
         );
 
         PainelPrincipal.add(PainelNovoPaciente, "PainelNovoPaciente");
-
-        btnVoltar1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnVoltar1.setText("Voltar");
-        btnVoltar1.setMaximumSize(new java.awt.Dimension(97, 25));
-        btnVoltar1.setMinimumSize(new java.awt.Dimension(97, 25));
-        btnVoltar1.setPreferredSize(new java.awt.Dimension(97, 25));
-        btnVoltar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVoltar1ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -593,9 +609,7 @@ public class Pacientes extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PainelBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVoltar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(PainelBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PainelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -606,20 +620,19 @@ public class Pacientes extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(PainelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(PainelBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnVoltar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(PainelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
-        pack();
+        setSize(new java.awt.Dimension(1084, 536));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void LocalizarPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LocalizarPacientesActionPerformed
         mostrarTelas("PainelLocalizarPacientes");
+        preencherTabela("SELECT * FROM PACIENTES ORDER BY ID_PACIENTE");
     }//GEN-LAST:event_LocalizarPacientesActionPerformed
 
     private void NovoPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovoPacienteActionPerformed
@@ -634,14 +647,6 @@ public class Pacientes extends javax.swing.JFrame {
 
          
     }//GEN-LAST:event_txtBusca1KeyReleased
-
-    private void btnAlterar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterar1ActionPerformed
- 
-    }//GEN-LAST:event_btnAlterar1ActionPerformed
-
-    private void btnExcluir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluir1ActionPerformed
-
-    }//GEN-LAST:event_btnExcluir1ActionPerformed
 
     private void txtCEPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCEPActionPerformed
         // TODO add your handling code here:
@@ -659,144 +664,6 @@ public class Pacientes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEstadoActionPerformed
 
-    private void btnSalvar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvar2ActionPerformed
-    
-        if (txtDataCadastro.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Informe a Data do Cadastro!", "Campo em branco", JOptionPane.YES_NO_OPTION);
-            txtNomePaciente.requestFocus();
-            return;
-        }
-        
-        if (txtDataNascimento.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Informe a Data de Nascimento!", "Campo em branco", JOptionPane.YES_NO_OPTION);
-            txtTelefone.requestFocus();
-            return;
-        }
-        
-        if (txtNomePaciente.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Informe o Nome do Paciente!", "Campo em branco", JOptionPane.YES_NO_OPTION);
-            txtEmail.requestFocus();
-            return;
-        }
-        
-        if (txtCPF.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Informe o CPF!", "Campo em branco", JOptionPane.YES_NO_OPTION);
-            txtEmail.requestFocus();
-            return;
-        }
-        
-        if (txtRG.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Informe o RG!", "Campo em branco", JOptionPane.YES_NO_OPTION);
-            txtEmail.requestFocus();
-            return;
-        }
-        
-        if (txtTelefone.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Informe o Telefone!", "Campo em branco", JOptionPane.YES_NO_OPTION);
-            txtEmail.requestFocus();
-            return;
-        }
-        
-        if (txtConvenio.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Informe o Convenio!", "Campo em branco", JOptionPane.YES_NO_OPTION);
-            txtEmail.requestFocus();
-            return;
-        }
-        
-        if (txtCEP.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Informe o CEP!", "Campo em branco", JOptionPane.YES_NO_OPTION);
-            txtEmail.requestFocus();
-            return;
-        }
-        
-        if (txtLogradouro.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Informe o Logradouro!", "Campo em branco", JOptionPane.YES_NO_OPTION);
-            txtEmail.requestFocus();
-            return;
-        }
-        
-        if (txtNumero.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Informe o Numero!", "Campo em branco", JOptionPane.YES_NO_OPTION);
-            txtEmail.requestFocus();
-            return;
-        }
-        
-        if (txtBairro.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Informe o Bairro!", "Campo em branco", JOptionPane.YES_NO_OPTION);
-            txtEmail.requestFocus();
-            return;
-        }
-        
-        if (txtCidade.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Informe a Cidade!", "Campo em branco", JOptionPane.YES_NO_OPTION);
-            txtEmail.requestFocus();
-            return;
-        }
-        
-        if (txtEstado.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Informe o Estado!", "Campo em branco", JOptionPane.YES_NO_OPTION);
-            txtEmail.requestFocus();
-            return;
-        }
-
-        try{
-            DatabaseConnection databaseConnection = new DatabaseConnection();
-
-            String query = "INSERT INTO PACIENTES (ID_PACIENTE, DATA_CADASTRO, NASCIMENTO, NOME_PACIENTE, CPF, RG, TELEFONE, SEXO, EMAIL, CEP, LOGRADOURO, NUMERO, COMPLEMENTO, BAIRRO, CIDADE, ESTADO ) VALUES(ID.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-            Connection con = databaseConnection.Conexao();
-            PreparedStatement pst = con.prepareStatement(query);
-            
-            int count = 0;
-            pst.setString(++count, txtDataCadastro.getText());
-            pst.setString(++count, txtDataNascimento.getText());
-            pst.setString(++count, txtNomePaciente.getText());
-            pst.setString(++count, txtCPF.getText());
-            pst.setString(++count, txtRG.getText());
-            pst.setString(++count, txtTelefone.getText());
-            pst.setString(++count, txtSexo.getText());
-            pst.setString(++count, txtEmail.getText());
-            pst.setString(++count, txtCEP.getText());
-            pst.setString(++count, txtLogradouro.getText());
-            pst.setString(++count, txtNumero.getText());
-            pst.setString(++count, txtComplemento.getText());
-            pst.setString(++count, txtBairro.getText());
-            pst.setString(++count, txtCidade.getText());
-            pst.setString(++count, txtEstado.getText());
-            
-            pst.execute();
-            
-            pst.close();
-            JOptionPane.showMessageDialog(null, "Cadastro Salvo!"); 
-            
-            txtDataCadastro.setText(null);
-            txtDataNascimento.setText(null);
-            txtNomePaciente.setText(null);
-            txtCPF.setText(null);
-            txtRG.setText(null);
-            txtTelefone.setText(null);
-            txtSexo.setText(null);
-            txtEmail.setText(null);
-            txtCEP.setText(null);
-            txtLogradouro.setText(null);
-            txtNumero.setText(null);
-            txtComplemento.setText(null);
-            txtBairro.setText(null);
-            txtCidade.setText(null);       
-            txtEstado.setText(null);
-            
-        } catch(SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro no cadastro!");
-            System.out.println(ex.getMessage());
-        } catch(Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-        
-        
-       
-   
-    }//GEN-LAST:event_btnSalvar2ActionPerformed
-
     private void txtTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefoneActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTelefoneActionPerformed
@@ -804,12 +671,6 @@ public class Pacientes extends javax.swing.JFrame {
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailActionPerformed
-
-    private void btnVoltar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar1ActionPerformed
-        HeartClin heartClin = new HeartClin();
-        heartClin.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnVoltar1ActionPerformed
 
     private void txtCEPInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtCEPInputMethodTextChanged
         
@@ -835,33 +696,276 @@ public class Pacientes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtCEPKeyReleased
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        
-            txtDataCadastro.setText(null);
-            txtDataNascimento.setText(null);
+    private void btnBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscaActionPerformed
+
+    private void btnEditarPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPacientesActionPerformed
+
+        BigDecimal numero = (BigDecimal) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 0);
+        txtIDPaciente.setText(numero.toString());
+
+        String dataCadastro = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 1);
+        txtDataCadastro.setText(dataCadastro);
+
+        String dataNascimento = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 2);
+        txtDataNascimento.setText(dataNascimento);
+
+        String crm = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 3);
+        txtCRM.setText(crm);
+
+        String duracaoConsulta = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 4);
+        if (duracaoConsulta.equals("30 Minutos"))
+        txtDuracaoConsulta.setSelectedIndex(1);
+        else if (duracaoConsulta.equals("35 Minutos"))
+        txtDuracaoConsulta.setSelectedIndex(2);
+        else if (duracaoConsulta.equals("40 Minutos"))
+        txtDuracaoConsulta.setSelectedIndex(3);
+        else if (duracaoConsulta.equals("45 Minutos"))
+        txtDuracaoConsulta.setSelectedIndex(4);
+        else if (duracaoConsulta.equals("1 Hora"))
+        txtDuracaoConsulta.setSelectedIndex(5);
+        else
+        txtDuracaoConsulta.setSelectedIndex(6);
+
+        String clinicas = (String) TabelaMedicos.getModel().getValueAt(TabelaMedicos.getSelectedRow(), 5);
+        txtClinicas.setText(clinicas);
+    }//GEN-LAST:event_btnEditarPacientesActionPerformed
+
+    private void btnExcluirPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirPacientesActionPerformed
+        try {
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+
+            if(JOptionPane.showConfirmDialog(null, "Informe o Tempo de Duração da Consulta!", "Campo em branco", JOptionPane.YES_NO_OPTION) <= 0 ){
+                BigDecimal numero = (BigDecimal) TabelaMedicos.getModel().getValueAt(TabelaMedicos.getSelectedRow(), 0);
+                String query = "DELETE FROM MEDICOS WHERE ID_MEDICO= '" + numero.toString() + "'";
+                Connection con = databaseConnection.Conexao();
+                PreparedStatement pst = con.prepareStatement(query);
+                pst.execute();
+
+                pst.close();
+                JOptionPane.showMessageDialog(null, "Cadastro Excluído!");
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro na Exclusão!");
+            System.out.println(ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        preencherTabela("Select * from MEDICOS ORDER BY ID_MEDICO");
+
+    }//GEN-LAST:event_btnExcluirPacientesActionPerformed
+
+    private void btnAtualizarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarMedicoActionPerformed
+        if (txtNomeMedico.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o Nome!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtNomeMedico.requestFocus();
+            return;
+        }
+        if (txtEspecialidade.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe a Especialidade!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtEspecialidade.requestFocus();
+            return;
+        }
+        if (txtCRM.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o CRM!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtCRM.requestFocus();
+            return;
+        }
+
+        if (txtDuracaoConsulta.getSelectedItem().toString().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o Tempo de Duração da Consulta!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtDuracaoConsulta.requestFocus();
+            return;
+        }
+        try {
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+
+            String query = "UPDATE MEDICOS SET NOME_MEDICO= '"+txtNomeMedico.getText()+"' ,ESPECIALIDADE= '"+txtEspecialidade.getText()+"', CRM= "+txtCRM.getText()+", DURACAO_CONSULTA= '"+txtDuracaoConsulta.getSelectedItem().toString()+"' WHERE ID_MEDICO= "+txtIDMedico.getText()+"";
+            Connection con = databaseConnection.Conexao();
+            PreparedStatement pst = con.prepareStatement(query);
+            pst.execute();
+
+            pst.close();
+            JOptionPane.showMessageDialog(null, "Cadastro Alterado!");
+
+            txtIDMedico.setText(null);
+            txtNomeMedico.setText(null);
+            txtEspecialidade.setText(null);
+            txtCRM.setText(null);
+            txtDuracaoConsulta.setSelectedIndex(0);
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro na Alteração!");
+            System.out.println(ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        preencherTabela("Select * from MEDICOS ORDER BY ID_MEDICO");
+    }//GEN-LAST:event_btnAtualizarMedicoActionPerformed
+
+    private void btnHeartClinPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHeartClinPacientesActionPerformed
+        HeartClin heartClin = new HeartClin();
+        heartClin.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnHeartClinPacientesActionPerformed
+
+    private void btnSalvarPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarPacientesActionPerformed
+
+//        if (txtDataCadastro.getText().trim().isEmpty()) {
+//            JOptionPane.showMessageDialog(null, "Informe a Data do Cadastro!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+//            txtNomePaciente.requestFocus();
+//            return;
+//        }
+//
+//        if (txtDataNascimento.g) {
+//            JOptionPane.showMessageDialog(null, "Informe a Data de Nascimento!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+//            txtTelefone.requestFocus();
+//            return;
+//        }
+
+        if (txtNomePaciente.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o Nome do Paciente!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtEmail.requestFocus();
+            return;
+        }
+
+        if (txtCPF.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o CPF!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtEmail.requestFocus();
+            return;
+        }
+
+        if (txtRG.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o RG!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtEmail.requestFocus();
+            return;
+        }
+
+        if (txtTelefone.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o Telefone!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtEmail.requestFocus();
+            return;
+        }
+
+        if (txtConvenio.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o Convenio!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtEmail.requestFocus();
+            return;
+        }
+
+        if (txtCEP.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o CEP!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtEmail.requestFocus();
+            return;
+        }
+
+        if (txtLogradouro.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o Logradouro!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtEmail.requestFocus();
+            return;
+        }
+
+        if (txtNumero.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o Numero!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtEmail.requestFocus();
+            return;
+        }
+
+        if (txtBairro.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o Bairro!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtEmail.requestFocus();
+            return;
+        }
+
+        if (txtCidade.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe a Cidade!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtEmail.requestFocus();
+            return;
+        }
+
+        if (txtEstado.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o Estado!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtEmail.requestFocus();
+            return;
+        }
+
+        try{
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+
+            String query = "INSERT INTO PACIENTES (ID_PACIENTE, DATA_CADASTRO, NASCIMENTO, NOME_PACIENTE, CPF, RG, TELEFONE, SEXO, EMAIL, CEP, LOGRADOURO, NUMERO, COMPLEMENTO, BAIRRO, CIDADE, ESTADO ) VALUES(ID.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+            Connection con = databaseConnection.Conexao();
+            PreparedStatement pst = con.prepareStatement(query);
+
+            int count = 0;
+            pst.setDate(++count,new java.sql.Date(txtDataCadastro.getDate().getTime()) );
+            pst.setDate(++count,new java.sql.Date(txtDataNascimento.getDate().getTime()) );
+            pst.setString(++count, txtNomePaciente.getText());
+            pst.setString(++count, txtCPF.getText());
+            pst.setString(++count, txtRG.getText());
+            pst.setString(++count, txtTelefone.getText());
+            pst.setString(++count, txtSexo.getText());
+            pst.setString(++count, txtEmail.getText());
+            pst.setString(++count, txtCEP.getText());
+            pst.setString(++count, txtLogradouro.getText());
+            pst.setString(++count, txtNumero.getText());
+            pst.setString(++count, txtComplemento.getText());
+            pst.setString(++count, txtBairro.getText());
+            pst.setString(++count, txtCidade.getText());
+            pst.setString(++count, txtEstado.getText());
+
+            pst.execute();
+
+            pst.close();
+            JOptionPane.showMessageDialog(null, "Cadastro Salvo!");
+
+            txtDataCadastro.setDate(null);
+            txtDataNascimento.setDate(null);
             txtNomePaciente.setText(null);
             txtCPF.setText(null);
             txtRG.setText(null);
             txtTelefone.setText(null);
             txtSexo.setText(null);
             txtEmail.setText(null);
-            txtConvenio.setText(null);
             txtCEP.setText(null);
             txtLogradouro.setText(null);
             txtNumero.setText(null);
             txtComplemento.setText(null);
             txtBairro.setText(null);
-            txtCidade.setText(null);       
+            txtCidade.setText(null);
             txtEstado.setText(null);
-            
-            JOptionPane.showMessageDialog(null, "Cadastro Cancelado!");
+
+        } catch(SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro no cadastro!");
+            System.out.println(ex.getMessage());
+        } catch(Exception ex) {
+            System.out.println(ex.getMessage());
+        }
         
-    }//GEN-LAST:event_btnCancelarActionPerformed
+        preencherTabela("SELECT * FROM PACIENTES ORDER BY ID_PACIENTE");
+    }//GEN-LAST:event_btnSalvarPacientesActionPerformed
+    
+    Connection connection = null;
+    public void preencherTabela(String Sql) {
+        connection = databaseConnection.Conexao();
+        try {
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+            Connection con = databaseConnection.Conexao();
+            PreparedStatement pst = connection.prepareStatement(Sql);
+            ResultSet rs = pst.executeQuery();
 
-    private void btnBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBuscaActionPerformed
+            TabelaPacientes.setModel(DbUtils.resultSetToTableModel(rs));
+            databaseConnection.conexao.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage() + ex.getCause() + " + Erro ao Buscar Pacientes!");
+        }
 
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -906,13 +1010,14 @@ public class Pacientes extends javax.swing.JFrame {
     private javax.swing.JPanel PainelLocalizarPacientes;
     private javax.swing.JPanel PainelNovoPaciente;
     private javax.swing.JPanel PainelPrincipal;
-    private javax.swing.JButton btnAlterar1;
+    private javax.swing.JTable TabelaPacientes;
+    private javax.swing.JButton btnAtualizarMedico;
     private javax.swing.JButton btnBusca;
-    private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnExcluir1;
-    private javax.swing.JButton btnSalvar2;
-    private javax.swing.JButton btnVisualizar;
-    private javax.swing.JButton btnVoltar1;
+    private javax.swing.JButton btnCancelarPacientes;
+    private javax.swing.JButton btnEditarPacientes;
+    private javax.swing.JButton btnExcluirPacientes;
+    private javax.swing.JButton btnHeartClinPacientes;
+    private javax.swing.JButton btnSalvarPacientes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -936,7 +1041,6 @@ public class Pacientes extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelPacientes1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel labelClientes1;
-    private javax.swing.JTable tabela1;
     private javax.swing.JLabel titulo1;
     private javax.swing.JLabel titulo2;
     private javax.swing.JTextField txtBairro;
@@ -946,8 +1050,8 @@ public class Pacientes extends javax.swing.JFrame {
     private javax.swing.JTextField txtCidade;
     private javax.swing.JTextField txtComplemento;
     private javax.swing.JTextField txtConvenio;
-    private javax.swing.JTextField txtDataCadastro;
-    private javax.swing.JTextField txtDataNascimento;
+    private com.toedter.calendar.JDateChooser txtDataCadastro;
+    private com.toedter.calendar.JDateChooser txtDataNascimento;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEstado;
     private javax.swing.JTextField txtIDPaciente;
