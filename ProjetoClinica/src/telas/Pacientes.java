@@ -109,8 +109,8 @@ public class Pacientes extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         txtIDPaciente = new javax.swing.JTextField();
         txtSexo = new javax.swing.JTextField();
-        txtDataCadastro = new com.toedter.calendar.JDateChooser();
-        txtDataNascimento = new com.toedter.calendar.JDateChooser();
+        DataCadastro = new com.toedter.calendar.JDateChooser();
+        DataNascimento = new com.toedter.calendar.JDateChooser();
         btnSalvarPacientes = new javax.swing.JButton();
         btnCancelarPacientes = new javax.swing.JButton();
         btnAtualizarMedico = new javax.swing.JButton();
@@ -280,7 +280,7 @@ public class Pacientes extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(labelClientes1, javax.swing.GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE)
+                .addComponent(labelClientes1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelPacientes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnExcluirPacientes)
@@ -310,10 +310,10 @@ public class Pacientes extends javax.swing.JFrame {
         jLabel10.setText("CEP:");
 
         txtCEP.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 txtCEPInputMethodTextChanged(evt);
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         txtCEP.addActionListener(new java.awt.event.ActionListener() {
@@ -387,7 +387,7 @@ public class Pacientes extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel15)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE))
+                        .addComponent(txtEstado))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -456,8 +456,6 @@ public class Pacientes extends javax.swing.JFrame {
 
         jLabel17.setText("ID:");
 
-        txtDataCadastro.setOpaque(false);
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -505,26 +503,28 @@ public class Pacientes extends javax.swing.JFrame {
                         .addComponent(txtIDPaciente)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtDataCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(DataCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(DataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(jLabel17)
-                        .addComponent(txtIDPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtDataCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtDataNascimento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel17)
+                            .addComponent(txtIDPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(DataCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -547,7 +547,7 @@ public class Pacientes extends javax.swing.JFrame {
                     .addComponent(txtConvenio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(144, Short.MAX_VALUE))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
 
         btnSalvarPacientes.setText("Salvar");
@@ -558,6 +558,11 @@ public class Pacientes extends javax.swing.JFrame {
         });
 
         btnCancelarPacientes.setText("Cancelar");
+        btnCancelarPacientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarPacientesActionPerformed(evt);
+            }
+        });
 
         btnAtualizarMedico.setText("Atualizar");
         btnAtualizarMedico.addActionListener(new java.awt.event.ActionListener() {
@@ -701,35 +706,62 @@ public class Pacientes extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscaActionPerformed
 
     private void btnEditarPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPacientesActionPerformed
-
+        mostrarTelas("PainelNovoPaciente");
         BigDecimal numero = (BigDecimal) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 0);
         txtIDPaciente.setText(numero.toString());
 
-        String dataCadastro = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 1);
-        txtDataCadastro.setText(dataCadastro);
+       // String dataCadastro = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 1);
+       // DataCadastro.setDate(dataCadastro);
 
-        String dataNascimento = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 2);
-        txtDataNascimento.setText(dataNascimento);
+        //String dataNascimento = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 2);
+        //DataNascimento.setDate(dataNascimento);
 
-        String crm = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 3);
-        txtCRM.setText(crm);
+        String paciente = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 3);
+        txtNomePaciente.setText(paciente);
 
-        String duracaoConsulta = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 4);
-        if (duracaoConsulta.equals("30 Minutos"))
-        txtDuracaoConsulta.setSelectedIndex(1);
-        else if (duracaoConsulta.equals("35 Minutos"))
-        txtDuracaoConsulta.setSelectedIndex(2);
-        else if (duracaoConsulta.equals("40 Minutos"))
-        txtDuracaoConsulta.setSelectedIndex(3);
-        else if (duracaoConsulta.equals("45 Minutos"))
-        txtDuracaoConsulta.setSelectedIndex(4);
-        else if (duracaoConsulta.equals("1 Hora"))
-        txtDuracaoConsulta.setSelectedIndex(5);
-        else
-        txtDuracaoConsulta.setSelectedIndex(6);
+        String cpf = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 3);
+        txtCPF.setText(cpf);
+        
+        String rg = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 3);
+        txtRG.setText(rg);
+        
+        String telefone = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 3);
+        txtTelefone.setText(telefone);
+        
+        String sexo = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 3);
+        txtSexo.setText(sexo);
+        
+        String email = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 3);
+        txtEmail.setText(email);
+        
+        String convenio = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 3);
+        txtConvenio.setText(convenio);
+        
+        String cep = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 3);
+        txtCEP.setText(cep);
+        
+        String logradouro = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 3);
+        txtLogradouro.setText(logradouro);
+        
+        
+        String num = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 3);
+        txtNumero.setText(num);
+        
+        String complemento = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 3);
+        txtComplemento.setText(complemento);
+        
+        String bairro = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 3);
+        txtBairro.setText(bairro);
+        
+        String cidade = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 3);
+        txtCidade.setText(cidade);
+        
+        String estado = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 3);
+        txtEstado.setText(estado);
+        
 
-        String clinicas = (String) TabelaMedicos.getModel().getValueAt(TabelaMedicos.getSelectedRow(), 5);
-        txtClinicas.setText(clinicas);
+
+        
     }//GEN-LAST:event_btnEditarPacientesActionPerformed
 
     private void btnExcluirPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirPacientesActionPerformed
@@ -737,8 +769,8 @@ public class Pacientes extends javax.swing.JFrame {
             DatabaseConnection databaseConnection = new DatabaseConnection();
 
             if(JOptionPane.showConfirmDialog(null, "Informe o Tempo de Duração da Consulta!", "Campo em branco", JOptionPane.YES_NO_OPTION) <= 0 ){
-                BigDecimal numero = (BigDecimal) TabelaMedicos.getModel().getValueAt(TabelaMedicos.getSelectedRow(), 0);
-                String query = "DELETE FROM MEDICOS WHERE ID_MEDICO= '" + numero.toString() + "'";
+                BigDecimal numero = (BigDecimal) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 0);
+                String query = "DELETE FROM PACIENTES WHERE ID_PACIENTE= '" + numero.toString() + "'";
                 Connection con = databaseConnection.Conexao();
                 PreparedStatement pst = con.prepareStatement(query);
                 pst.execute();
@@ -754,7 +786,7 @@ public class Pacientes extends javax.swing.JFrame {
             System.out.println(ex.getMessage());
         }
 
-        preencherTabela("Select * from MEDICOS ORDER BY ID_MEDICO");
+        preencherTabela("Select * from PACIENTES ORDER BY ID_PACIENTE");
 
     }//GEN-LAST:event_btnExcluirPacientesActionPerformed
 
@@ -780,67 +812,67 @@ public class Pacientes extends javax.swing.JFrame {
 
         if (txtNomePaciente.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Informe o Nome do Paciente!", "Campo em branco", JOptionPane.YES_NO_OPTION);
-            txtEmail.requestFocus();
+            txtNomePaciente.requestFocus();
             return;
         }
 
         if (txtCPF.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Informe o CPF!", "Campo em branco", JOptionPane.YES_NO_OPTION);
-            txtEmail.requestFocus();
+            txtCPF.requestFocus();
             return;
         }
 
         if (txtRG.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Informe o RG!", "Campo em branco", JOptionPane.YES_NO_OPTION);
-            txtEmail.requestFocus();
+            txtRG.requestFocus();
             return;
         }
 
         if (txtTelefone.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Informe o Telefone!", "Campo em branco", JOptionPane.YES_NO_OPTION);
-            txtEmail.requestFocus();
+            txtTelefone.requestFocus();
             return;
         }
 
         if (txtConvenio.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Informe o Convenio!", "Campo em branco", JOptionPane.YES_NO_OPTION);
-            txtEmail.requestFocus();
+            txtConvenio.requestFocus();
             return;
         }
 
         if (txtCEP.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Informe o CEP!", "Campo em branco", JOptionPane.YES_NO_OPTION);
-            txtEmail.requestFocus();
+            txtCEP.requestFocus();
             return;
         }
 
         if (txtLogradouro.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Informe o Logradouro!", "Campo em branco", JOptionPane.YES_NO_OPTION);
-            txtEmail.requestFocus();
+            txtLogradouro.requestFocus();
             return;
         }
 
         if (txtNumero.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Informe o Numero!", "Campo em branco", JOptionPane.YES_NO_OPTION);
-            txtEmail.requestFocus();
+            txtNumero.requestFocus();
             return;
         }
 
         if (txtBairro.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Informe o Bairro!", "Campo em branco", JOptionPane.YES_NO_OPTION);
-            txtEmail.requestFocus();
+            txtBairro.requestFocus();
             return;
         }
 
         if (txtCidade.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Informe a Cidade!", "Campo em branco", JOptionPane.YES_NO_OPTION);
-            txtEmail.requestFocus();
+            txtCidade.requestFocus();
             return;
         }
 
         if (txtEstado.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Informe o Estado!", "Campo em branco", JOptionPane.YES_NO_OPTION);
-            txtEmail.requestFocus();
+            txtEstado.requestFocus();
             return;
         }
 
@@ -853,8 +885,8 @@ public class Pacientes extends javax.swing.JFrame {
             PreparedStatement pst = con.prepareStatement(query);
 
             int count = 0;
-            pst.setDate(++count,new java.sql.Date(txtDataCadastro.getDate().getTime()) );
-            pst.setDate(++count,new java.sql.Date(txtDataNascimento.getDate().getTime()) );
+            pst.setDate(++count,new java.sql.Date(DataCadastro.getDate().getTime()) );
+            pst.setDate(++count,new java.sql.Date(DataNascimento.getDate().getTime()) );
             pst.setString(++count, txtNomePaciente.getText());
             pst.setString(++count, txtCPF.getText());
             pst.setString(++count, txtRG.getText());
@@ -874,8 +906,8 @@ public class Pacientes extends javax.swing.JFrame {
             pst.close();
             JOptionPane.showMessageDialog(null, "Cadastro Salvo!");
 
-            txtDataCadastro.setDate(null);
-            txtDataNascimento.setDate(null);
+            DataCadastro.setDate(null);
+            DataNascimento.setDate(null);
             txtNomePaciente.setText(null);
             txtCPF.setText(null);
             txtRG.setText(null);
@@ -901,8 +933,135 @@ public class Pacientes extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalvarPacientesActionPerformed
 
     private void btnAtualizarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarMedicoActionPerformed
-        // TODO add your handling code here:
+       if (txtNomePaciente.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o Nome!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtNomePaciente.requestFocus();
+            return;
+        }
+        if (txtCPF.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o CPF!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtCPF.requestFocus();
+            return;
+        }
+        if (txtRG.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o RG!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtRG.requestFocus();
+            return;
+        }
+
+        if (txtTelefone.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o Telefone!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtTelefone.requestFocus();
+            return;
+        }
+        if (txtSexo.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o Sexo!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtSexo.requestFocus();
+            return;
+        }
+        if (txtEmail.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o Email!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtEmail.requestFocus();
+            return;
+        }
+        if (txtConvenio.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o Convenio!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtConvenio.requestFocus();
+            return;
+        }
+        
+         if (txtCEP.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o CEP!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtCEP.requestFocus();
+            return;
+        }
+          if (txtLogradouro.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o Logradouro!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtLogradouro.requestFocus();
+            return;
+        }
+        if (txtNumero.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o Numero!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtNumero.requestFocus();
+            return;
+        }
+        if (txtComplemento.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o Complemento!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtComplemento.requestFocus();
+            return;
+        }
+        if (txtBairro.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o Bairro!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtBairro.requestFocus();
+            return;
+        }
+        if (txtCidade.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe a Cidade!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtCidade.requestFocus();
+            return;
+        }
+        if (txtEstado.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o Estado!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtEstado.requestFocus();
+            return;
+        }
+         try {
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+
+            String query = "UPDATE PACIENTES SET NOME_PACIENTE= '"+txtNomePaciente.getText()+"' ,CPF= '"+txtCPF.getText()+"', RG= "+txtRG.getText()+", TELEFONE= '"+txtTelefone.getText() +"' ,SEXO= '"+txtSexo.getText()+"' ,EMAIL= '"+txtEmail.getText()+"' ,CONVENIO= '"+txtConvenio.getText()+"' ,CEP= '"+txtCEP.getText()+"' ,LOGRADOURO= '"+txtLogradouro.getText()+"' ,NUMERO= '"+txtNumero.getText()+"' ,COMPLEMENTO= '"+txtComplemento.getText()+"' ,BAIRRO= '"+txtBairro.getText()+"' ,CIDADE= '"+txtCidade.getText()+"' ,ESTADO= '"+txtEstado.getText()+"' WHERE ID_PACIENTE= "+txtIDPaciente.getText()+"";
+            Connection con = databaseConnection.Conexao();
+            PreparedStatement pst = con.prepareStatement(query);
+            pst.execute();
+
+            pst.close();
+            JOptionPane.showMessageDialog(null, "Cadastro Alterado!");
+            
+            txtIDPaciente.setText(null);
+            txtNomePaciente.setText(null);
+            txtCPF.setText(null);
+            txtRG.setText(null);
+            txtTelefone.setText(null);
+            txtSexo.setText(null);
+            txtEmail.setText(null);
+            txtLogradouro.setText(null);
+            txtNumero.setText(null);
+            txtComplemento.setText(null);
+            txtBairro.setText(null);
+            txtCidade.setText(null);
+            txtEstado.setText(null);
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro na Alteração!");
+            System.out.println(ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+         
+        preencherTabela("Select * from PACIENTES ORDER BY ID_PACIENTE");
     }//GEN-LAST:event_btnAtualizarMedicoActionPerformed
+
+    private void btnCancelarPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarPacientesActionPerformed
+        DataCadastro.setDate(null);
+        DataNascimento.setDate(null);
+        txtIDPaciente.setText(null);
+        txtNomePaciente.setText(null);
+        txtCPF.setText(null);
+        txtRG.setText(null);
+        txtTelefone.setText(null);
+        txtSexo.setText(null);
+        txtEmail.setText(null);
+        txtConvenio.setText(null);
+        txtCEP.setText(null);
+        txtLogradouro.setText(null);
+        txtNumero.setText(null);
+        txtComplemento.setText(null);
+        txtBairro.setText(null);
+        txtCidade.setText(null);
+        txtEstado.setText(null);
+        
+
+        JOptionPane.showMessageDialog(null, "Cadastro Cancelado!");
+    }//GEN-LAST:event_btnCancelarPacientesActionPerformed
     
     Connection connection = null;
     public void preencherTabela(String Sql) {
@@ -957,6 +1116,8 @@ public class Pacientes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser DataCadastro;
+    private com.toedter.calendar.JDateChooser DataNascimento;
     private javax.swing.JLabel Doctor;
     private javax.swing.JButton LocalizarPacientes;
     private javax.swing.JButton NovoPaciente;
@@ -1005,8 +1166,6 @@ public class Pacientes extends javax.swing.JFrame {
     private javax.swing.JTextField txtCidade;
     private javax.swing.JTextField txtComplemento;
     private javax.swing.JTextField txtConvenio;
-    private com.toedter.calendar.JDateChooser txtDataCadastro;
-    private com.toedter.calendar.JDateChooser txtDataNascimento;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEstado;
     private javax.swing.JTextField txtIDPaciente;
