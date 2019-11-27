@@ -45,7 +45,7 @@ public class Cadastros extends javax.swing.JFrame {
     public Cadastros() {
         initComponents();
 
-        String[] vetor = {"  ", "15 minutos", "30 minutos"};
+        String[] vetor = {" ","30 Minutos","35 Minutos", "40 Minutos","45 Minutos", "1 Hora", "2 Horas" };
 
         txtDuracaoConsulta.setModel(new javax.swing.DefaultComboBoxModel<>(vetor));
 
@@ -488,6 +488,11 @@ public class Cadastros extends javax.swing.JFrame {
         });
 
         btnExcluirMedico.setText("Excluir");
+        btnExcluirMedico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirMedicoActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Nome:");
 
@@ -930,7 +935,8 @@ public class Cadastros extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalvarMedicoActionPerformed
 
     private void btnCancelarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarMedicoActionPerformed
-
+        
+        txtIDMedico.setText(null);
         txtNomeMedico.setText(null);
         txtEspecialidade.setText(null);
         txtCRM.setText(null);
@@ -950,13 +956,25 @@ public class Cadastros extends javax.swing.JFrame {
         String especialidade = (String) TabelaMedicos.getModel().getValueAt(TabelaMedicos.getSelectedRow(), 2);
         txtEspecialidade.setText(especialidade);
         
-        int crm = (int) TabelaMedicos.getModel().getValueAt(TabelaMedicos.getSelectedRow(), 3);
+        String crm = (String) TabelaMedicos.getModel().getValueAt(TabelaMedicos.getSelectedRow(), 3);
         txtCRM.setText(crm);
         
-        txtDuracaoConsulta.setSelectedIndex(1);
+        String duracaoConsulta = (String) TabelaMedicos.getModel().getValueAt(TabelaMedicos.getSelectedRow(), 4);
+        if (duracaoConsulta.equals("30 Minutos"))
+            txtDuracaoConsulta.setSelectedIndex(1);
+        else if (duracaoConsulta.equals("35 Minutos"))
+            txtDuracaoConsulta.setSelectedIndex(2);
+        else if (duracaoConsulta.equals("40 Minutos"))
+            txtDuracaoConsulta.setSelectedIndex(3);
+        else if (duracaoConsulta.equals("45 Minutos"))
+            txtDuracaoConsulta.setSelectedIndex(4);
+        else if (duracaoConsulta.equals("1 Hora"))
+            txtDuracaoConsulta.setSelectedIndex(5);
+        else
+          txtDuracaoConsulta.setSelectedIndex(6);
         
-        String clinicas = (String) TabelaMedicos.getModel().getValueAt(TabelaMedicos.getSelectedRow(), 4);
-        txtCRM.setText(clinicas);
+        String clinicas = (String) TabelaMedicos.getModel().getValueAt(TabelaMedicos.getSelectedRow(), 5);
+        txtClinicas.setText(clinicas);
     }//GEN-LAST:event_btnEditarMedicoActionPerformed
 
     private void btnAtualizarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarUsuariosActionPerformed
@@ -992,14 +1010,15 @@ public class Cadastros extends javax.swing.JFrame {
          try {
             DatabaseConnection databaseConnection = new DatabaseConnection();
 
-            String query = "UPDATE MEDICOS SET NOME_MEDICO = ' " + txtNomeMedico.getText() + "', ESPECIALIDADE = '" + txtEspecialidade.getText() + "', CRM = " + txtCRM.getText() + ", DURACAO_CUNSULTA = '" + txtDuracaoConsulta.getSelectedItem().toString()+ "' where id_medico = " + txtIDMedico.getText();
+            String query = "UPDATE MEDICOS SET NOME_MEDICO= '"+txtNomeMedico.getText()+"' ,ESPECIALIDADE= '"+txtEspecialidade.getText()+"', CRM= "+txtCRM.getText()+", DURACAO_CONSULTA= '"+txtDuracaoConsulta.getSelectedItem().toString()+"' WHERE ID_MEDICO= "+txtIDMedico.getText()+"";
             Connection con = databaseConnection.Conexao();
             PreparedStatement pst = con.prepareStatement(query);
             pst.execute();
 
             pst.close();
             JOptionPane.showMessageDialog(null, "Cadastro Alterado!");
-
+            
+            txtIDMedico.setText(null);
             txtNomeMedico.setText(null);
             txtEspecialidade.setText(null);
             txtCRM.setText(null);
@@ -1011,7 +1030,35 @@ public class Cadastros extends javax.swing.JFrame {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
+         
+        preencherTabela("Select * from MEDICOS ORDER BY ID_MEDICO");
     }//GEN-LAST:event_btnAtualizarMedicoActionPerformed
+
+    private void btnExcluirMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirMedicoActionPerformed
+        try {
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+
+            if(JOptionPane.showConfirmDialog(null, "Informe o Tempo de Duração da Consulta!", "Campo em branco", JOptionPane.YES_NO_OPTION) <= 0 ){
+                BigDecimal numero = (BigDecimal) TabelaMedicos.getModel().getValueAt(TabelaMedicos.getSelectedRow(), 0);
+                String query = "DELETE FROM MEDICOS WHERE ID_MEDICO= '" + numero.toString() + "'";
+                Connection con = databaseConnection.Conexao();
+                PreparedStatement pst = con.prepareStatement(query);
+                pst.execute();
+
+                pst.close();
+                JOptionPane.showMessageDialog(null, "Cadastro Excluído!");
+            } 
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro na Exclusão!");
+            System.out.println(ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+         
+        preencherTabela("Select * from MEDICOS ORDER BY ID_MEDICO");
+        
+    }//GEN-LAST:event_btnExcluirMedicoActionPerformed
 
     private DefaultTableModel modeloTabela = new DefaultTableModel();
 
