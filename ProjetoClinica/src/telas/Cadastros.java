@@ -104,6 +104,7 @@ public class Cadastros extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         PainelPrincipal2 = new javax.swing.JPanel();
+        PainelPrincipal = new javax.swing.JPanel();
         PainelCadastrosMedicos = new javax.swing.JPanel();
         btnSalvarMedico = new javax.swing.JButton();
         btnCancelarMedico = new javax.swing.JButton();
@@ -347,6 +348,21 @@ public class Cadastros extends javax.swing.JFrame {
 
         PainelPrincipal2.setLayout(new java.awt.CardLayout());
 
+        PainelPrincipal.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        javax.swing.GroupLayout PainelPrincipalLayout = new javax.swing.GroupLayout(PainelPrincipal);
+        PainelPrincipal.setLayout(PainelPrincipalLayout);
+        PainelPrincipalLayout.setHorizontalGroup(
+            PainelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 556, Short.MAX_VALUE)
+        );
+        PainelPrincipalLayout.setVerticalGroup(
+            PainelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 630, Short.MAX_VALUE)
+        );
+
+        PainelPrincipal2.add(PainelPrincipal, "PainelCadastrosUsuario");
+
         PainelCadastrosMedicos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         btnSalvarMedico.setText("Salvar");
@@ -430,7 +446,7 @@ public class Cadastros extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(PainelCadastrosMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelCadastrosMedicosLayout.createSequentialGroup()
-                        .addGap(0, 232, Short.MAX_VALUE)
+                        .addGap(0, 228, Short.MAX_VALUE)
                         .addComponent(jLabel11)
                         .addGap(263, 263, 263))
                     .addGroup(PainelCadastrosMedicosLayout.createSequentialGroup()
@@ -637,7 +653,7 @@ public class Cadastros extends javax.swing.JFrame {
                     .addComponent(btnCancelarConsultorios)
                     .addComponent(btnExcluirConsultorios)
                     .addComponent(btnSalvarConsultorios))
-                .addContainerGap(195, Short.MAX_VALUE))
+                .addContainerGap(188, Short.MAX_VALUE))
         );
 
         PainelPrincipal2.add(PainelCadastrosConsultorios, "PainelCadastrosConsultorios");
@@ -730,7 +746,7 @@ public class Cadastros extends javax.swing.JFrame {
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 536, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelCadastrosConveniosLayout.createSequentialGroup()
-                .addContainerGap(59, Short.MAX_VALUE)
+                .addContainerGap(74, Short.MAX_VALUE)
                 .addGroup(PainelCadastrosConveniosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelCadastrosConveniosLayout.createSequentialGroup()
                         .addComponent(jLabel15)
@@ -773,7 +789,7 @@ public class Cadastros extends javax.swing.JFrame {
                     .addComponent(btnAtualizarConvenios)
                     .addComponent(btnCancelarConvenios)
                     .addComponent(btnSalvarConvenios))
-                .addContainerGap(192, Short.MAX_VALUE))
+                .addContainerGap(185, Short.MAX_VALUE))
         );
 
         PainelPrincipal2.add(PainelCadastrosConvenios, "PainelCadastrosConvenios");
@@ -943,7 +959,7 @@ public class Cadastros extends javax.swing.JFrame {
                     .addComponent(btnCancelarUsuarios)
                     .addComponent(btnAtualizarUsuarios)
                     .addComponent(btnEditarUsuarios))
-                .addContainerGap(208, Short.MAX_VALUE))
+                .addContainerGap(200, Short.MAX_VALUE))
         );
 
         PainelPrincipal2.add(PainelCadastrosUsuarios, "PainelCadastrosUsuario");
@@ -970,7 +986,7 @@ public class Cadastros extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
 
-        setSize(new java.awt.Dimension(849, 548));
+        setSize(new java.awt.Dimension(849, 513));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1672,7 +1688,7 @@ try {
             TabelaUsuarios.setModel(DbUtils.resultSetToTableModel(rs));
             databaseConnection.conexao.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(rootPane, ex.getMessage() + ex.getCause() + " + Erro ao Buscar Médicos!");
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage() + ex.getCause() + " + Erro ao Buscar Usuários!");
         }
 
     }
@@ -1687,7 +1703,7 @@ try {
             TabelaConvenios.setModel(DbUtils.resultSetToTableModel(rs));
             databaseConnection.conexao.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(rootPane, ex.getMessage() + ex.getCause() + " + Erro ao Buscar Médicos!");
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage() + ex.getCause() + " + Erro ao Buscar Convênios!");
         }
 
     }
@@ -1702,39 +1718,13 @@ try {
             TabelaConsultorios.setModel(DbUtils.resultSetToTableModel(rs));
             databaseConnection.conexao.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(rootPane, ex.getMessage() + ex.getCause() + " + Erro ao Buscar Médicos!");
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage() + ex.getCause() + " + Erro ao Buscar Consultórios!");
         }
 
     }
     
 
-    public void preencherComboClinica(String Sql) {
-        connection = databaseConnection.Conexao();
-        
-        try {
-            DatabaseConnection databaseConnection = new DatabaseConnection();
-            Connection con = databaseConnection.Conexao();
-            PreparedStatement pst = connection.prepareStatement(Sql);
-            ResultSet rs = pst.executeQuery();
-
-            ArrayList<String> resultados = new ArrayList<String>();
-
-            while (rs.next()) {
-                resultados.add(rs.getString(0));
-            }
-
-            String[] vetor = (String[]) resultados.toArray();
-
-            txtDuracaoConsulta.setModel(new javax.swing.DefaultComboBoxModel<>(vetor));
-
-            TabelaMedicos.setModel(DbUtils.resultSetToTableModel(rs));
-            databaseConnection.conexao.close();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(rootPane, ex.getMessage() + ex.getCause() + " + Erro ao Buscar Médicos!");
-        }
-
-    }
-
+    
     public void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -1776,6 +1766,7 @@ try {
     private javax.swing.JPanel PainelCadastrosConvenios;
     private javax.swing.JPanel PainelCadastrosMedicos;
     private javax.swing.JPanel PainelCadastrosUsuarios;
+    private javax.swing.JPanel PainelPrincipal;
     private javax.swing.JPanel PainelPrincipal1;
     private javax.swing.JPanel PainelPrincipal2;
     private javax.swing.JPanel PainelPrincipal3;

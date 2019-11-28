@@ -135,6 +135,7 @@ public class Agenda extends javax.swing.JFrame {
     private void btnNovoAgendamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoAgendamentoActionPerformed
         
         NovoAgendamento novoAgendamento = new NovoAgendamento();
+        novoAgendamento.initValues();
         novoAgendamento.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnNovoAgendamentoActionPerformed

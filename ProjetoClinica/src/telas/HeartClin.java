@@ -9,7 +9,7 @@ package telas;
  *
  * @author Letícia Magalhães
  */
-public class HeartClin extends javax.swing.JFrame {
+public class HeartClin extends Pacientes {
 
     /**
      * Creates new form HeartClin
@@ -30,7 +30,7 @@ public class HeartClin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton2 = new javax.swing.JButton();
+        btnPacientes = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -43,17 +43,17 @@ public class HeartClin extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        jButton2.setBackground(new java.awt.Color(202, 104, 133));
-        jButton2.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Pacientes");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnPacientes.setBackground(new java.awt.Color(202, 104, 133));
+        btnPacientes.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
+        btnPacientes.setForeground(new java.awt.Color(255, 255, 255));
+        btnPacientes.setText("Pacientes");
+        btnPacientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnPacientesActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(168, 30, 147, 29);
+        getContentPane().add(btnPacientes);
+        btnPacientes.setBounds(168, 30, 147, 29);
 
         jButton3.setBackground(new java.awt.Color(202, 104, 133));
         jButton3.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
@@ -119,11 +119,12 @@ public class HeartClin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPacientesActionPerformed
       Pacientes pacientes = new Pacientes();
       pacientes.setVisible(true);
       dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+        mostrarTelas("PainelInicializador");
+    }//GEN-LAST:event_btnPacientesActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
       Agenda agenda = new Agenda();
@@ -173,7 +174,7 @@ public class HeartClin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnPacientes;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;

@@ -195,9 +195,9 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="txtProcurar1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="txtBusca1" min="-2" pref="602" max="-2" attributes="0"/>
+                                  <Component id="txtBuscaPacientes" min="-2" pref="602" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="btnBusca" max="32767" attributes="0"/>
+                                  <Component id="btnBuscarPaciente" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -223,11 +223,11 @@
                           <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="txtProcurar1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtBusca1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnBusca" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtBuscaPacientes" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnBuscarPaciente" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                          <Component id="jScrollPane2" pref="319" max="32767" attributes="0"/>
+                          <Component id="jScrollPane2" pref="320" max="32767" attributes="0"/>
                           <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                           <Component id="labelClientes1" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -257,10 +257,11 @@
                     <Property name="text" type="java.lang.String" value="Procurar:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtBusca1">
+                <Component class="javax.swing.JTextField" name="txtBuscaPacientes">
                   <Events>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtBusca1KeyPressed"/>
-                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtBusca1KeyReleased"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtBuscaPacientesActionPerformed"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtBuscaPacientesKeyPressed"/>
+                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtBuscaPacientesKeyReleased"/>
                   </Events>
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane2">
@@ -293,12 +294,12 @@
                     <Property name="text" type="java.lang.String" value="Total de clientes: 0"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnBusca">
+                <Component class="javax.swing.JButton" name="btnBuscarPaciente">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Buscar"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscaActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarPacienteActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnEditarPacientes">
@@ -387,7 +388,7 @@
                   </Border>
                 </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Cursor Padr&#xe3;o"/>
                 </Property>
               </Properties>
 
@@ -755,6 +756,26 @@
               </Events>
             </Component>
           </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="PainelInicializador">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+              <CardConstraints cardName="PainelInicializador"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="800" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="475" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
         </Container>
       </SubComponents>
     </Container>

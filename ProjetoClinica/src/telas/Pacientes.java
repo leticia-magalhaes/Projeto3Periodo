@@ -26,6 +26,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.text.TabableView;
 import static oracle.net.aso.b.c;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import javax.swing.*;
 import net.proteanit.sql.DbUtils;
@@ -40,12 +41,14 @@ public class Pacientes extends javax.swing.JFrame {
      */
     public Pacientes() {
         initComponents();
+        mostrarTelas("PainelInicializador");
+        
         
         
        
     }
     
-    private void mostrarTelas(String nome){
+    public void mostrarTelas(String nome){
     
     CardLayout card = (CardLayout)PainelPrincipal.getLayout();
     card.show(PainelPrincipal, nome);
@@ -66,11 +69,11 @@ public class Pacientes extends javax.swing.JFrame {
         jPanelPacientes1 = new javax.swing.JPanel();
         titulo1 = new javax.swing.JLabel();
         txtProcurar1 = new javax.swing.JLabel();
-        txtBusca1 = new javax.swing.JTextField();
+        txtBuscaPacientes = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         TabelaPacientes = new javax.swing.JTable();
         labelClientes1 = new javax.swing.JLabel();
-        btnBusca = new javax.swing.JButton();
+        btnBuscarPaciente = new javax.swing.JButton();
         btnEditarPacientes = new javax.swing.JButton();
         btnExcluirPacientes = new javax.swing.JButton();
         PainelNovoPaciente = new javax.swing.JPanel();
@@ -114,6 +117,7 @@ public class Pacientes extends javax.swing.JFrame {
         btnSalvarPacientes = new javax.swing.JButton();
         btnCancelarPacientes = new javax.swing.JButton();
         btnAtualizarMedico = new javax.swing.JButton();
+        PainelInicializador = new javax.swing.JPanel();
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -197,12 +201,17 @@ public class Pacientes extends javax.swing.JFrame {
         txtProcurar1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txtProcurar1.setText("Procurar:");
 
-        txtBusca1.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtBuscaPacientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscaPacientesActionPerformed(evt);
+            }
+        });
+        txtBuscaPacientes.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtBusca1KeyPressed(evt);
+                txtBuscaPacientesKeyPressed(evt);
             }
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtBusca1KeyReleased(evt);
+                txtBuscaPacientesKeyReleased(evt);
             }
         });
 
@@ -219,10 +228,10 @@ public class Pacientes extends javax.swing.JFrame {
         labelClientes1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labelClientes1.setText("Total de clientes: 0");
 
-        btnBusca.setText("Buscar");
-        btnBusca.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscarPaciente.setText("Buscar");
+        btnBuscarPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscaActionPerformed(evt);
+                btnBuscarPacienteActionPerformed(evt);
             }
         });
 
@@ -254,9 +263,9 @@ public class Pacientes extends javax.swing.JFrame {
                     .addGroup(jPanelPacientes1Layout.createSequentialGroup()
                         .addComponent(txtProcurar1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtBusca1, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtBuscaPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnBusca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnBuscarPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPacientes1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanelPacientes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,10 +284,10 @@ public class Pacientes extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addGroup(jPanelPacientes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtProcurar1)
-                    .addComponent(txtBusca1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBusca))
+                    .addComponent(txtBuscaPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscarPaciente))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelClientes1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -310,10 +319,10 @@ public class Pacientes extends javax.swing.JFrame {
         jLabel10.setText("CEP:");
 
         txtCEP.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 txtCEPInputMethodTextChanged(evt);
-            }
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         txtCEP.addActionListener(new java.awt.event.ActionListener() {
@@ -608,6 +617,19 @@ public class Pacientes extends javax.swing.JFrame {
 
         PainelPrincipal.add(PainelNovoPaciente, "PainelNovoPaciente");
 
+        javax.swing.GroupLayout PainelInicializadorLayout = new javax.swing.GroupLayout(PainelInicializador);
+        PainelInicializador.setLayout(PainelInicializadorLayout);
+        PainelInicializadorLayout.setHorizontalGroup(
+            PainelInicializadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 800, Short.MAX_VALUE)
+        );
+        PainelInicializadorLayout.setVerticalGroup(
+            PainelInicializadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 475, Short.MAX_VALUE)
+        );
+
+        PainelPrincipal.add(PainelInicializador, "PainelInicializador");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -637,21 +659,21 @@ public class Pacientes extends javax.swing.JFrame {
 
     private void LocalizarPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LocalizarPacientesActionPerformed
         mostrarTelas("PainelLocalizarPacientes");
-        preencherTabela("SELECT * FROM PACIENTES ORDER BY ID_PACIENTE");
+        preencherTabelaPacientes("SELECT * FROM PACIENTES ORDER BY ID_PACIENTE");
     }//GEN-LAST:event_LocalizarPacientesActionPerformed
 
     private void NovoPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovoPacienteActionPerformed
         mostrarTelas("PainelNovoPaciente");
     }//GEN-LAST:event_NovoPacienteActionPerformed
 
-    private void txtBusca1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusca1KeyPressed
+    private void txtBuscaPacientesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscaPacientesKeyPressed
 
-    }//GEN-LAST:event_txtBusca1KeyPressed
+    }//GEN-LAST:event_txtBuscaPacientesKeyPressed
 
-    private void txtBusca1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusca1KeyReleased
+    private void txtBuscaPacientesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscaPacientesKeyReleased
 
          
-    }//GEN-LAST:event_txtBusca1KeyReleased
+    }//GEN-LAST:event_txtBuscaPacientesKeyReleased
 
     private void txtCEPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCEPActionPerformed
         // TODO add your handling code here:
@@ -701,66 +723,95 @@ public class Pacientes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtCEPKeyReleased
 
-    private void btnBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBuscaActionPerformed
+    private void btnBuscarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPacienteActionPerformed
+        try{
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+
+            String query = "SELECT * FROM PACIENTES WHERE NOME_PACIENTE like '%"+txtBuscaPacientes.getText()+"%' OR CPF like '%"+txtBuscaPacientes.getText()+"%'";
+
+            Connection con = databaseConnection.Conexao();
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            TabelaPacientes.setModel(DbUtils.resultSetToTableModel(rs));
+            pst.close();
+            
+        } catch(SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro no Busca");
+            System.out.println(ex.getMessage());
+        } catch(Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+    }//GEN-LAST:event_btnBuscarPacienteActionPerformed
 
     private void btnEditarPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPacientesActionPerformed
         mostrarTelas("PainelNovoPaciente");
         BigDecimal numero = (BigDecimal) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 0);
         txtIDPaciente.setText(numero.toString());
 
-       // String dataCadastro = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 1);
-       // DataCadastro.setDate(dataCadastro);
+        try{
+            SimpleDateFormat dateFormated = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            java.util.Date dataCadastro;
+            dataCadastro = dateFormated.parse(
+                ((java.sql.Timestamp)TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 1)).toString()
+        );
+       DataCadastro.setDate(dataCadastro);
+        } catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
 
-        //String dataNascimento = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 2);
-        //DataNascimento.setDate(dataNascimento);
+        try{
+            SimpleDateFormat dateFormated = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            java.util.Date dataCadastro;
+            dataCadastro = dateFormated.parse(
+                ((java.sql.Timestamp)TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 2)).toString()
+        );
+       DataNascimento.setDate(dataCadastro);
+        } catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
 
         String paciente = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 3);
         txtNomePaciente.setText(paciente);
 
-        String cpf = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 3);
+        String cpf = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 4);
         txtCPF.setText(cpf);
         
-        String rg = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 3);
+        String rg = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 5);
         txtRG.setText(rg);
         
-        String telefone = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 3);
+        String telefone = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 6);
         txtTelefone.setText(telefone);
         
-        String sexo = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 3);
+        String sexo = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 7);
         txtSexo.setText(sexo);
         
-        String email = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 3);
+        String email = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 8);
         txtEmail.setText(email);
         
-        String convenio = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 3);
-        txtConvenio.setText(convenio);
+//        String convenio = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 9);
+//        txtConvenio.setText(convenio);
         
-        String cep = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 3);
+        String cep = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 9);
         txtCEP.setText(cep);
         
-        String logradouro = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 3);
+        String logradouro = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 10);
         txtLogradouro.setText(logradouro);
         
-        
-        String num = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 3);
+        String num = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 11);
         txtNumero.setText(num);
         
-        String complemento = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 3);
+        String complemento = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 12);
         txtComplemento.setText(complemento);
         
-        String bairro = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 3);
+        String bairro = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 13);
         txtBairro.setText(bairro);
         
-        String cidade = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 3);
+        String cidade = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 14);
         txtCidade.setText(cidade);
         
-        String estado = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 3);
+        String estado = (String) TabelaPacientes.getModel().getValueAt(TabelaPacientes.getSelectedRow(), 15);
         txtEstado.setText(estado);
-        
-
-
         
     }//GEN-LAST:event_btnEditarPacientesActionPerformed
 
@@ -786,7 +837,7 @@ public class Pacientes extends javax.swing.JFrame {
             System.out.println(ex.getMessage());
         }
 
-        preencherTabela("Select * from PACIENTES ORDER BY ID_PACIENTE");
+        preencherTabelaPacientes("Select * from PACIENTES ORDER BY ID_PACIENTE");
 
     }//GEN-LAST:event_btnExcluirPacientesActionPerformed
 
@@ -797,19 +848,7 @@ public class Pacientes extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHeartClinPacientesActionPerformed
 
     private void btnSalvarPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarPacientesActionPerformed
-
-//        if (txtDataCadastro.getText().trim().isEmpty()) {
-//            JOptionPane.showMessageDialog(null, "Informe a Data do Cadastro!", "Campo em branco", JOptionPane.YES_NO_OPTION);
-//            txtNomePaciente.requestFocus();
-//            return;
-//        }
-//
-//        if (txtDataNascimento.g) {
-//            JOptionPane.showMessageDialog(null, "Informe a Data de Nascimento!", "Campo em branco", JOptionPane.YES_NO_OPTION);
-//            txtTelefone.requestFocus();
-//            return;
-//        }
-
+     
         if (txtNomePaciente.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Informe o Nome do Paciente!", "Campo em branco", JOptionPane.YES_NO_OPTION);
             txtNomePaciente.requestFocus();
@@ -929,7 +968,7 @@ public class Pacientes extends javax.swing.JFrame {
             System.out.println(ex.getMessage());
         }
         
-        preencherTabela("SELECT * FROM PACIENTES ORDER BY ID_PACIENTE");
+        preencherTabelaPacientes("SELECT * FROM PACIENTES ORDER BY ID_PACIENTE");
     }//GEN-LAST:event_btnSalvarPacientesActionPerformed
 
     private void btnAtualizarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarMedicoActionPerformed
@@ -1008,7 +1047,7 @@ public class Pacientes extends javax.swing.JFrame {
          try {
             DatabaseConnection databaseConnection = new DatabaseConnection();
 
-            String query = "UPDATE PACIENTES SET NOME_PACIENTE= '"+txtNomePaciente.getText()+"' ,CPF= '"+txtCPF.getText()+"', RG= "+txtRG.getText()+", TELEFONE= '"+txtTelefone.getText() +"' ,SEXO= '"+txtSexo.getText()+"' ,EMAIL= '"+txtEmail.getText()+"' ,CONVENIO= '"+txtConvenio.getText()+"' ,CEP= '"+txtCEP.getText()+"' ,LOGRADOURO= '"+txtLogradouro.getText()+"' ,NUMERO= '"+txtNumero.getText()+"' ,COMPLEMENTO= '"+txtComplemento.getText()+"' ,BAIRRO= '"+txtBairro.getText()+"' ,CIDADE= '"+txtCidade.getText()+"' ,ESTADO= '"+txtEstado.getText()+"' WHERE ID_PACIENTE= "+txtIDPaciente.getText()+"";
+            String query = "UPDATE PACIENTES SET NOME_PACIENTE= '"+txtNomePaciente.getText()+"' ,CPF= '"+txtCPF.getText()+"', RG= '"+txtRG.getText()+"', TELEFONE= '"+txtTelefone.getText() +"' ,SEXO= '"+txtSexo.getText()+"' ,EMAIL= '"+txtEmail.getText()+"' ,CONVENIO= '"+txtConvenio.getText()+"' ,CEP= '"+txtCEP.getText()+"' ,LOGRADOURO= '"+txtLogradouro.getText()+"' ,NUMERO= '"+txtNumero.getText()+"' ,COMPLEMENTO= '"+txtComplemento.getText()+"' ,BAIRRO= '"+txtBairro.getText()+"' ,CIDADE= '"+txtCidade.getText()+"' ,ESTADO= '"+txtEstado.getText()+"' WHERE ID_PACIENTE= "+txtIDPaciente.getText()+"";
             Connection con = databaseConnection.Conexao();
             PreparedStatement pst = con.prepareStatement(query);
             pst.execute();
@@ -1037,7 +1076,7 @@ public class Pacientes extends javax.swing.JFrame {
             System.out.println(ex.getMessage());
         }
          
-        preencherTabela("Select * from PACIENTES ORDER BY ID_PACIENTE");
+        preencherTabelaPacientes("Select * from PACIENTES ORDER BY ID_PACIENTE");
     }//GEN-LAST:event_btnAtualizarMedicoActionPerformed
 
     private void btnCancelarPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarPacientesActionPerformed
@@ -1062,9 +1101,13 @@ public class Pacientes extends javax.swing.JFrame {
 
         JOptionPane.showMessageDialog(null, "Cadastro Cancelado!");
     }//GEN-LAST:event_btnCancelarPacientesActionPerformed
+
+    private void txtBuscaPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscaPacientesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBuscaPacientesActionPerformed
     
     Connection connection = null;
-    public void preencherTabela(String Sql) {
+    public void preencherTabelaPacientes(String Sql) {
         connection = databaseConnection.Conexao();
         try {
             DatabaseConnection databaseConnection = new DatabaseConnection();
@@ -1123,12 +1166,13 @@ public class Pacientes extends javax.swing.JFrame {
     private javax.swing.JButton NovoPaciente;
     private javax.swing.JLabel Nurse;
     private javax.swing.JPanel PainelBotoes;
+    private javax.swing.JPanel PainelInicializador;
     private javax.swing.JPanel PainelLocalizarPacientes;
     private javax.swing.JPanel PainelNovoPaciente;
     private javax.swing.JPanel PainelPrincipal;
     private javax.swing.JTable TabelaPacientes;
     private javax.swing.JButton btnAtualizarMedico;
-    private javax.swing.JButton btnBusca;
+    private javax.swing.JButton btnBuscarPaciente;
     private javax.swing.JButton btnCancelarPacientes;
     private javax.swing.JButton btnEditarPacientes;
     private javax.swing.JButton btnExcluirPacientes;
@@ -1160,7 +1204,7 @@ public class Pacientes extends javax.swing.JFrame {
     private javax.swing.JLabel titulo1;
     private javax.swing.JLabel titulo2;
     private javax.swing.JTextField txtBairro;
-    private javax.swing.JTextField txtBusca1;
+    private javax.swing.JTextField txtBuscaPacientes;
     private javax.swing.JTextField txtCEP;
     private javax.swing.JTextField txtCPF;
     private javax.swing.JTextField txtCidade;
