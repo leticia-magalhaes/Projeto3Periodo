@@ -21,9 +21,6 @@ public class DatabaseConnection {
     Connection con = null;
     
     public static Connection Conexao() {
-        
-        
-        
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
                     
@@ -34,6 +31,5 @@ public class DatabaseConnection {
             JOptionPane.showMessageDialog(null, ex);
         } 
         return null;
-
     }
     }
