@@ -5,17 +5,27 @@
  */
 package telas;
 
+import Database.DatabaseConnection;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
+
 /**
  *
  * @author Letícia Magalhães
  */
 public class Agenda extends javax.swing.JFrame {
+    DatabaseConnection databaseConnection = new DatabaseConnection();
 
     /**
      * Creates new form Agenda
      */
     public Agenda() {
         initComponents();
+        
     }
 
     /**
@@ -34,6 +44,8 @@ public class Agenda extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TabelaAgendamentos = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -61,15 +73,30 @@ public class Agenda extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        TabelaAgendamentos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(TabelaAgendamentos);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -121,7 +148,7 @@ public class Agenda extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         setSize(new java.awt.Dimension(831, 574));
@@ -138,11 +165,26 @@ public class Agenda extends javax.swing.JFrame {
         novoAgendamento.initValues();
         novoAgendamento.setVisible(true);
         dispose();
+        preencherAgendamentos("SELECT * FROM NOVO_AGENDAMENTOS ORDER BY AGENDAMENTO_ID");
     }//GEN-LAST:event_btnNovoAgendamentoActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    Connection connection = null;
+    public void preencherAgendamentos(String Sql) {
+        connection = databaseConnection.Conexao();
+        try {
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+            Connection con = databaseConnection.Conexao();
+            PreparedStatement pst = connection.prepareStatement(Sql);
+            ResultSet rs = pst.executeQuery();
+
+            TabelaAgendamentos.setModel(DbUtils.resultSetToTableModel(rs));
+            con.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage() + ex.getCause() + " + Erro ao Pesquisar os Agendamentos!");
+        }
+
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -176,6 +218,7 @@ public class Agenda extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TabelaAgendamentos;
     private javax.swing.JButton btnNovoAgendamento;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
@@ -183,5 +226,6 @@ public class Agenda extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

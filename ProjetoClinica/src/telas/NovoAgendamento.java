@@ -19,7 +19,7 @@ import net.proteanit.sql.DbUtils;
  *
  * @author Letícia Magalhães
  */
-public class NovoAgendamento extends javax.swing.JFrame {
+public class NovoAgendamento extends Agenda{
     DatabaseConnection databaseConnection = new DatabaseConnection();
 
     /**
@@ -28,7 +28,7 @@ public class NovoAgendamento extends javax.swing.JFrame {
     public NovoAgendamento() {
         initComponents();
 
-        String[] vetorTurno = {"Matutino", "Diurno", "Noturno"};
+        String[] vetorTurno = {"  ","Matutino", "Diurno", "Noturno"};
         txtTurnoAgendamento.setModel(new javax.swing.DefaultComboBoxModel<>(vetorTurno));
         
     }
@@ -71,7 +71,7 @@ public class NovoAgendamento extends javax.swing.JFrame {
 
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
         PainelCadastrosMedicos = new javax.swing.JPanel();
-        btnSalvarMedico = new javax.swing.JButton();
+        btnFinalizarAgendamento = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         txtBuscarPacienteAgendamento = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -83,26 +83,28 @@ public class NovoAgendamento extends javax.swing.JFrame {
         TabelaNovoAgendamentoScroll = new javax.swing.JScrollPane();
         TabelaNovoAgendamento = new javax.swing.JTable();
         txtTurnoAgendamento = new javax.swing.JComboBox<>();
-        btnAtualizarMedico = new javax.swing.JButton();
+        btnCancelarAgendamento = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jComboBoxMedico = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         Motivo = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtMotivo = new javax.swing.JTextField();
         btnHeartClinNovoAgendamento = new javax.swing.JButton();
-        jDateChooser3 = new com.toedter.calendar.JDateChooser();
+        txtDataAgendamento = new com.toedter.calendar.JDateChooser();
         jLabel4 = new javax.swing.JLabel();
         txtHora = new javax.swing.JTextField();
         btnSelecionar = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        txtIDAgendamento = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         PainelCadastrosMedicos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        btnSalvarMedico.setText("Finalizar Agendamento");
-        btnSalvarMedico.addActionListener(new java.awt.event.ActionListener() {
+        btnFinalizarAgendamento.setText("Finalizar Agendamento");
+        btnFinalizarAgendamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalvarMedicoActionPerformed(evt);
+                btnFinalizarAgendamentoActionPerformed(evt);
             }
         });
 
@@ -121,6 +123,12 @@ public class NovoAgendamento extends javax.swing.JFrame {
         jLabel11.setText("Novo Agendamento");
 
         jLabel25.setText("ID do Paciente:");
+
+        txtIDPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIDPacienteActionPerformed(evt);
+            }
+        });
 
         TabelaNovoAgendamento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -143,10 +151,10 @@ public class NovoAgendamento extends javax.swing.JFrame {
             }
         });
 
-        btnAtualizarMedico.setText("Cancelar Agendamento");
-        btnAtualizarMedico.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelarAgendamento.setText("Cancelar Agendamento");
+        btnCancelarAgendamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAtualizarMedicoActionPerformed(evt);
+                btnCancelarAgendamentoActionPerformed(evt);
             }
         });
 
@@ -178,6 +186,8 @@ public class NovoAgendamento extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setText("ID Agendamento:");
+
         javax.swing.GroupLayout PainelCadastrosMedicosLayout = new javax.swing.GroupLayout(PainelCadastrosMedicos);
         PainelCadastrosMedicos.setLayout(PainelCadastrosMedicosLayout);
         PainelCadastrosMedicosLayout.setHorizontalGroup(
@@ -191,18 +201,10 @@ public class NovoAgendamento extends javax.swing.JFrame {
                     .addGroup(PainelCadastrosMedicosLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(PainelCadastrosMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1)
+                            .addComponent(txtMotivo)
                             .addComponent(jScrollPane1)
                             .addGroup(PainelCadastrosMedicosLayout.createSequentialGroup()
-                                .addGroup(PainelCadastrosMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(PainelCadastrosMedicosLayout.createSequentialGroup()
-                                        .addComponent(jLabel25)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtIDPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel8)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtTurnoAgendamento, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(PainelCadastrosMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(PainelCadastrosMedicosLayout.createSequentialGroup()
                                         .addGroup(PainelCadastrosMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(PainelCadastrosMedicosLayout.createSequentialGroup()
@@ -219,26 +221,40 @@ public class NovoAgendamento extends javax.swing.JFrame {
                                             .addGroup(PainelCadastrosMedicosLayout.createSequentialGroup()
                                                 .addComponent(jLabel3)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addComponent(txtDataAgendamento, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(0, 0, Short.MAX_VALUE))
                                     .addGroup(PainelCadastrosMedicosLayout.createSequentialGroup()
                                         .addComponent(jLabel2)
                                         .addGap(10, 10, 10)
                                         .addComponent(txtBuscarPacienteAgendamento)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(btnPesquisarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(62, 62, 62)))
-                                .addGap(0, 48, Short.MAX_VALUE))
+                                        .addGap(62, 62, 62))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelCadastrosMedicosLayout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtIDAgendamento)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel25)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtIDPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel8)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtTurnoAgendamento, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(40, 40, 40)))
+                                .addGap(48, 48, 48))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelCadastrosMedicosLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(btnSelecionar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelCadastrosMedicosLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnSalvarMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnFinalizarAgendamento, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnHeartClinNovoAgendamento)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnAtualizarMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCancelarAgendamento, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(128, 128, 128))
         );
         PainelCadastrosMedicosLayout.setVerticalGroup(
@@ -251,7 +267,9 @@ public class NovoAgendamento extends javax.swing.JFrame {
                     .addComponent(jLabel25)
                     .addComponent(txtIDPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
-                    .addComponent(txtTurnoAgendamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTurnoAgendamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtIDAgendamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(PainelCadastrosMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -267,7 +285,7 @@ public class NovoAgendamento extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel3))
                     .addGroup(PainelCadastrosMedicosLayout.createSequentialGroup()
-                        .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtDataAgendamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PainelCadastrosMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,11 +294,11 @@ public class NovoAgendamento extends javax.swing.JFrame {
                         .addComponent(jLabel4)
                         .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtMotivo, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(PainelCadastrosMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalvarMedico)
-                    .addComponent(btnAtualizarMedico)
+                    .addComponent(btnFinalizarAgendamento)
+                    .addComponent(btnCancelarAgendamento)
                     .addComponent(btnHeartClinNovoAgendamento))
                 .addGap(37, 37, 37))
         );
@@ -302,13 +320,88 @@ public class NovoAgendamento extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAtualizarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarMedicoActionPerformed
+    private void btnCancelarAgendamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarAgendamentoActionPerformed
         
-    }//GEN-LAST:event_btnAtualizarMedicoActionPerformed
+        txtIDAgendamento.setText(null);
+        txtIDPaciente.setText(null);
+        txtBuscarPacienteAgendamento.setText(null);
+        txtTurnoAgendamento.setSelectedIndex(0);
+        jComboBoxMedico.setSelectedIndex(0);
+        txtDataAgendamento.setDate(null);
+        txtHora.setText(null);
+        txtMotivo.setText(null);
+        
+        JOptionPane.showMessageDialog(null, "Agendamento Cancelado!");
+    }//GEN-LAST:event_btnCancelarAgendamentoActionPerformed
 
-    private void btnSalvarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarMedicoActionPerformed
+    private void btnFinalizarAgendamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarAgendamentoActionPerformed
         
-    }//GEN-LAST:event_btnSalvarMedicoActionPerformed
+        if (txtBuscarPacienteAgendamento.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o CEP!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtBuscarPacienteAgendamento.requestFocus();
+            return;
+        }
+        
+        if (txtTurnoAgendamento.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null, "Informe o Tipo de Usuario!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtTurnoAgendamento.requestFocus();
+            return;
+        }
+        
+        if (jComboBoxMedico.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null, "Informe o Tipo de Usuario!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            jComboBoxMedico.requestFocus();
+            return;
+        }
+        if (txtHora.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o CEP!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtHora.requestFocus();
+            return;
+        }
+            
+        if (txtMotivo.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o CEP!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+            txtMotivo.requestFocus();
+            return;
+        }
+        try {
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+
+            String query = "INSERT INTO NOVO_AGENDAMENTO (AGENDAMENTO_ID, AGENDAMENTO_ID_PACIENTE, AGENDAMENTO_TURNO, AGENDAMENTO_ID_PACIENTE, AGENDAMENTO_NOME_MEDICO, AGENDAMENTO_DATA_CONSULTA, AGENDAMENTO_MOTIVO ) VALUES(ID.NEXTVAL, ?, ?, ?, ?, ?, ?, ?)";
+
+            Connection con = databaseConnection.Conexao();
+            PreparedStatement pst = con.prepareStatement(query);
+            
+            int count = 0;
+            pst.setString(++count, txtBuscarPacienteAgendamento.getText());
+            pst.setString(++count, txtTurnoAgendamento.getSelectedItem().toString());
+            pst.setString(++count, jComboBoxMedico.getSelectedItem().toString());
+            pst.setDate(++count, new java.sql.Date(txtDataAgendamento.getDate().getTime()) );
+            pst.setString(++count, txtHora.getText());
+            pst.setString(++count, txtMotivo.getText());
+
+            pst.execute();
+
+            pst.close();
+            JOptionPane.showMessageDialog(null, "Agendamento Finalizado!");
+
+            txtIDAgendamento.setText(null);
+            txtIDPaciente.setText(null);
+            txtBuscarPacienteAgendamento.setText(null);
+            txtTurnoAgendamento.setSelectedIndex(0);
+            jComboBoxMedico.setSelectedIndex(0);
+            txtDataAgendamento.setDate(null);
+            txtHora.setText(null);
+            txtMotivo.setText(null);
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao fazer Agendamento!");
+            System.out.println(ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        preencherAgendamentos("SELECT * FROM NOVO_AGENDAMENTO ORDER BY AGENDAMENTO_ID");
+    }//GEN-LAST:event_btnFinalizarAgendamentoActionPerformed
 
     private void btnHeartClinNovoAgendamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHeartClinNovoAgendamentoActionPerformed
         HeartClin heartClin = new HeartClin();
@@ -350,8 +443,15 @@ public class NovoAgendamento extends javax.swing.JFrame {
         BigDecimal numero = (BigDecimal) TabelaNovoAgendamento.getModel().getValueAt(TabelaNovoAgendamento.getSelectedRow(), 0);
         txtIDPaciente.setText(numero.toString());
         
+        String paciente = (String) TabelaNovoAgendamento.getModel().getValueAt(TabelaNovoAgendamento.getSelectedRow(), 1);
+        txtBuscarPacienteAgendamento.setText(paciente);
+        
         
     }//GEN-LAST:event_btnSelecionarActionPerformed
+
+    private void txtIDPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDPacienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIDPacienteActionPerformed
 
     public void preencherTabelaNovoAgendamento(String Sql) {
         connection = databaseConnection.Conexao();
@@ -364,7 +464,7 @@ public class NovoAgendamento extends javax.swing.JFrame {
             TabelaNovoAgendamento.setModel(DbUtils.resultSetToTableModel(rs));
             con.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(rootPane, ex.getMessage() + ex.getCause() + " + Erro ao agendamento!");
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage() + ex.getCause() + " + Erro ao Pesquisar os Pacientes!");
         }
 
     }
@@ -407,26 +507,28 @@ public class NovoAgendamento extends javax.swing.JFrame {
     private javax.swing.JPanel PainelCadastrosMedicos;
     private javax.swing.JTable TabelaNovoAgendamento;
     private javax.swing.JScrollPane TabelaNovoAgendamentoScroll;
-    private javax.swing.JButton btnAtualizarMedico;
+    private javax.swing.JButton btnCancelarAgendamento;
+    private javax.swing.JButton btnFinalizarAgendamento;
     private javax.swing.JButton btnHeartClinNovoAgendamento;
     private javax.swing.JButton btnPesquisarPaciente;
-    private javax.swing.JButton btnSalvarMedico;
     private javax.swing.JButton btnSelecionar;
     private javax.swing.JComboBox<String> jComboBoxMedico;
     private com.toedter.calendar.JDateChooser jDateChooser2;
-    private com.toedter.calendar.JDateChooser jDateChooser3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField txtBuscarPacienteAgendamento;
+    private com.toedter.calendar.JDateChooser txtDataAgendamento;
     private javax.swing.JTextField txtHora;
+    private javax.swing.JTextField txtIDAgendamento;
     private javax.swing.JTextField txtIDPaciente;
+    private javax.swing.JTextField txtMotivo;
     private javax.swing.JComboBox<String> txtTurnoAgendamento;
     // End of variables declaration//GEN-END:variables
 }

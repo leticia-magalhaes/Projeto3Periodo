@@ -972,7 +972,9 @@ public class Pacientes extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalvarPacientesActionPerformed
 
     private void btnAtualizarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarMedicoActionPerformed
-       if (txtNomePaciente.getText().trim().isEmpty()) {
+       
+        
+        if (txtNomePaciente.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Informe o Nome!", "Campo em branco", JOptionPane.YES_NO_OPTION);
             txtNomePaciente.requestFocus();
             return;
@@ -1003,11 +1005,11 @@ public class Pacientes extends javax.swing.JFrame {
             txtEmail.requestFocus();
             return;
         }
-        if (txtConvenio.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Informe o Convenio!", "Campo em branco", JOptionPane.YES_NO_OPTION);
-            txtConvenio.requestFocus();
-            return;
-        }
+//        if (txtConvenio.getText().trim().isEmpty()) {
+//            JOptionPane.showMessageDialog(null, "Informe o Convenio!", "Campo em branco", JOptionPane.YES_NO_OPTION);
+//            txtConvenio.requestFocus();
+//            return;
+//        }
         
          if (txtCEP.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Informe o CEP!", "Campo em branco", JOptionPane.YES_NO_OPTION);
@@ -1047,7 +1049,7 @@ public class Pacientes extends javax.swing.JFrame {
          try {
             DatabaseConnection databaseConnection = new DatabaseConnection();
 
-            String query = "UPDATE PACIENTES SET NOME_PACIENTE= '"+txtNomePaciente.getText()+"' ,CPF= '"+txtCPF.getText()+"', RG= '"+txtRG.getText()+"', TELEFONE= '"+txtTelefone.getText() +"' ,SEXO= '"+txtSexo.getText()+"' ,EMAIL= '"+txtEmail.getText()+"' ,CONVENIO= '"+txtConvenio.getText()+"' ,CEP= '"+txtCEP.getText()+"' ,LOGRADOURO= '"+txtLogradouro.getText()+"' ,NUMERO= '"+txtNumero.getText()+"' ,COMPLEMENTO= '"+txtComplemento.getText()+"' ,BAIRRO= '"+txtBairro.getText()+"' ,CIDADE= '"+txtCidade.getText()+"' ,ESTADO= '"+txtEstado.getText()+"' WHERE ID_PACIENTE= "+txtIDPaciente.getText()+"";
+            String query = "UPDATE PACIENTES SET NOME_PACIENTE= '"+txtNomePaciente.getText()+"' ,CPF= '"+txtCPF.getText()+"', RG= '"+txtRG.getText()+"', TELEFONE= '"+txtTelefone.getText() +"' ,SEXO= '"+txtSexo.getText()+"' ,EMAIL= '"+txtEmail.getText()+"', CEP= '"+txtCEP.getText()+"' ,LOGRADOURO= '"+txtLogradouro.getText()+"' ,NUMERO= '"+txtNumero.getText()+"' ,COMPLEMENTO= '"+txtComplemento.getText()+"' ,BAIRRO= '"+txtBairro.getText()+"' ,CIDADE= '"+txtCidade.getText()+"' ,ESTADO= '"+txtEstado.getText()+"' WHERE ID_PACIENTE= "+txtIDPaciente.getText()+"";
             Connection con = databaseConnection.Conexao();
             PreparedStatement pst = con.prepareStatement(query);
             pst.execute();
@@ -1055,6 +1057,8 @@ public class Pacientes extends javax.swing.JFrame {
             pst.close();
             JOptionPane.showMessageDialog(null, "Cadastro Alterado!");
             
+            DataCadastro.setDate(null);
+            DataNascimento.setDate(null);
             txtIDPaciente.setText(null);
             txtNomePaciente.setText(null);
             txtCPF.setText(null);
@@ -1062,12 +1066,14 @@ public class Pacientes extends javax.swing.JFrame {
             txtTelefone.setText(null);
             txtSexo.setText(null);
             txtEmail.setText(null);
+            txtCEP.setText(null);
             txtLogradouro.setText(null);
             txtNumero.setText(null);
             txtComplemento.setText(null);
             txtBairro.setText(null);
             txtCidade.setText(null);
             txtEstado.setText(null);
+            txtConvenio.setText(null);
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro na Alteração!");
