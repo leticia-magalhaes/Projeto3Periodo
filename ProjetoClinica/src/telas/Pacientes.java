@@ -72,7 +72,6 @@ public class Pacientes extends javax.swing.JFrame {
         txtBuscaPacientes = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         TabelaPacientes = new javax.swing.JTable();
-        labelClientes1 = new javax.swing.JLabel();
         btnBuscarPaciente = new javax.swing.JButton();
         btnEditarPacientes = new javax.swing.JButton();
         btnExcluirPacientes = new javax.swing.JButton();
@@ -82,6 +81,14 @@ public class Pacientes extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         txtCEP = new javax.swing.JTextField();
+        try{ 
+            javax.swing.text.MaskFormatter mask2 = new javax.swing.text.MaskFormatter("#####-###");
+
+            txtCEP = new javax.swing.JFormattedTextField(mask2);
+
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
         jLabel11 = new javax.swing.JLabel();
         txtLogradouro = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
@@ -101,11 +108,36 @@ public class Pacientes extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txtTelefone = new javax.swing.JTextField();
+
+        try{
+            javax.swing.text.MaskFormatter mask = new javax.swing.text.MaskFormatter("(##)####-####");
+
+            txtTelefone = new javax.swing.JFormattedTextField(mask);
+
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
         jLabel6 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtRG = new javax.swing.JTextField();
+        try{ 
+            javax.swing.text.MaskFormatter mask4 = new javax.swing.text.MaskFormatter("??-##.###.###");
+
+            txtRG = new javax.swing.JFormattedTextField(mask4);
+
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
         txtCPF = new javax.swing.JTextField();
+        try{ 
+            javax.swing.text.MaskFormatter mask3 = new javax.swing.text.MaskFormatter("###.###.###-##");
+
+            txtCPF = new javax.swing.JFormattedTextField(mask3);
+
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         txtConvenio = new javax.swing.JTextField();
@@ -131,6 +163,9 @@ public class Pacientes extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(241, 191, 191));
+
+        PainelBotoes.setBackground(new java.awt.Color(241, 191, 191));
 
         Nurse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/nurse (1).png"))); // NOI18N
 
@@ -193,7 +228,12 @@ public class Pacientes extends javax.swing.JFrame {
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
+        PainelPrincipal.setBackground(new java.awt.Color(241, 191, 191));
         PainelPrincipal.setLayout(new java.awt.CardLayout());
+
+        PainelLocalizarPacientes.setBackground(new java.awt.Color(241, 191, 191));
+
+        jPanelPacientes1.setBackground(new java.awt.Color(241, 191, 191));
 
         titulo1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         titulo1.setText("Pacientes");
@@ -215,6 +255,9 @@ public class Pacientes extends javax.swing.JFrame {
             }
         });
 
+        jScrollPane2.setBackground(new java.awt.Color(241, 191, 191));
+
+        TabelaPacientes.setBackground(new java.awt.Color(241, 191, 191));
         TabelaPacientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -224,9 +267,6 @@ public class Pacientes extends javax.swing.JFrame {
             }
         ));
         jScrollPane2.setViewportView(TabelaPacientes);
-
-        labelClientes1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        labelClientes1.setText("Total de clientes: 0");
 
         btnBuscarPaciente.setText("Buscar");
         btnBuscarPaciente.addActionListener(new java.awt.event.ActionListener() {
@@ -268,12 +308,9 @@ public class Pacientes extends javax.swing.JFrame {
                         .addComponent(btnBuscarPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPacientes1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanelPacientes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelClientes1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPacientes1Layout.createSequentialGroup()
-                                .addComponent(btnEditarPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnExcluirPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addComponent(btnEditarPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnExcluirPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanelPacientes1Layout.setVerticalGroup(
@@ -288,9 +325,7 @@ public class Pacientes extends javax.swing.JFrame {
                     .addComponent(btnBuscarPaciente))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(labelClientes1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(35, 35, 35)
                 .addGroup(jPanelPacientes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnExcluirPacientes)
                     .addComponent(btnEditarPacientes))
@@ -310,11 +345,16 @@ public class Pacientes extends javax.swing.JFrame {
 
         PainelPrincipal.add(PainelLocalizarPacientes, "PainelLocalizarPacientes");
 
+        PainelNovoPaciente.setBackground(new java.awt.Color(241, 191, 191));
+
         titulo2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         titulo2.setText("Pacientes");
 
+        jPanel2.setBackground(new java.awt.Color(241, 191, 191));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        jPanel3.setBackground(new java.awt.Color(241, 191, 191));
 
         jLabel10.setText("CEP:");
 
@@ -396,7 +436,7 @@ public class Pacientes extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel15)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtEstado))
+                        .addComponent(txtEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -459,6 +499,12 @@ public class Pacientes extends javax.swing.JFrame {
 
         jLabel7.setText("CPF:");
 
+        txtCPF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCPFActionPerformed(evt);
+            }
+        });
+
         jLabel8.setText("RG:");
 
         jLabel9.setText("Convênio:");
@@ -500,7 +546,7 @@ public class Pacientes extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel9)
@@ -556,7 +602,7 @@ public class Pacientes extends javax.swing.JFrame {
                     .addComponent(txtConvenio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addContainerGap(144, Short.MAX_VALUE))
         );
 
         btnSalvarPacientes.setText("Salvar");
@@ -616,6 +662,8 @@ public class Pacientes extends javax.swing.JFrame {
         );
 
         PainelPrincipal.add(PainelNovoPaciente, "PainelNovoPaciente");
+
+        PainelInicializador.setBackground(new java.awt.Color(241, 191, 191));
 
         javax.swing.GroupLayout PainelInicializadorLayout = new javax.swing.GroupLayout(PainelInicializador);
         PainelInicializador.setLayout(PainelInicializadorLayout);
@@ -1111,6 +1159,10 @@ public class Pacientes extends javax.swing.JFrame {
     private void txtBuscaPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscaPacientesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscaPacientesActionPerformed
+
+    private void txtCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCPFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCPFActionPerformed
     
     Connection connection = null;
     public void preencherTabelaPacientes(String Sql) {
@@ -1206,7 +1258,6 @@ public class Pacientes extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanelPacientes1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel labelClientes1;
     private javax.swing.JLabel titulo1;
     private javax.swing.JLabel titulo2;
     private javax.swing.JTextField txtBairro;

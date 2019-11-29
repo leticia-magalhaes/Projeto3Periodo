@@ -120,6 +120,14 @@ public class Cadastros extends javax.swing.JFrame {
         txtClinicas = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         txtCRM = new javax.swing.JTextField();
+        try{ 
+            javax.swing.text.MaskFormatter mask5 = new javax.swing.text.MaskFormatter("########-#/??");
+
+            txtCRM = new javax.swing.JFormattedTextField(mask5);
+
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
         jLabel11 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         txtIDMedico = new javax.swing.JTextField();
@@ -152,6 +160,14 @@ public class Cadastros extends javax.swing.JFrame {
         txtClinicaConvenio = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         txtRegistroANS = new javax.swing.JTextField();
+        try{ 
+            javax.swing.text.MaskFormatter mask6 = new javax.swing.text.MaskFormatter("#####-#");
+
+            txtRegistroANS = new javax.swing.JFormattedTextField(mask6);
+
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
         btnSalvarConvenios = new javax.swing.JButton();
         btnCancelarConvenios = new javax.swing.JButton();
         btnEditarConvenios = new javax.swing.JButton();
@@ -184,6 +200,8 @@ public class Cadastros extends javax.swing.JFrame {
         txtIDUsuario = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        PainelPrincipal1.setBackground(new java.awt.Color(241, 191, 191));
 
         btnCadastrosUsuarios.setText("Cadastros de Usuários");
         btnCadastrosUsuarios.addActionListener(new java.awt.event.ActionListener() {
@@ -220,7 +238,10 @@ public class Cadastros extends javax.swing.JFrame {
             }
         });
 
+        PainelPrincipal3.setBackground(new java.awt.Color(241, 191, 191));
         PainelPrincipal3.setLayout(new java.awt.CardLayout());
+
+        ImagemCadastrosMedicos.setBackground(new java.awt.Color(241, 191, 191));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/002-doctor-1.png"))); // NOI18N
 
@@ -245,6 +266,8 @@ public class Cadastros extends javax.swing.JFrame {
 
         PainelPrincipal3.add(ImagemCadastrosMedicos, "ImagemCadastrosMedicos");
 
+        ImagemCadastrosConsultorios.setBackground(new java.awt.Color(241, 191, 191));
+
         jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/006-architecture-and-city.png"))); // NOI18N
 
         javax.swing.GroupLayout ImagemCadastrosConsultoriosLayout = new javax.swing.GroupLayout(ImagemCadastrosConsultorios);
@@ -266,6 +289,8 @@ public class Cadastros extends javax.swing.JFrame {
 
         PainelPrincipal3.add(ImagemCadastrosConsultorios, "ImagemCadastrosConsultorios");
 
+        ImagemCadastrosConvenios.setBackground(new java.awt.Color(241, 191, 191));
+
         jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/005-health.png"))); // NOI18N
 
         javax.swing.GroupLayout ImagemCadastrosConveniosLayout = new javax.swing.GroupLayout(ImagemCadastrosConvenios);
@@ -286,6 +311,8 @@ public class Cadastros extends javax.swing.JFrame {
         );
 
         PainelPrincipal3.add(ImagemCadastrosConvenios, "ImagemCadastrosConvenios");
+
+        ImagemCadastrosUsuarios.setBackground(new java.awt.Color(241, 191, 191));
 
         jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/004-man.png"))); // NOI18N
 
@@ -346,8 +373,10 @@ public class Cadastros extends javax.swing.JFrame {
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
+        PainelPrincipal2.setBackground(new java.awt.Color(241, 191, 191));
         PainelPrincipal2.setLayout(new java.awt.CardLayout());
 
+        PainelPrincipal.setBackground(new java.awt.Color(241, 191, 191));
         PainelPrincipal.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout PainelPrincipalLayout = new javax.swing.GroupLayout(PainelPrincipal);
@@ -363,6 +392,7 @@ public class Cadastros extends javax.swing.JFrame {
 
         PainelPrincipal2.add(PainelPrincipal, "PainelCadastrosUsuario");
 
+        PainelCadastrosMedicos.setBackground(new java.awt.Color(241, 191, 191));
         PainelCadastrosMedicos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         btnSalvarMedico.setText("Salvar");
@@ -410,6 +440,11 @@ public class Cadastros extends javax.swing.JFrame {
 
         jLabel25.setText("ID:");
 
+        jScrollPane1.setBackground(new java.awt.Color(241, 191, 191));
+
+        TabelaMedicosScroll.setBackground(new java.awt.Color(241, 191, 191));
+
+        TabelaMedicos.setBackground(new java.awt.Color(241, 191, 191));
         TabelaMedicos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -537,6 +572,8 @@ public class Cadastros extends javax.swing.JFrame {
 
         PainelPrincipal2.add(PainelCadastrosMedicos, "PainelCadastrosMedicos");
 
+        PainelCadastrosConsultorios.setBackground(new java.awt.Color(241, 191, 191));
+
         btnSalvarConsultorios.setText("Salvar");
         btnSalvarConsultorios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -572,6 +609,9 @@ public class Cadastros extends javax.swing.JFrame {
 
         jLabel4.setText("Especialidade:");
 
+        jScrollPane3.setBackground(new java.awt.Color(241, 191, 191));
+
+        TabelaConsultorios.setBackground(new java.awt.Color(241, 191, 191));
         TabelaConsultorios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -658,6 +698,7 @@ public class Cadastros extends javax.swing.JFrame {
 
         PainelPrincipal2.add(PainelCadastrosConsultorios, "PainelCadastrosConsultorios");
 
+        PainelCadastrosConvenios.setBackground(new java.awt.Color(241, 191, 191));
         PainelCadastrosConvenios.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -697,6 +738,9 @@ public class Cadastros extends javax.swing.JFrame {
             }
         });
 
+        jScrollPane4.setBackground(new java.awt.Color(241, 191, 191));
+
+        TabelaConvenios.setBackground(new java.awt.Color(241, 191, 191));
         TabelaConvenios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -794,6 +838,7 @@ public class Cadastros extends javax.swing.JFrame {
 
         PainelPrincipal2.add(PainelCadastrosConvenios, "PainelCadastrosConvenios");
 
+        PainelCadastrosUsuarios.setBackground(new java.awt.Color(241, 191, 191));
         PainelCadastrosUsuarios.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -807,6 +852,9 @@ public class Cadastros extends javax.swing.JFrame {
 
         jLabel14.setText("Confirmar Senha:");
 
+        jScrollPane2.setBackground(new java.awt.Color(241, 191, 191));
+
+        TabelaUsuarios.setBackground(new java.awt.Color(241, 191, 191));
         TabelaUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

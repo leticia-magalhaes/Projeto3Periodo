@@ -33,9 +33,8 @@ public class HeartClin extends Pacientes {
         btnPacientes = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        btnLogin = new javax.swing.JButton();
+        btnSobre = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -82,30 +81,33 @@ public class HeartClin extends Pacientes {
             }
         });
         getContentPane().add(jButton4);
-        jButton4.setBounds(168, 117, 147, 31);
+        jButton4.setBounds(320, 30, 147, 31);
 
-        jButton5.setBackground(new java.awt.Color(202, 104, 133));
-        jButton5.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Marketing");
-        getContentPane().add(jButton5);
-        jButton5.setBounds(321, 30, 147, 29);
+        btnLogin.setBackground(new java.awt.Color(202, 104, 133));
+        btnLogin.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
+        btnLogin.setForeground(new java.awt.Color(255, 255, 255));
+        btnLogin.setText("Login");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnLogin);
+        btnLogin.setBounds(320, 70, 147, 29);
 
-        jButton6.setBackground(new java.awt.Color(202, 104, 133));
-        jButton6.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("Sobre");
-        jButton6.setMaximumSize(new java.awt.Dimension(79, 23));
-        jButton6.setMinimumSize(new java.awt.Dimension(79, 23));
-        getContentPane().add(jButton6);
-        jButton6.setBounds(321, 118, 147, 29);
-
-        jButton7.setBackground(new java.awt.Color(202, 104, 133));
-        jButton7.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(255, 255, 255));
-        jButton7.setText("Configurações");
-        getContentPane().add(jButton7);
-        jButton7.setBounds(321, 70, 147, 29);
+        btnSobre.setBackground(new java.awt.Color(202, 104, 133));
+        btnSobre.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
+        btnSobre.setForeground(new java.awt.Color(255, 255, 255));
+        btnSobre.setText("Sobre");
+        btnSobre.setMaximumSize(new java.awt.Dimension(79, 23));
+        btnSobre.setMinimumSize(new java.awt.Dimension(79, 23));
+        btnSobre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSobreActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSobre);
+        btnSobre.setBounds(250, 110, 147, 29);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/HeartClin.PNG"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -113,9 +115,9 @@ public class HeartClin extends Pacientes {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Fundo.PNG"))); // NOI18N
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 0, 480, 480);
+        jLabel2.setBounds(-10, -10, 500, 490);
 
-        setSize(new java.awt.Dimension(492, 220));
+        setSize(new java.awt.Dimension(491, 202));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -137,6 +139,18 @@ public class HeartClin extends Pacientes {
        cadastros.setVisible(true);
        dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        TelaLogin telaLogin = new TelaLogin();
+        telaLogin.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void btnSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSobreActionPerformed
+        TelaSobre telaSobre = new TelaSobre();
+        telaSobre.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnSobreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,12 +188,11 @@ public class HeartClin extends Pacientes {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnPacientes;
+    private javax.swing.JButton btnSobre;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
