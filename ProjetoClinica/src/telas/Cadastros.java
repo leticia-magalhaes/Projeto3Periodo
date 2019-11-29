@@ -114,7 +114,7 @@ public class Cadastros extends javax.swing.JFrame {
         txtNomeMedico = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtBuscarMedico = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         txtClinicas = new javax.swing.JTextField();
@@ -188,7 +188,7 @@ public class Cadastros extends javax.swing.JFrame {
         txtNomeUsuario = new javax.swing.JTextField();
         txtTipoUsuario = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
-        jTextField6 = new javax.swing.JTextField();
+        txtBuscarUsuario = new javax.swing.JTextField();
         txtSenhaUsuario = new javax.swing.JPasswordField();
         txtConfirmarSenhaUsuario = new javax.swing.JPasswordField();
         btnSalvarUsuarios = new javax.swing.JButton();
@@ -434,6 +434,11 @@ public class Cadastros extends javax.swing.JFrame {
         jLabel9.setText("Clínicas:");
 
         jButton1.setText("Pesquisar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel11.setText("Médicos");
@@ -481,7 +486,7 @@ public class Cadastros extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(PainelCadastrosMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelCadastrosMedicosLayout.createSequentialGroup()
-                        .addGap(0, 228, Short.MAX_VALUE)
+                        .addGap(0, 232, Short.MAX_VALUE)
                         .addComponent(jLabel11)
                         .addGap(263, 263, 263))
                     .addGroup(PainelCadastrosMedicosLayout.createSequentialGroup()
@@ -503,7 +508,7 @@ public class Cadastros extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtCRM))
                             .addGroup(PainelCadastrosMedicosLayout.createSequentialGroup()
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtBuscarMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
                             .addGroup(PainelCadastrosMedicosLayout.createSequentialGroup()
@@ -556,7 +561,7 @@ public class Cadastros extends javax.swing.JFrame {
                     .addComponent(txtDuracaoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PainelCadastrosMedicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBuscarMedico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -874,6 +879,11 @@ public class Cadastros extends javax.swing.JFrame {
         txtTipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Secretário(a)", "Médico(a)", "Enfermeiro(a)" }));
 
         jButton2.setText("Pesquisar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         btnSalvarUsuarios.setText("Salvar");
         btnSalvarUsuarios.addActionListener(new java.awt.event.ActionListener() {
@@ -928,7 +938,7 @@ public class Cadastros extends javax.swing.JFrame {
                         .addGap(27, 27, 27)
                         .addGroup(PainelCadastrosUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PainelCadastrosUsuariosLayout.createSequentialGroup()
-                                .addComponent(jTextField6)
+                                .addComponent(txtBuscarUsuario)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -993,7 +1003,7 @@ public class Cadastros extends javax.swing.JFrame {
                     .addComponent(txtConfirmarSenhaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(PainelCadastrosUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBuscarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelCadastrosUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton2)
                         .addComponent(txtTipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1698,6 +1708,47 @@ try {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIDUsuarioActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       try{
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+
+            String query = "SELECT ID_USUARIO, NOME_USUARIO, FROM USUARIOS WHERE NOME_USUARIOS like '%"+txtBuscarUsuario.getText()+"%'";
+
+            Connection con = databaseConnection.Conexao();
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            TabelaUsuarios.setModel(DbUtils.resultSetToTableModel(rs));
+            pst.close();
+            
+        } catch(SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro no Busca");
+            System.out.println(ex.getMessage());
+        } catch(Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+       
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+     try{
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+
+            String query = "SELECT ID_MEDICO, NOME_MEDICO, ESPECIALIDADE FROM MEDICOS WHERE NOME_MEDICO like '%"+txtBuscarMedico.getText()+"%' OR ESPECIALIDADE like '%"+txtBuscarMedico.getText()+"%'";
+
+            Connection con = databaseConnection.Conexao();
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            TabelaMedicosScroll.setModel(DbUtils.resultSetToTableModel(rs));
+            pst.close();
+            
+        } catch(SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro no Busca");
+            System.out.println(ex.getMessage());
+        } catch(Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     private DefaultTableModel modeloTabela = new DefaultTableModel();
 
@@ -1882,8 +1933,8 @@ try {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField txtBuscarMedico;
+    private javax.swing.JTextField txtBuscarUsuario;
     private javax.swing.JTextField txtCRM;
     private javax.swing.JTextField txtClinicaConvenio;
     private javax.swing.JTextField txtClinicas;
